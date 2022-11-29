@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planilha do Posto</title>
+    <style>
+    body {
+        background: rgb(120, 52, 54);
+        font: normal 14pt arial;
+    }
+    header {
+        color: rgb(132, 109, 243);
+        font: 20pt arial;
+        height: 70px;
+    }
+    section {
+        background: white;
+        border-radius: 10px 30px;
+        padding: 8px;
+        width: 275px;
+        box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.594);
+        margin: 5px;
+        display: inline-block;
+        
+    }
+    footer {
+        color: rgb(240, 244, 241);
+        text-align: center;
+        font-style: italic;
+        font: 10pt sams;
+    }
+    #mainsection{
+    display: block;
+    }
+    input{
+        inline-size: 80px;
+    }
+    .digiter{
+        color: rgb(255, 14, 6);
+    }
+    </style>
+</head>
+<body>
+    <header>
+        Planilha Dislub </br>
+        <input type="button" value="Calcular" onclick="calcular()">
+    </header>
+    <main>
+        <section id="mainsection">
+            <div id="litger">Lit/Met Geral: </div>
+            <div id="totger">Total Geral: </div>
+            Cartões: <div class="fim"><input type="number" name="car" id="car"> </br></div>
+            Depósitos: <div class="fim"><input type="number" name="dep" id="dep"></div>
+            <div id="falta">Falta: </div>
+        </section>
+        <section>
+            Bico 01: <div class="fim"><input class="digiter" type="number" name="xb01" id="xb01"></div> </br>
+            Final: <div class="fim"><input class="digiter" type="number" name="fb01" id="fb01"></div> </br>
+            Início: <div class="fim"><input class="digiter" type="number" name="ib01" id="ib01"></div> </br>
+            <div id="rb01">Lit/Met: </div>
+            <div id="tb01">Total: </div>
+        </section>
+        <section>
+            Bico 02: <input class="digiter" type="number" name="xb02" id="xb02"> </br>
+            Final: <input class="digiter" type="number" name="fb02" id="fb02"> </br>
+            Início: <input class="digiter" type="number" name="ib02" id="ib02"> </br>
+            <div id="rb02">Lit/Met: </div>
+            <div id="tb02">Total: </div>
+        </section>
+        <section>
+            Bico 03: <input class="digiter" type="number" name="xb03" id="xb03"> </br>
+            Final: <input class="digiter" type="number" name="fb03" id="fb03"> </br>
+            Início: <input class="digiter" type="number" name="ib03" id="ib03"> </br>
+            <div id="rb03">Lit/Met: </div>
+            <div id="tb03">Total: </div>
+        </section>
+        <section>
+            Bico 04: <input class="digiter" type="number" name="xb04" id="xb04"> </br>
+            Final: <input class="digiter" type="number" name="fb04" id="fb04"> </br>
+            Início: <input class="digiter" type="number" name="ib04" id="ib04"> </br>
+            <div id="rb04">Lit/Met: </div>
+            <div id="tb04">Total: </div>
+        </section>
+        <section>
+            Bico 05: <input class="digiter" type="number" name="xb05" id="xb05"> </br>
+            Final: <input class="digiter" type="number" name="fb05" id="fb05"> </br>
+            Início: <input class="digiter" type="number" name="ib05" id="ib05"> </br>
+            <div id="rb05">Lit/Met: </div>
+            <div id="tb05">Total: </div>
+        </section>
+        <section>
+            Bico 06: <input class="digiter" type="number" name="xb06" id="xb06"> </br>
+            Final: <input class="digiter" type="number" name="fb06" id="fb06"> </br>
+            Início: <input class="digiter" type="number" name="ib06" id="ib06"> </br>
+            <div id="rb06">Lit/Met: </div>
+            <div id="tb06">Total: </div>
+            </section>
+        <section>
+            Bico 07: <input class="digiter" type="number" name="xb07" id="xb07"> </br>
+            Final: <input class="digiter" type="number" name="fb07" id="fb07"> </br>
+            Início: <input class="digiter" type="number" name="ib07" id="ib07"> </br>
+            <div id="rb07">Lit/Met: </div>
+            <div id="tb07">Total: </div>
+            </section>
+        <section>
+            Bico 08: <input class="digiter" type="number" name="xb08" id="xb08"> </br>
+            Final: <input class="digiter" type="number" name="fb08" id="fb08"> </br>
+            Início: <input class="digiter" type="number" name="ib08" id="ib08"> </br>
+            <div id="rb08">Lit/Met: </div>
+            <div id="tb08">Total: </div>
+        </section>
+        <section>
+            Bico 09: <input class="digiter" type="number" name="xb09" id="xb09"> </br>
+            Final: <input class="digiter" type="number" name="fb09" id="fb09"> </br>
+            Início: <input class="digiter" type="number" name="ib09" id="ib09"> </br>
+            <div id="rb09">Lit/Met: </div>
+            <div id="tb09">Total: </div>
+        </section>
+        <section>
+            Bico 10: <input class="digiter" type="number" name="xb10" id="xb10"> </br>
+            Final: <input class="digiter" type="number" name="fb10" id="fb10"> </br>
+            Início: <input class="digiter" type="number" name="ib10" id="ib10"> </br>
+            <div id="rb10">Lit/Met: </div>
+            <div id="tb10">Total: </div>
+        </section>
+    </main>
+    <footer>
+        Programmed By: Hugo Albuquerque
+    </footer>
+    <script>
+        function calcular(){
+            //Bico 01
+            var xb01 = document.getElementById("xb01")
+            var fb01 = document.getElementById("fb01")
+            var ib01 = document.getElementById("ib01")
+            var res01 = Number(fb01.value) - Number(ib01.value)
+            var tot01 = res01 * Number(xb01.value)
+            var rb01 = document.getElementById("rb01")
+            var tb01 = document.getElementById("tb01")
+            rb01.innerHTML = `Lit/Met: ${res01.toFixed(2)}`
+            tb01.innerHTML = `Total: ${tot01.toFixed(2)}`                       
+            //Bico 02
+            var xb02 = document.getElementById("xb02")
+            var fb02 = document.getElementById("fb02")
+            var ib02 = document.getElementById("ib02")
+            var res02 = Number(fb02.value) - Number(ib02.value)
+            var tot02 = res02 * Number(xb02.value)
+            var rb02 = document.getElementById("rb02")
+            var tb02 = document.getElementById("tb02")
+            rb02.innerHTML = `Lit/Met: ${res02.toFixed(2)}`
+            tb02.innerHTML = `Total: ${tot02.toFixed(2)}`
+            //Bico 03
+            var xb03 = document.getElementById("xb03")
+            var fb03 = document.getElementById("fb03")
+            var ib03 = document.getElementById("ib03")
+            var res03 = Number(fb03.value) - Number(ib03.value)
+            var tot03 = res03 * Number(xb03.value)
+            var rb03 = document.getElementById("rb03")
+            var tb03 = document.getElementById("tb03")
+            rb03.innerHTML = `Lit/Met: ${res03.toFixed(2)}`
+            tb03.innerHTML = `Total: ${tot03.toFixed(2)}`
+            //Bico 04
+            var xb04 = document.getElementById("xb04")
+            var fb04 = document.getElementById("fb04")
+            var ib04 = document.getElementById("ib04")
+            var res04 = Number(fb04.value) - Number(ib04.value)
+            var tot04 = res04 * Number(xb04.value)
+            var rb04 = document.getElementById("rb04")
+            var tb04 = document.getElementById("tb04")
+            rb04.innerHTML = `Lit/Met: ${res04.toFixed(2)}`
+            tb04.innerHTML = `Total: ${tot04.toFixed(2)}`
+            //Bico 05
+            var xb05 = document.getElementById("xb05")
+            var fb05 = document.getElementById("fb05")
+            var ib05 = document.getElementById("ib05")
+            var res05 = Number(fb05.value) - Number(ib05.value)
+            var tot05 = res05 * Number(xb05.value)
+            var rb05 = document.getElementById("rb05")
+            var tb05 = document.getElementById("tb05")
+            rb05.innerHTML = `Lit/Met: ${res05.toFixed(2)}`
+            tb05.innerHTML = `Total: ${tot05.toFixed(2)}`
+            //Bico 06
+            var xb06 = document.getElementById("xb06")
+            var fb06 = document.getElementById("fb06")
+            var ib06 = document.getElementById("ib06")
+            var res06 = Number(fb06.value) - Number(ib06.value)
+            var tot06 = res06 * Number(xb06.value)
+            var rb06 = document.getElementById("rb06")
+            var tb06 = document.getElementById("tb06")
+            rb06.innerHTML = `Lit/Met: ${res06.toFixed(2)}`
+            tb06.innerHTML = `Total: ${tot06.toFixed(2)}`                       
+            //Bico 07
+            var xb07 = document.getElementById("xb07")
+            var fb07 = document.getElementById("fb07")
+            var ib07 = document.getElementById("ib07")
+            var res07 = Number(fb07.value) - Number(ib07.value)
+            var tot07 = res07 * Number(xb07.value)
+            var rb07 = document.getElementById("rb07")
+            var tb07 = document.getElementById("tb07")
+            rb07.innerHTML = `Lit/Met: ${res07.toFixed(2)}`
+            tb07.innerHTML = `Total: ${tot07.toFixed(2)}`
+            //Bico 08
+            var xb08 = document.getElementById("xb08")
+            var fb08 = document.getElementById("fb08")
+            var ib08 = document.getElementById("ib08")
+            var res08 = Number(fb08.value) - Number(ib08.value)
+            var tot08 = res08 * Number(xb08.value)
+            var rb08 = document.getElementById("rb08")
+            var tb08 = document.getElementById("tb08")
+            rb08.innerHTML = `Lit/Met: ${res08.toFixed(2)}`
+            tb08.innerHTML = `Total: ${tot08.toFixed(2)}`
+            //Bico 09
+            var xb09 = document.getElementById("xb09")
+            var fb09 = document.getElementById("fb09")
+            var ib09 = document.getElementById("ib09")
+            var res09 = Number(fb09.value) - Number(ib09.value)
+            var tot09 = res09 * Number(xb09.value)
+            var rb09 = document.getElementById("rb09")
+            var tb09 = document.getElementById("tb09")
+            rb09.innerHTML = `Lit/Met: ${res09.toFixed(2)}`
+            tb09.innerHTML = `Total: ${tot09.toFixed(2)}`
+            //Bico 10
+            var xb10 = document.getElementById("xb10")
+            var fb10 = document.getElementById("fb10")
+            var ib10 = document.getElementById("ib10")
+            var res10 = Number(fb10.value) - Number(ib10.value)
+            var tot10 = res10 * Number(xb10.value)
+            var rb10 = document.getElementById("rb10")
+            var tb10 = document.getElementById("tb10")
+            rb10.innerHTML = `Lit/Met: ${res10.toFixed(2)}`
+            tb10.innerHTML = `Total: ${tot10.toFixed(2)}`
+            //Total Geral
+            var litger = document.getElementById("litger")
+            var totger = document.getElementById("totger")
+            var slg = Number(res01) + Number(res02) + Number(res03) + Number(res04) + Number(res05) + Number(res06) + Number(res07) + Number(res08) + Number(res09) + Number(res10)
+            var svt = Number(tot01) + Number(tot02) + Number(tot03) + Number(tot04) + Number(tot05) + Number(tot06) + Number(tot07) + Number(tot08) + Number(tot09) + Number(tot10)
+            litger.innerHTML = `Lit/Met Geral: ${slg.toFixed(2)}`
+            totger.innerHTML = `Total Geral: ${svt.toFixed(2)}`
+            //Menos depósitos e Cartões
+            var car = document.getElementById("car")
+            var dep = document.getElementById("dep")
+            var falta = document.getElementById("falta")
+            var calfal = svt - Number(car.value) - Number(dep.value)
+            falta.innerHTML = `Falta: ${calfal.toFixed(2)}`
+        }
+    </script>
+</body>
+</html>

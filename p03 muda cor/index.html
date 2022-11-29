@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muda Cor</title>
+    <style>
+        body{
+            background-color: rgba(0, 0, 0, 0.886);
+            color: white;
+            text-align: center;
+        }
+        h1{
+            text-indent: 10px;            
+        }
+        #caixa{
+            height: 100px;
+            width: 200px;
+            border-radius: 25px 50px;
+            padding: 30px 40px;
+            font-size: 40px;
+            display: inline-block;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.541);
+        }
+        #butt{
+            border-radius: 10px 20px;
+            width: 100px;
+            height: 30px;
+            margin-top: 15px;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.543);
+        }
+        #butt:hover{
+            background-color: rgba(255, 255, 0, 0.466);
+            border-style: dashed;
+        }        
+    </style>
+</head>
+<body>
+    <h1>Teste das Cores!</h1>
+    <div id="caixa" style="background-color: red">Clique Abaixo</div>
+    <section>
+        <input type="button" value="MUDAR!" id="butt" onclick="mudar()">
+    </section>
+    <script>
+        var corAtual = document.getElementById("caixa").style.backgroundColor
+        function mudar() {
+            if (corAtual == "red") {
+                corAtual = "green"
+                document.getElementById("caixa").style.backgroundColor = "green"
+                return
+            } if (corAtual == "green") {
+                corAtual = "blue"
+                document.getElementById("caixa").style.backgroundColor = "blue"                
+                return
+            } if (corAtual == "blue") {
+                corAtual = "red"
+                document.getElementById("caixa").style.backgroundColor = "red"
+                return
+            }
+        }
+    </script>
+</body>
+</html>

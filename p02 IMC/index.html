@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC</title>
+    <style>
+        body {
+            text-align: center;
+            color: aliceblue;
+            background-color: rgba(0, 0, 0, 0.852);
+            font-size: 20px;
+        }
+        header {
+            text-align: center;
+        }
+        section {
+            background: red;
+            border-radius: 20px;
+            padding: 20px;
+            width: 400px;
+            margin: auto;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.594);
+            text-align: center;
+        }
+        .txt{
+            background-color: blanchedalmond;
+            
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculadora do IMC</h1>
+    </header>
+    <section>
+        <p>Digite sua altura (Ex: 1,80 m). <input class="txt" type="number" name="altura" id="altura"></p>
+        <p>Digite seu peso (Ex: 60,5 kg). <input class="txt" type="number" name="peso" id="peso"></p>
+        <input type="button" value="Verificar" onclick="verificar()">
+
+    </section>
+    <p></p>
+    <div id="resu">Resultado</div>
+
+    <script>
+
+        function verificar(){
+            var altura = document.getElementById("altura")
+            var altur = Number(altura.value)
+            var peso = document.getElementById("peso")
+            var pes = Number(peso.value)
+            var res = document.getElementById("resu")
+            var imc = pes / altur ** 2
+            
+            res.innerHTML = `Sua altura é: ${altur}cm, e seu peso é: ${pes}kg.</br> Seu IMC é ${imc}.`
+        }
+    </script>
+</body>
+</html>
