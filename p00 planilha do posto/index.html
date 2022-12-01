@@ -8,38 +8,27 @@
     <style>
     body {
         background: rgb(120, 52, 54);
-        font: normal 14pt arial;
+        font: normal 15pt arial;
     }
     header {
         color: rgb(132, 109, 243);
+        text-align: center;
         font: 20pt arial;
-        height: 70px;
     }
     section {
         background: white;
-        border-radius: 10px 30px;
+        border-radius: 10px;
         padding: 8px;
-        width: 275px;
-        box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.594);
-        margin: 5px;
-        display: inline-block;
-        
+        width: 300px;
+        margin: auto;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.594);
     }
     footer {
         color: rgb(240, 244, 241);
         text-align: center;
         font-style: italic;
         font: 10pt sams;
-    }
-    #mainsection{
-    display: block;
-    }
-    input{
-        inline-size: 80px;
-    }
-    .digiter{
-        color: rgb(255, 14, 6);
-    }
+}
     </style>
 </head>
 <body>
@@ -47,85 +36,94 @@
         Planilha Dislub </br>
         <input type="button" value="Calcular" onclick="calcular()">
     </header>
-    <main>
-        <section id="mainsection">
-            <div id="litger">Lit/Met Geral: </div>
-            <div id="totger">Total Geral: </div>
-            Cartões: <div class="fim"><input type="number" name="car" id="car"> </br></div>
-            Depósitos: <div class="fim"><input type="number" name="dep" id="dep"></div>
-            <div id="falta">Falta: </div>
+    <section>
+        <div id="litger">Lit/Met Geral: </div>
+        <div id="totger">Total Geral: </div>
+        Cartões: <input type="number" name="car" id="car"> </br>
+        Depósitos: <input type="number" name="dep" id="dep">
+        <div id="falta">Falta: </div>
+    </section>
+</br>
+    <section>
+        Bico 01: <input type="number" name="xb01" id="xb01"> </br>
+        Final: <input type="number" name="fb01" id="fb01"> </br>
+        Início: <input type="number" name="ib01" id="ib01"> </br>
+        <div id="rb01">Lit/Met: </div>
+        <div id="tb01">Total: </div>
+    </section> 
+</br>
+    <section>
+        Bico 02: <input type="number" name="xb02" id="xb02"> </br>
+        Final: <input type="number" name="fb02" id="fb02"> </br>
+        Início: <input type="number" name="ib02" id="ib02"> </br>
+        <div id="rb02">Lit/Met: </div>
+        <div id="tb02">Total: </div>
+    </section>
+</br>
+    <section>
+        Bico 03: <input type="number" name="xb03" id="xb03"> </br>
+        Final: <input type="number" name="fb03" id="fb03"> </br>
+        Início: <input type="number" name="ib03" id="ib03"> </br>
+        <div id="rb03">Lit/Met: </div>
+        <div id="tb03">Total: </div>
+    </section>
+</br>
+    <section>
+        Bico 04: <input type="number" name="xb04" id="xb04"> </br>
+        Final: <input type="number" name="fb04" id="fb04"> </br>
+        Início: <input type="number" name="ib04" id="ib04"> </br>
+        <div id="rb04">Lit/Met: </div>
+        <div id="tb04">Total: </div>
+    </section>
+</br>
+    <section>
+        Bico 05: <input type="number" name="xb05" id="xb05"> </br>
+        Final: <input type="number" name="fb05" id="fb05"> </br>
+        Início: <input type="number" name="ib05" id="ib05"> </br>
+        <div id="rb05">Lit/Met: </div>
+        <div id="tb05">Total: </div>
+    </section>
+</br>
+    <section>
+        Bico 06: <input type="number" name="xb06" id="xb06"> </br>
+        Final: <input type="number" name="fb06" id="fb06"> </br>
+        Início: <input type="number" name="ib06" id="ib06"> </br>
+        <div id="rb06">Lit/Met: </div>
+        <div id="tb06">Total: </div>
+        </section> 
+</br>
+    <section>
+        Bico 07: <input type="number" name="xb07" id="xb07"> </br>
+        Final: <input type="number" name="fb07" id="fb07"> </br>
+        Início: <input type="number" name="ib07" id="ib07"> </br>
+        <div id="rb07">Lit/Met: </div>
+        <div id="tb07">Total: </div>
         </section>
-        <section>
-            Bico 01: <div class="fim"><input class="digiter" type="number" name="xb01" id="xb01"></div> </br>
-            Final: <div class="fim"><input class="digiter" type="number" name="fb01" id="fb01"></div> </br>
-            Início: <div class="fim"><input class="digiter" type="number" name="ib01" id="ib01"></div> </br>
-            <div id="rb01">Lit/Met: </div>
-            <div id="tb01">Total: </div>
-        </section>
-        <section>
-            Bico 02: <input class="digiter" type="number" name="xb02" id="xb02"> </br>
-            Final: <input class="digiter" type="number" name="fb02" id="fb02"> </br>
-            Início: <input class="digiter" type="number" name="ib02" id="ib02"> </br>
-            <div id="rb02">Lit/Met: </div>
-            <div id="tb02">Total: </div>
-        </section>
-        <section>
-            Bico 03: <input class="digiter" type="number" name="xb03" id="xb03"> </br>
-            Final: <input class="digiter" type="number" name="fb03" id="fb03"> </br>
-            Início: <input class="digiter" type="number" name="ib03" id="ib03"> </br>
-            <div id="rb03">Lit/Met: </div>
-            <div id="tb03">Total: </div>
-        </section>
-        <section>
-            Bico 04: <input class="digiter" type="number" name="xb04" id="xb04"> </br>
-            Final: <input class="digiter" type="number" name="fb04" id="fb04"> </br>
-            Início: <input class="digiter" type="number" name="ib04" id="ib04"> </br>
-            <div id="rb04">Lit/Met: </div>
-            <div id="tb04">Total: </div>
-        </section>
-        <section>
-            Bico 05: <input class="digiter" type="number" name="xb05" id="xb05"> </br>
-            Final: <input class="digiter" type="number" name="fb05" id="fb05"> </br>
-            Início: <input class="digiter" type="number" name="ib05" id="ib05"> </br>
-            <div id="rb05">Lit/Met: </div>
-            <div id="tb05">Total: </div>
-        </section>
-        <section>
-            Bico 06: <input class="digiter" type="number" name="xb06" id="xb06"> </br>
-            Final: <input class="digiter" type="number" name="fb06" id="fb06"> </br>
-            Início: <input class="digiter" type="number" name="ib06" id="ib06"> </br>
-            <div id="rb06">Lit/Met: </div>
-            <div id="tb06">Total: </div>
-            </section>
-        <section>
-            Bico 07: <input class="digiter" type="number" name="xb07" id="xb07"> </br>
-            Final: <input class="digiter" type="number" name="fb07" id="fb07"> </br>
-            Início: <input class="digiter" type="number" name="ib07" id="ib07"> </br>
-            <div id="rb07">Lit/Met: </div>
-            <div id="tb07">Total: </div>
-            </section>
-        <section>
-            Bico 08: <input class="digiter" type="number" name="xb08" id="xb08"> </br>
-            Final: <input class="digiter" type="number" name="fb08" id="fb08"> </br>
-            Início: <input class="digiter" type="number" name="ib08" id="ib08"> </br>
-            <div id="rb08">Lit/Met: </div>
-            <div id="tb08">Total: </div>
-        </section>
-        <section>
-            Bico 09: <input class="digiter" type="number" name="xb09" id="xb09"> </br>
-            Final: <input class="digiter" type="number" name="fb09" id="fb09"> </br>
-            Início: <input class="digiter" type="number" name="ib09" id="ib09"> </br>
-            <div id="rb09">Lit/Met: </div>
-            <div id="tb09">Total: </div>
-        </section>
-        <section>
-            Bico 10: <input class="digiter" type="number" name="xb10" id="xb10"> </br>
-            Final: <input class="digiter" type="number" name="fb10" id="fb10"> </br>
-            Início: <input class="digiter" type="number" name="ib10" id="ib10"> </br>
-            <div id="rb10">Lit/Met: </div>
-            <div id="tb10">Total: </div>
-        </section>
-    </main>
+</br>
+    <section>
+        Bico 08: <input type="number" name="xb08" id="xb08"> </br>
+        Final: <input type="number" name="fb08" id="fb08"> </br>
+        Início: <input type="number" name="ib08" id="ib08"> </br>
+        <div id="rb08">Lit/Met: </div>
+        <div id="tb08">Total: </div>
+    </section>
+</br>
+    <section>
+        Bico 09: <input type="number" name="xb09" id="xb09"> </br>
+        Final: <input type="number" name="fb09" id="fb09"> </br>
+        Início: <input type="number" name="ib09" id="ib09"> </br>
+        <div id="rb09">Lit/Met: </div>
+        <div id="tb09">Total: </div>
+    </section>
+</br>
+    <section>
+        Bico 10: <input type="number" name="xb10" id="xb10"> </br>
+        Final: <input type="number" name="fb10" id="fb10"> </br>
+        Início: <input type="number" name="ib10" id="ib10"> </br>
+        <div id="rb10">Lit/Met: </div>
+        <div id="tb10">Total: </div>
+    </section>
+</br>
     <footer>
         Programmed By: Hugo Albuquerque
     </footer>
