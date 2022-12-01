@@ -16,7 +16,7 @@
             text-align: center;
         }
         section {
-            background: red;
+            background: rgb(14, 92, 1);
             border-radius: 20px;
             padding: 20px;
             width: 400px;
@@ -26,7 +26,10 @@
         }
         .txt{
             background-color: blanchedalmond;
-            
+            width: 80px;
+        }
+        p {
+            margin: 8px;
         }
     </style>
 </head>
@@ -35,8 +38,9 @@
         <h1>Calculadora do IMC</h1>
     </header>
     <section>
-        <p>Digite sua altura (Ex: 1,80 m). <input class="txt" type="number" name="altura" id="altura"></p>
-        <p>Digite seu peso (Ex: 60,5 kg). <input class="txt" type="number" name="peso" id="peso"></p>
+        <p>Digite sua altura (ex: 1,80 m). 
+        <p><input class="txt" type="number" name="altura" id="altura"> metros.</p></p>
+        <p>Digite seu peso (ex: 60,5 kg). <p><input class="txt" type="number" name="peso" id="peso"> quilos.</p></p>
         <input type="button" value="Verificar" onclick="verificar()">
 
     </section>
@@ -46,14 +50,13 @@
     <script>
 
         function verificar(){
-            var altura = document.getElementById("altura")
-            var altur = Number(altura.value)
-            var peso = document.getElementById("peso")
-            var pes = Number(peso.value)
+            var altura = Number(document.getElementById("altura").value)
+            var peso = Number(document.getElementById("peso").value)
             var res = document.getElementById("resu")
-            var imc = pes / altur ** 2
+            var imc = peso / (altura ** 2)
             
-            res.innerHTML = `Sua altura é: ${altur}cm, e seu peso é: ${pes}kg.</br> Seu IMC é ${imc}.`
+            res.innerHTML = `Sua altura é: ${altura}cm, e seu peso é: ${peso}kg.</br> Seu IMC é ${imc.toFixed(2)}.`
+            
         }
     </script>
 </body>
