@@ -1,0 +1,122 @@
+var com = Math.floor(Math.random() * 3)
+var opcoes = ["Pedra","Papel","Tesoura"]
+var p1 = "sem alteração"
+var result = ""
+
+function final(){
+  if(result == "zero" || result == null || result == ""){
+    alert("???? Por quê? Ç_Ç ???? </FATAL ERROR>")
+    } else if (result == "empate"){
+        if(confirm("Empate é sempre flustrante E_E Hora do desempate?")){
+          escolha()
+          } else {
+              alert("Obrigado por testar nosso jogo! >.< Caso tenha encontrado algum tipo erro ou bug, entre em contato conosco. E se gostou, compartilhar ajuda muito <3")
+              prompt("Copie nosso Instagram:", "@hugoalb93")
+          }
+    } else if (result == "vitoria"){
+        if(confirm("Ganhar é bom... Mas ganhar de novo é BOM DE MAIS! :D Mais uma rodada?")){
+          escolha()
+          } else {
+              alert("Obrigado por testar nosso jogo! >.< Caso tenha encontrado algum tipo erro ou bug, entre em contato conosco. E se gostou, compartilhar ajuda muito <3")
+              prompt("Copie nosso Instagram:", "@hugoalb93")
+          }
+    } else if (result == "derrota"){
+        if(confirm("Nunca deixe o inimigo na vantagem! D_D Revanche?")){
+          escolha()
+          } else {
+              alert("Obrigado por testar nosso jogo! >.< Caso tenha encontrado algum tipo erro ou bug, entre em contato conosco. E se gostou, compartilhar ajuda muito <3")
+              prompt("Copie nosso Instagram:", "@hugoalb93")
+          }
+    } else {
+      alert("Why? Ç_Ç </FATAL ERROR>")
+    }
+}  
+
+function vencedor(){
+  result = "zero"
+  if (p1 == opcoes[com]){
+    alert("Empateee")
+    result = "empate"
+    } else if (p1 == "Pedra" && opcoes[com] == "Tesoura") {
+        alert("Parabéns, Você venceu a rodada! =D")
+        result = "vitoria"
+    } else if (p1 == "Papel" && opcoes[com] == "Pedra") {
+        alert("Parabéns, Você venceu a rodada! =D")
+        result = "vitoria"
+    } else if (p1 == "Tesoura" && opcoes[com] == "Papel") {
+        alert("Parabéns, Você venceu a rodada! =D")
+        result = "vitoria"
+    } else if (opcoes[com] == "Pedra" && p1 == "Tesoura") {
+        alert("Que pena... Você perdeu esta rodada ={")
+        result = "derrota"
+    } else if (opcoes[com] == "Papel" && p1 == "Pedra") {
+        alert("Que pena... Você perdeu esta rodada ={")
+        result = "derrota"
+    } else if (opcoes[com] == "Tesoura" && p1 == "Papel") {
+        alert("Que pena... Você perdeu esta rodada ={")
+        result = "derrota"
+    } else {
+        alert("ERRO! Algum erro no código fez com que ele chegasse neste alerta. Por favor, entre em contato para relatar este erro. Printe está tela! CÓDIGO: ND8462JS")
+    }  
+  return  result, final()
+}  
+
+function duelo(){
+  alert(`Você escolheu "${p1}".                                                  O computador escolheu "${opcoes[com]}"`)
+  vencedor(p1)
+}
+
+function tutorial() {
+  alert("   ...> Pedra > Tesoura > Papel > Pedra >...                       1 = Pedra, 2 = Papel, 3 = Tesoura. Você pode digitar o número correspondente ou a palavra diretamente! Mas só <UMA PALAVRA> ou <UM NÚMERO> é permito por tentativa, OK!? A palavra pode iniciar em maiúsculo, pode ser toda maiúscula ou toda minúscula. Let's Bora!")
+  escolha()
+}
+
+function continuar() {
+  if(confirm("Deseja tentar novamente?")){
+    escolherTuto()
+    } else {
+        alert("Obrigado por visitar nosso jogo! >.< Caso tenha encontrado algum tipo erro ou bug, entre em contato conosco!")
+        prompt("Copie nosso Instagram:", "@hugoalb93")
+    }
+}
+
+function verificar(){
+  if (p1 == null || p1 == ""){
+    alert("Campo não detectado corretamente!")
+    continuar()
+  } else if (p1 == "pedra" || p1 == "PEDRA" || p1 == "Pedra" || p1 == 1){
+      return p1 = "Pedra", duelo()
+  } else if (p1 == "papel" || p1 == "Papel" || p1 == "PAPEL" || p1 == 2){
+      return p1 = "Papel", duelo()
+  } else if (p1 == "tesoura" || p1 == "Tesoura" || p1 == "TESOURA" || p1 == 3){
+      return p1 = "Tesoura", duelo()
+  } else {
+      alert("INVÁLIDO! Digite apenas itens válidos...")
+      continuar()
+  }
+}  
+
+function escolha(){
+  p1 = prompt("Faça sua jogada!", "Pedra, Papel ou Tesoura?")
+  return p1, verificar()
+}  
+
+function escolherTuto() {
+  if (confirm("Se ainda não sabe ou não entendeu as regras, temos um simples tutorial! Abrir tutorial?")){
+    tutorial()
+  } else {
+      escolha()
+  }
+}
+
+function iniciar(){
+  if(confirm(`       Bem Vindo ao <Jokencode>                          Programado por Hugo Albuquerque!         Deseja iniciar o game?`)){
+    escolherTuto()
+  } else {
+      alert("Obrigado por visitar nosso jogo! Dúvidas, críticas ou sujestões, por favor, entre em contato!")
+      prompt("Copie nosso Instagram:", "@hugoalb93")
+  }
+}
+
+iniciar()  
+console.log(result)

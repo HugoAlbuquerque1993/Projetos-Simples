@@ -1,0 +1,123 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Almendra+Display&family=Press+Start+2P&display=swap');
+
+:root{
+    --cor1:#00997D;
+    --cor2:#997A0F;
+    --cor3:#4D3C04;
+    --cor4:#084D40;
+    --cor5:#950F99;
+    --font1: 'Almendra Display', cursive;
+    --font2: 'Press Start 2P', cursive;;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    text-align: center;
+    background-image: linear-gradient(90deg, var(--cor3), var(--cor1));
+    color: black;
+    display: flex;
+    justify-content: center;
+    font-family: var(--font2);
+}
+#mainsec{
+    background-color: var(--cor2);
+    height: 260px;
+    width: 430px;
+    padding: 20px;
+    position: relative;
+    top: 10vh;
+    border: 2px solid black;
+    border-radius: 60px 40px 60px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    box-shadow: -10px -2px 15px rgba(0, 0, 0, 0.674);
+}
+#mainsec h1{
+    margin-top: 5px;
+    font-size: 2.3em;
+    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.758);
+    border-bottom: 4px dashed rgba(0, 0, 0, 0.331);
+    padding-bottom: 10px;
+    
+}
+#mainsec article{
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    background-color: var(--cor1);
+    width: fit-content;
+    margin: -7px auto 0 auto;
+    padding: 10px;
+    border: 2px solid black;
+    box-shadow: inset 0px 0px 5px 2px black;
+    transition: 4s;
+}
+#mainsec article:hover{
+    transition: 2s;
+    background-color: blue;
+    color: white;
+    cursor: crosshair;
+}
+#joken{
+    color: var(--cor3);
+}
+#joken:hover{
+    color: white;
+    transition: 1s;
+    cursor: cell;
+}
+#po{
+    font-size: 30px;
+    text-decoration: line-through var(--cor3);
+}
+#po:hover{
+    color: white;
+    transition: 1s;
+    cursor: no-drop;
+}
+#code{
+    color: var(--cor5);
+}
+#code:hover{
+    color: white;
+    transition: 1s;
+    cursor: alias;
+}
+#login{
+    text-align: right;
+    padding-right: 10px;
+}
+@keyframes startoff{
+    from {transform: rotateY(0deg);}
+    to {transform: rotateY(-360deg);}
+}
+#login input{
+    font-family: var(--font2);
+    margin-left: -15px;
+    padding: 7px 4px 5px 9px;
+    border: 2px solid black;
+    background-color: var(--cor4);
+    color: white;
+    border-radius: 20px; 
+}
+@keyframes starton{
+    0% {transform: scale(1);}
+    50% {transform: scale(1.5);}
+    100% {transform: scale(1);}
+}
+#login input:hover{
+    background-color: var(--cor5);
+    transition-duration: 5s;
+    border: 2px dashed var(--cor3);
+    animation: starton 2s;
+    cursor: grab;
+}
+#login input:not(:hover){
+    animation: startoff 3s;
+    transition-duration: 3s;
+}
