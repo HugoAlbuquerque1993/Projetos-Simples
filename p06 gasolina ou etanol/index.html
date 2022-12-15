@@ -57,7 +57,7 @@
             margin-bottom: 15px;
             line-height: 20px;
         }
-        form{
+        div{
             padding-top: 10px;
             margin: 0 auto;
             width: 300px;
@@ -83,10 +83,10 @@
             position: absolute;
             left: 76px;
         }
-        form > p {
+        div > p {
             position: relative;
         }
-        form > p > span{
+        div > p > span{
             background-color: rgb(255, 0, 0);
             color: rgb(255, 255, 255);
             border: 1px solid black;
@@ -121,36 +121,67 @@
             background-color: white;
             color: black;
         }
+        #red{
+            background-color: red;
+            color: white;
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
     <main>
         <h1><span id="gasolina">Gasolina</span> ou <span id="etanol">Etanol</span>? <br> Faça o cálculo percentual!</h1>
 
-        <p>É possível descobrir qual melhor custo benefício entre a Gasolina e o Etanol dentro de um contexto popurlamente generalizado: Se o Etanol custar menos que 70% do valor da gasolina, ele é mais econômico; caso contrário a gasolina é mais econômica.</p>
+        <p>É possível descobrir qual melhor custo benefício entre a Gasolina e o Etanol dentro de um contexto popurlamente generalizado: Se o Etanol custar menos que 73% do valor da gasolina, ele é mais econômico; caso contrário a gasolina é mais econômica.</p>
 
         <p>Temos uma calculadora que vai te auxliar a indentificar qual melhor custo benefício. Basta digitar os valores da Gasolina e do Etanol rexpectivamente nas caixas abaixo.</p>
         
-        <form action="">
+        <div action="" id="calc1">
             <p><label for="txtgas">Gasolina:</label>
-            <input type="text" name="txtgas" id="txtgas" pattern="[0-9]{1,2},[0-9]{2}" placeholder="4,99" title="Ex: 4,99" required><span>R$:</span></p>
-            <p><label id="lbeta" for="txteta">Etanol:</label><input type="text" name="txteta" id="txteta" pattern="[0-9]{1,2},[0-9]{2}" placeholder="3,49" title="Ex: 3,49" required><span>R$:</span></p>
-            <input type="button" id="calcular" value="Calcular">
-        </form>
-        <p id="res">Res</p>
+            <input type="number" name="txtgas" id="txtgas" placeholder="4,99" title="Ex: 4,99"><span>R$:</span></p>
+            <p><label id="lbeta" for="txteta">Etanol:</label><input type="number" name="txteta" id="txteta" placeholder="3,49" title="Ex: 3,49"><span>R$:</span></p>
+            <input type="submit" id="calcular" value="Calcular">
+        </div>
+        <p id="res"></p>
     </main>
-    <script>
-        var tgas = document.getElementById("txtgas").value
-        var teta = document.getElementById("txteta").value
-        var gas = Number(tgas)
-        var eta = Number(teta)
-        var res = document.getElementById("res")
+    <script>      
+        document.getElementById("calcular").addEventListener("click", coletarDados)
         
-        document.getElementById("calcular").addEventListener("click", calcular())
-
         function calcular(){
-            res.innerHTML = (gas)
-            console.log(res)
+            document.getElementById("res").innerHTML = "oi"
+        }
+        function calcular(x, y){
+            let p = 70 / 100 * x
+            let ecoG = y - p
+            let ecoE = p - y
+            document.getElementById("res").innerHTML = p
+            if (p == y || p == y - 0.04 || p == y + 0.04 ){
+                document.getElementById("res").innerHTML = "Nenhum aprensenta uma vantagem econômica considerável. Ainda na dúvida? Saiba mais aqui"
+            } else if (p <= y){
+                document.getElementById("res").innerHTML = 
+                `Gasolina vence: Você economiza aproximadamente R$${ecoG.toFixed(2)} por litro! <br> Saiba o porquê aqui.`
+            } else if (p >= y){
+                document.getElementById("res").innerHTML = `Etanol vence: Você economiza aproximadamente R$${ecoE.toFixed(2)} por litro! <br> Saiba o porquê aqui.`
+            }
+        }
+        function coletarDados(){
+            let data = new Date()
+            let ano = data.getFullYear()
+            let mes = data.getMonth() + 1
+            let hoje = `01/${mes}/${ano}`
+            let gas = Number(document.getElementById("txtgas").value)
+            let eta = Number(document.getElementById("txteta").value)
+            if (gas == "" || gas == null){
+                alert("Campo inválido! Use o modelo a seguir => Gasolina: 4,99 Etanol: 3,49")
+            } else if (eta == "" || eta == null){
+                alert("Campo inválido! Use o modelo a seguir => Gasolina: 4,99 Etanol: 3,49")
+            } else if (gas < 3 || gas > 8){
+                alert("Valor fora da relalidade de acordo com dados coletados em: " + hoje)
+            } else if (eta < 2 || eta > 6){
+                alert("Valor fora da relalidade de acordo com dados coletados em: " + hoje)
+            } else {
+                return calcular(gas, eta)
+            }
         }
     </script>
 </body>
