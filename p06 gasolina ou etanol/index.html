@@ -24,13 +24,14 @@
             background-color: rgb(0, 0, 0);
             color: aqua;
             text-align: center;
+            font-size: 18px;
         }
-        section{
+        main{
             max-width: 85vw;
             margin: 0 auto;
             background-image: linear-gradient(to left, rgba(169, 169, 169, 0.192),rgba(169, 169, 169, 0.05));
-            height: 100vh;
             padding: 0px 20px;
+            min-height: 100vh;
         }
         #gasolina{
             color: rgb(255, 30, 30);
@@ -44,7 +45,7 @@
             font-family: var(--font0);
             margin: auto;
             padding: 20px;
-            font-size: 32px;
+            font-size: 28px;
             border-bottom: 6px double black;
             margin-bottom: 20px;
             display: inline-block;
@@ -60,57 +61,82 @@
             padding-top: 10px;
             margin: 0 auto;
             width: 300px;
+            position: relative;        
         }
-        form > p, form > label, form > input{
-            height: 20px;
-        }
-        input{
-            text-align: center;
-            width: 80px;
-            height: 20.5px;
+        #txtgas, #txteta{
+            text-indent: 60px;
+            width: 100px;
+            height: 26px;
             position: relative;
             top: -1.2px;
             border: 1px solid black;
-            border-radius: 0px 8px 8px 0px;
-            box-shadow: inset 2px 2px 5px black;
-        } form > p > span{
-            background-color: aliceblue;
-            color: black;
-            margin: -3px;
+            border-radius: 10px;
+            box-shadow: inset 0px 0px 5px 1px black;
+            display: inline-block;
+        }
+        #txteta{
+            position: absolute;
+            left: 140px;
+        }
+        #lbeta{
+            position: absolute;
+            left: 76px;
+        }
+        form > p {
+            position: relative;
+        }
+        form > p > span{
+            background-color: rgb(255, 0, 0);
+            color: rgb(255, 255, 255);
             border: 1px solid black;
-            border-radius: 8px 0px 0px 8px;
+            border-radius: 10px;
             font-weight: bold;
-            padding-left: 4px;
-            text-shadow: 2px 2px 5px rgba(255, 255, 0, 0.502);
+            padding: 0px 3px;
+            position: absolute;
+            left: 143px;
+            top: 2px;
+            font-size: 12px;
+            box-shadow: inset 0px 0px 5px black;
         }
         #submit{
             border: 2px double black;
             border-radius: 10px;
             height: 30px;
-            margin-top: 5px;
+            margin-bottom: 10px;
+            padding: 0px 10px;
+            box-shadow: inset 0px 0px 5px 1px black;
+            width: 80px;
+            position: absolute;
+            top: 100px;
+            left: 120px;
+        }
+        #submit:hover{
+            color: white;
+            background-color: rgb(64, 0, 255);
+            transition: 1s;
+        }
+        #submit:not(:hover){
+            transition: 1s;
+            background-color: white;
+            color: black;
         }
     </style>
 </head>
 <body>
     <main>
-        <section>
-            <h1><span id="gasolina">Gasolina</span> ou <span id="etanol">Etanol</span>? <br> Faça o cálculo percentual!</h1>
-            <p>É possível descobrir qual melhor custo benefício entre a Gasolina e o Etanol dentro de um contexto popurlamente generalizado: Se o Etanol custar menos que 70% do valor da gasolina, ele é mais econômico; caso contrário a gasolina é mais econômica.</p>
-            <p>Temos uma calculadora que vai te auxliar a indentificar qual melhor custo benefício. Basta digitar os valores da Gasolina e do Etanol rexpectivamente nas caixas abaixo.</p>
-            
-            <form action="">
-                <label for="txtgas">Valor da Gasolina:</label>
-                <p><span>R$: </span><input type="text" name="txtgas" id="txtgas" pattern="[0-9]{1,2},[0-9]{2}" placeholder="4,99" title="Ex: 4,99" required></p>
-                <label for="txteta">Valor do Etanol:</label>
-                <p><span>R$: </span><input type="text" name="txteta" id="txteta" pattern="[0-9]{1,2},[0-9]{2}" placeholder="3,49" title="Ex: 3,49" required></p>
-                <input type="submit" id="submit" value="Calcular">
-            </form>
-        </section>
+        <h1><span id="gasolina">Gasolina</span> ou <span id="etanol">Etanol</span>? <br> Faça o cálculo percentual!</h1>
+
+        <p>É possível descobrir qual melhor custo benefício entre a Gasolina e o Etanol dentro de um contexto popurlamente generalizado: Se o Etanol custar menos que 70% do valor da gasolina, ele é mais econômico; caso contrário a gasolina é mais econômica.</p>
+
+        <p>Temos uma calculadora que vai te auxliar a indentificar qual melhor custo benefício. Basta digitar os valores da Gasolina e do Etanol rexpectivamente nas caixas abaixo.</p>
+        
+        <form action="">
+            <p><label for="txtgas">Gasolina:</label>
+            <input type="text" name="txtgas" id="txtgas" pattern="[0-9]{1,2},[0-9]{2}" placeholder="4,99" title="Ex: 4,99" required><span>R$:</span></p>
+            <p><label id="lbeta" for="txteta">Etanol:</label><input type="text" name="txteta" id="txteta" pattern="[0-9]{1,2},[0-9]{2}" placeholder="3,49" title="Ex: 3,49" required><span>R$:</span></p>
+            <input type="submit" id="submit" value="Calcular">
+        </form>
     </main>
-    <footer>
-
-    </footer>
-
     <script>
 
     </script>
