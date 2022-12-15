@@ -16,16 +16,19 @@
 }
 body{
     text-align: center;
-    background-image: linear-gradient(90deg, var(--cor3), var(--cor1));
+    background-image: linear-gradient(90deg, var(--cor3), rgb(39, 39, 39));
     color: black;
     display: flex;
     justify-content: center;
+    align-items: center;
     font-family: var(--font2);
 }
 #mainsec{
     background-color: var(--cor2);
-    height: 260px;
-    width: 430px;
+    height: 25vw;
+    min-height: 250px;
+    width: 600px;
+    min-width: 380px;
     padding: 20px;
     position: relative;
     top: 10vh;
@@ -36,6 +39,7 @@ body{
     justify-content: space-between;
     text-align: left;
     box-shadow: -10px -2px 15px rgba(0, 0, 0, 0.674);
+    margin: 20px;
 }
 #mainsec h1{
     margin-top: 5px;
@@ -43,19 +47,27 @@ body{
     text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.758);
     border-bottom: 4px dashed rgba(0, 0, 0, 0.331);
     padding-bottom: 10px;
-    
 }
 #mainsec article{
     font-size: 1.5em;
     font-weight: bold;
-    text-align: center;
     background-color: var(--cor1);
-    width: fit-content;
+    min-width: 350px;
+    width: 40vw;
+    min-height: 50px;
+    height: 10vw;
     margin: -7px auto 0 auto;
     padding: 10px;
     border: 2px solid black;
     box-shadow: inset 0px 0px 5px 2px black;
-    transition: 4s;
+    transition: 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+article p{
+    position: relative;
+    text-align: center;
 }
 #mainsec article:hover{
     transition: 2s;
