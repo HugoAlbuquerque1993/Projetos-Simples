@@ -61,7 +61,8 @@
             padding-top: 10px;
             margin: 0 auto;
             width: 300px;
-            position: relative;        
+            position: relative;    
+            height: 130px;    
         }
         #txtgas, #txteta{
             text-indent: 60px;
@@ -98,7 +99,7 @@
             font-size: 12px;
             box-shadow: inset 0px 0px 5px black;
         }
-        #submit{
+        #calcular{
             border: 2px double black;
             border-radius: 10px;
             height: 30px;
@@ -110,12 +111,12 @@
             top: 100px;
             left: 120px;
         }
-        #submit:hover{
+        #calcular:hover{
             color: white;
             background-color: rgb(64, 0, 255);
             transition: 1s;
         }
-        #submit:not(:hover){
+        #calcular:not(:hover){
             transition: 1s;
             background-color: white;
             color: black;
@@ -134,11 +135,23 @@
             <p><label for="txtgas">Gasolina:</label>
             <input type="text" name="txtgas" id="txtgas" pattern="[0-9]{1,2},[0-9]{2}" placeholder="4,99" title="Ex: 4,99" required><span>R$:</span></p>
             <p><label id="lbeta" for="txteta">Etanol:</label><input type="text" name="txteta" id="txteta" pattern="[0-9]{1,2},[0-9]{2}" placeholder="3,49" title="Ex: 3,49" required><span>R$:</span></p>
-            <input type="submit" id="submit" value="Calcular">
+            <input type="button" id="calcular" value="Calcular">
         </form>
+        <p id="res">Res</p>
     </main>
     <script>
+        var tgas = document.getElementById("txtgas").value
+        var teta = document.getElementById("txteta").value
+        var gas = Number(tgas)
+        var eta = Number(teta)
+        var res = document.getElementById("res")
+        
+        document.getElementById("calcular").addEventListener("click", calcular())
 
+        function calcular(){
+            res.innerHTML = (gas)
+            console.log(res)
+        }
     </script>
 </body>
 </html>
