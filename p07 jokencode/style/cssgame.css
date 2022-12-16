@@ -16,55 +16,81 @@
 }
 body{
     text-align: center;
-    background-image: linear-gradient(90deg, var(--cor3), var(--cor1));
+    background-image: linear-gradient(90deg, var(--cor2), var(--cor2));
     color: black;
     display: flex;
     justify-content: center;
     font-family: var(--font2);
+    overflow: hidden;
 }
-#mainsec{
-    background-color: var(--cor2);
-    height: 260px;
-    width: 430px;
-    padding: 20px;
-    position: relative;
-    top: 10vh;
-    border: 2px solid black;
-    border-radius: 60px 40px 60px 5px;
+#table{
+    background-color: var(--cor3);
+    width: 400px;
+    min-width: 80vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    text-align: left;
-    box-shadow: -10px -2px 15px rgba(0, 0, 0, 0.674);
 }
-#mainsec h1{
-    margin-top: 5px;
-    font-size: 2.3em;
-    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.758);
-    border-bottom: 4px dashed rgba(0, 0, 0, 0.331);
-    padding-bottom: 10px;
-    
-}
-#mainsec article{
-    font-size: 1.5em;
-    font-weight: bold;
-    text-align: center;
-    background-color: var(--cor1);
-    width: fit-content;
-    margin: -7px auto 0 auto;
-    padding: 10px;
+#KO{
+    top: 48%;
+    background-image: linear-gradient(80deg, var(--cor1), var(--cor5));
+    padding: 20px;
+    font-size: 2em;
     border: 2px solid black;
-    box-shadow: inset 0px 0px 5px 2px black;
-}
-#joken{
-    color: var(--cor3);
-}
-#po{
-    font-size: 30px;
-    text-decoration: line-through var(--cor3);
+    border-radius: 0 100px;
+    margin: auto 10px;
     
 }
-#code{
-    color: var(--cor5);
+#cpuPlay, #playerPlay{
+        
+}
+#playerPlay{
+    bottom: 0px;
+}
+img{
+    width: 130px;
+}
+#select{
+    position: absolute;
+    display: inline-flex;
+    justify-content: space-around;
+    bottom: 4px;
+    width: 80vw;
+}
+#select > p{
+    position: absolute;
+    top: -220px;
+    padding: 20px;
+    background-image: radial-gradient(var(--cor1), var(--cor5));
+    color: yellow;
+    font-size: 2em;
+}
+#select > img{
+    display: flex;
+    width: 60px;
+    border: 2px solid black;
+    padding: 20px 20px 0px 20px;
+    background-image: linear-gradient(80deg, var(--cor5), var(--cor1));
+    transition: 1s;
+    transform: scale(1);
+}
+#select > img:hover{
+    cursor: grab;
+    background-image: radial-gradient(var(--cor1), var(--cor3));
+    animation: movimentar 2s infinite ease-in-out;
+}
+@keyframes movimentar{
+    0%{transform: rotate(0deg) translateY(-05px) scale(1.00);}
+    25%{transform: rotate(10deg) translateY(-10px) scale(1.10);}
+    50%{transform: rotate(0deg) translateY(-15px) scale(1.15);}
+    75%{transform: rotate(-10deg) translateY(-10px) scale(1.10);}
+    100%{transform: rotate(0deg) translateY(-05px) scale(1.0);}
 }
 
+.ttp{ /* Time To Play*/
+    display: none;
+}
+#select{
+    display : ;
+}
