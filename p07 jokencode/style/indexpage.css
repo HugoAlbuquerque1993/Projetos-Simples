@@ -133,3 +133,11 @@ article p{
     animation: startoff 3s;
     transition-duration: 3s;
 }
+#audio{
+    position: absolute;
+    bottom: 20%;
+}
+audio{
+    height: 20px;
+    opacity: 30%;
+}
