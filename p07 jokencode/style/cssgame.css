@@ -24,23 +24,14 @@ body{
     overflow: hidden;
 }
 #table{
+    position: relative;
     background-color: var(--cor3);
-    width: 400px;
-    min-width: 80vw;
+    width: 50vw;
+    min-width: 400px;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-#KO{
-    top: 48%;
-    background-image: linear-gradient(80deg, var(--cor1), var(--cor5));
-    padding: 20px;
-    font-size: 2em;
-    border: 2px solid black;
-    border-radius: 0 100px;
-    margin: auto 10px;
-    
 }
 #cpuPlay, #playerPlay{
         
@@ -55,10 +46,11 @@ img{
     position: absolute;
     display: inline-flex;
     justify-content: space-around;
-    bottom: 4px;
-    width: 80vw;
+    bottom: 40px;
+    width: 50vw;
+    min-width: 400px;
 }
-#select > p{
+#txtSelect{
     position: absolute;
     top: -220px;
     padding: 20px;
@@ -73,12 +65,6 @@ img{
     padding: 20px 20px 0px 20px;
     background-image: linear-gradient(80deg, var(--cor5), var(--cor1));
     transition: 1s;
-    transform: scale(1);
-}
-#select > img:hover{
-    cursor: grab;
-    background-image: radial-gradient(var(--cor1), var(--cor3));
-    animation: movimentar 2s infinite ease-in-out;
 }
 @keyframes movimentar{
     0%{transform: rotate(0deg) translateY(-05px) scale(1.00);}
@@ -87,10 +73,74 @@ img{
     75%{transform: rotate(-10deg) translateY(-10px) scale(1.10);}
     100%{transform: rotate(0deg) translateY(-05px) scale(1.0);}
 }
-
-.ttp{ /* Time To Play*/
-    display: none;
+#select > img:hover{
+    cursor: grab;
+    background-image: radial-gradient(var(--cor1), var(--cor3));
+    animation: movimentar 2s infinite ease-in-out;
 }
-#select{
-    display : ;
+#goTuto{
+    position: absolute;
+    bottom: -40px;
+    font-size: 14px;
+    padding: 5px;
+}
+a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    cursor: help;
+}
+a:hover{
+    background-color: #000000a5;
+    transition: 1s;
+}
+
+
+/* Time To Play*/
+.showMenu{
+    animation: showMenuu 1s ease;
+}
+@keyframes showMenuu{
+    from {transform: translateY(400px);}
+    to {transform: translateY(0px);}
+}
+.dropMenu{
+    transition: 2s;
+    transform: translateY(500px);
+}
+#playerPlay{
+    transform: translateY(300px);
+}
+@keyframes showPlayerr{
+    from {transform: translateY(300px);}
+    to {transform: translateY(0px);}
+}
+#showPlayer{
+    animation: showPlayerr 2s ease;
+}
+#cpuPlay{
+    transform: translateY(-300px);
+}
+@keyframes showCpuu{
+    from {transform: translateY(-300px);}
+    to {transform: translateY(0px);}
+}
+#showCpuPlayer{
+    animation: showCpuu 2s ease;
+}
+#KO{
+    opacity: 0;
+}
+#showKO{
+    position: absolute;
+    top: 43%;
+    left: 10%;
+    margin: auto;
+    width: 40vw;
+    min-width: 300px;
+    transition: 2s;
+    opacity: 100%;
+    background-image: linear-gradient(80deg, var(--cor1), var(--cor5));
+    padding: 10px;
+    font-size: 2em;
+    border-radius: 0 100px;
 }

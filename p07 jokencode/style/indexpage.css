@@ -25,7 +25,7 @@ body{
 }
 #mainsec{
     background-color: var(--cor2);
-    height: 25vw;
+    height: 25vmax;
     min-height: 250px;
     width: 600px;
     min-width: 380px;
@@ -39,7 +39,7 @@ body{
     justify-content: space-between;
     text-align: left;
     box-shadow: -10px -2px 15px rgba(0, 0, 0, 0.674);
-    margin: 20px;
+    margin: auto 10px;
 }
 #mainsec h1{
     margin-top: 5px;
