@@ -22,6 +22,7 @@ body{
     justify-content: center;
     font-family: var(--font2);
     overflow: hidden;
+    position: relative;
 }
 #table{
     position: relative;
@@ -31,13 +32,6 @@ body{
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
-#cpuPlay, #playerPlay{
-        
-}
-#playerPlay{
-    bottom: 0px;
 }
 img{
     width: 130px;
@@ -106,14 +100,18 @@ a:hover{
     transform: translateY(500px);
 }
 #playerPlay{
-    transform: translateY(300px);
+    transform: translateY(400px);
 }
 @keyframes showPlayerr{
-    from {transform: translateY(300px);}
+    from {transform: translateY(400px);}
     to {transform: translateY(0px);}
 }
 #showPlayer{
     animation: showPlayerr 2s ease;
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
 }
 #cpuPlay{
     transform: translateY(-300px);
