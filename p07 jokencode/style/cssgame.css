@@ -14,15 +14,15 @@
     margin: 0;
     padding: 0;
 }
-body{
+html, body{
     text-align: center;
     background-image: linear-gradient(90deg, var(--cor2), var(--cor2));
     color: black;
     display: flex;
     justify-content: center;
     font-family: var(--font2);
-    overflow: hidden;
     position: relative;
+    overflow: hidden;
 }
 #table{
     position: relative;
@@ -87,6 +87,7 @@ a:hover{
     background-color: #000000a5;
     transition: 1s;
 }
+
 /* Time To Play*/
 .showMenu{
     animation: showMenuu 1s ease;
@@ -100,7 +101,7 @@ a:hover{
     transform: translateY(500px);
 }
 #playerPlay{
-    transform: translateY(400px);
+    transform: translateY(600px);
 }
 @keyframes showPlayerr{
     from {transform: translateY(400px);}
