@@ -3,6 +3,7 @@ var secBicos = document.getElementById("secBicos")
 var tagP = document.getElementsByTagName("p")
 var tagDiv = document.getElementsByTagName("div")
 var popup = document.getElementById("popup")
+var select2 = document.getElementById("select2")
 
 const iselBicos = document.getElementById("iselBicos")
 const valBicos = document.getElementById("ivalBicos")
@@ -66,11 +67,10 @@ function chamarPopup(){
 
 
 function valorBico01(){
-    if (bico01[0] == ""){
+    if (bico01[0] == null){
     alert("Não há valores neste bico.")
     } else {
-    chamarPopup()
-    
+        select2.appendChild() = optCreate
     }
 }
 function valorBico02(){
