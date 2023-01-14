@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaker</title>
+</head>
+<body>
+    <h1>Speaker</h1>
+    <textarea name="texto" id="itexto" cols="30" rows="10" placeholder="Digite ou cole o texto que deseja escutar aqui!"></textarea> <br>
+    <button id="ouvir">Ouvir</button>
+    <button id="limpar">Limpar</button>
+    <button id="desfazer" disabled>Desfazer</button>
+    <p>
+        <label for="ien">Inglês</label>
+        <input type="radio" name="idioma" id="ien" value="en">
+        <label for="ipt">Português</label>
+        <input type="radio" name="idioma" id="ipt" value="br" checked>
+    </p>
+    <p id="readTime"></p>
+   
+
+    <script>
+        const texto = document.querySelector("#itexto")
+        const botao = document.getElementById("ouvir")
+        const readTime = document.querySelector("#readTime")
+        var resBut = document.getElementById("desfazer")
+        var selection = document.getElementsByName("idioma")
+        var salvar = ""
+
+        document.getElementById("desfazer").addEventListener("click", ()=>{
+            texto.value = salvar
+            resBut.setAttribute("disabled", "disabled")
+        })
+
+        document.getElementById("limpar").addEventListener("click", ()=>{
+            if (texto.value == ""){
+                alert("Não há o que limpar.")
+            } else {
+                salvar = texto.value
+            texto.value = ""
+            resBut.removeAttribute("disabled")
+            texto.removeAttribute("placeholder")
+            return salvar, readTime.innerHTML = ""
+            }
+        })
+
+        function aguarde(){
+            let tempo = setInterval(espere, 500)
+            let segundos = 0
+            function espere(){
+                if (!window.speechSynthesis.speaking){                    
+                    botao.removeAttribute("disabled")
+                    readTime.innerHTML = ("O texto levou aproximadamente " + segundos.toFixed(0) + " segundo(s) para ser lido pela IA.")
+                    return clearInterval(tempo)
+                } else {
+                    segundos = Number(segundos) + 0.5
+                }
+            }
+        }
+
+        botao.addEventListener("click", ()=>{
+            const valor = texto.value
+            const fala = new SpeechSynthesisUtterance(valor)
+            if (selection[1].checked){
+                fala.lang = "pt-br"
+            } else {
+                fala.lang = "en"
+            }
+            botao.setAttribute("disabled", "disabled")
+            window.speechSynthesis.speak(fala)
+            aguarde()
+            })
+            
+    </script>
+</body>
+</html>

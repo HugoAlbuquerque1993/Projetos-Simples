@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head> 
+  <meta name="viewport", content="width=device-width, initial-scale=1">
+<title>Caixa do Posto</title>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;    
+  }
+  body, html{
+    background-color: #000000;
+    background-image: linear-gradient(330deg, #3B444B, #3B444B20);
+    color: white;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+
+    /* Dps q o commit sair desta página, remover comando a seguir */
+    overflow: hidden scroll;
+  }
+  header{
+    background-image: linear-gradient(to left, #B22222, #E34234);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px #00000090;
+    height: 15vh;
+  }
+  header h1{
+    padding-top: 10px;
+    text-shadow: 2px 2px 4px #000000;
+  }
+  header ul{
+    display: flex;
+    list-style: none;
+  }
+  header ul li{
+    padding: 15px 10px;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px #000000ba;
+  }
+  header a{
+    border: 1px solid #ffffff05;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #00000060;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #ABCDEF;
+  }
+
+  
+  main{
+    display: flex;
+  }
+  main .secBicos{
+    width: 40vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: auto;
+    
+  }
+  .secBicos div{
+    min-width: 90px;
+    max-width: 90px;
+    min-height: 90px;
+    max-height: 90px;
+    display: inherit;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 15px;
+    margin-left: 40px;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px #00000090;
+    transition: 0.5s;
+  }
+  .secBicos div:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+  }
+  #popup{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    height: 30vh;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    color: black;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 1.1rem;
+  }
+  #popup aside{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+    border-top: 2px solid black;
+  }
+  #popup aside input{
+    height: 30px;
+    width: 100px;
+  }
+
+  main .secFinal{
+    width: 60vw;
+    height: 80vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: blue; */
+  }
+  .secFinal h2{
+    font-size: 2.2rem;
+    height: 20%;
+  }
+  .secFinal .finalTopo{
+    text-align: center;
+    width: 100%;
+    height: 60%;
+    /* background-color: red; */
+  }
+  .finalTopo #valBox{
+    background-color: #ffffff35;
+    border-radius: 10px;
+    width: 100%;
+    height: 85%;
+  }
+  #valBox table{
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      border-collapse: collapse;
+  }
+  #valBox table th{
+    color: indigo;
+    font-size: 1.2em;
+  }
+  #valBox table td,th{
+    border: 1px solid #ffffff50;
+    padding: 5px;
+  }
+  #valBox col:nth-child(1){
+    width: 10%;
+  }
+  #valBox #valBotao{
+    width: 100%;
+    height: 20%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+  }
+  #valBox #valBotao input{
+    width: 40%;
+    
+  }
+
+  .secFinal .finalBaixo input{
+    padding: 10px 20px;
+    color: darkblue;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.5s;
+  }
+  .secFinal .finalBaixo input:hover{
+    background-color: #E34234;
+  }
+  
+  
+  footer{
+    height: 5vh;
+    background-color: #3B444B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px black;
+  }
+  footer a{
+    color: lightblue;
+  }
+
+  .commit{
+    width: 100%;
+    font-size: 1.2rem;
+    background-color: #000000;
+    color: lightblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .commit input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button{
+    display: none;
+  }
+  .commit input{
+    text-align: center;
+    margin: 2px;
+    width: 83px;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Projeto Posto</h1>
+    <nav>
+      <ul>
+        <li><a href="#"> Arquivos </a></li>
+        <li><a href="#"> Caixa </a></li>
+        <li><a href="#"> Exibição </a></li>
+        <li><a href="#"> Sair </a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="secBicos">
+      <div onclick="valorBico01()">
+        <h3>Bico 01</h3>
+        <p>Sem Valor</p>
+      </div>
+      <div onclick="valorBico02()">
+        <h3>Bico 02</h3>
+        <p>Sem Valor</p>
+      </div>
+      <div onclick="valorBico03()">
+        <h3>Bico 03</h3>
+        <p>Sem Valor</p>
+      </div>
+      <div onclick="valorBico04()">
+        <h3>Bico 04</h3>
+        <p>Sem Valor</p>
+      </div>
+      <div>
+        <h3>Bico 05</h3>
+        <p>Sem Valor</p>
+      </div>
+      <div>
+        <h3>Bico 06</h3>
+        <p>Sem Valor</p>
+      </div>
+      <div>
+        <h3>Bico 07</h3>
+        <p>Sem Valor</p>
+      </div>
+      <div>
+        <h3>Bico 08</h3>
+        <p>Sem Valor</p>
+      </div>
+      <div>
+        <h3>Bico 09</h3>
+        <p>Sem Valor</p>
+      </div>
+      <div>
+        <h3>Bico 10</h3>
+        <p>Sem Valor</p>
+      </div>
+      <aside id="popup">
+        <h3>Selecione o valor <hr></h3>
+        <select name="list1" id="select2">
+          <option value="0">R$ 50.00</option>
+        </select>
+        <aside>
+          <input type="button" value="Selecionar">
+          <input type="button" value="Cancelar" onclick="chamarPopup()">
+        </aside>
+      </aside>
+    </section>
+    <section class="secFinal">
+      <div class="finalTopo">
+        <h2>Caixa Ocupado</h2>
+        <div id="valBox">
+          <table>
+            <colgroup>
+              <col>
+              <col>
+              <col>
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Bico:</th>
+                <th>Produto:</th>
+                <th>Valor:</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>02</td>
+                <td>Gasolina</td>
+                <td>R$ 80,00</td>
+              </tr>
+              <tr>
+                <td>04</td>
+                <td>Etanol</td>
+                <td>R$ 30,00</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th colspan="2">Total:</th>
+                <td style="font-size: 1.2em;">R$ 110,00</td>
+              </tr>
+            </tfoot>
+          </table>
+          <div id="valBotao">
+            <input type="button" value="Cartão">
+            <input type="button" value="Dinheiro">
+          </div>
+        </div>
+      </div>
+      <div class="finalBaixo">
+        <input type="button" id="bcaixa" value="Relatório">
+        <input type="button" id="bconfig" value="Configurações">
+      </div>
+    </section>
+  </main>
+  <footer>
+    <h3>Programado por: <a href="#">Hugo Albuquerque</a></h3>    
+  </footer>
+  <div class="commit">
+    <h3>Adicione Valores aos Bicos</h3>
+    <p>
+      <label for="iselBicos">Selecione um bico: </label>
+      <select name="selBicos" id="iselBicos">
+        <optgroup label="Bicos">
+          <option value="0">Bico 01</option>
+          <option value="1">Bico 02</option>
+          <option value="2">Bico 03</option>
+          <option value="3">Bico 04</option>
+          <option value="4">Bico 05</option>
+          <option value="5">Bico 06</option>
+          <option value="6">Bico 07</option>
+          <option value="7">Bico 08</option>
+          <option value="8">Bico 09</option>
+          <option value="9">Bico 10</option>
+        </optgroup>        
+      </select>
+    </p>  
+    <p>
+      <label for="ivalBicos">Adicione um valor: </label>
+      <input type="number" name="valBicos" id="ivalBicos">
+    </p>
+    <input type="button" id="envBicos" value="Enviar">
+  </div>
+  <script>
+    var optCreate = document.createElement("option")
+    var secBicos = document.getElementById("secBicos")
+    var tagP = document.getElementsByTagName("p")
+    var tagDiv = document.getElementsByTagName("div")
+    var popup = document.getElementById("popup")
+    
+    const iselBicos = document.getElementById("iselBicos")
+    const valBicos = document.getElementById("ivalBicos")
+
+    var bico01 = []
+    var bico02 = []
+    var bico03 = []
+    var bico04 = []
+
+    document.getElementById("envBicos").addEventListener("click", ()=>{
+      let s = Number(iselBicos.value)
+      let r = Number(valBicos.value)
+      if (r <= 0){
+        alert("Valor inválido.")
+      } else if (r >= 3000){
+        alert("Valor excede limite máximo.")
+      } else {
+        valBicos.value = ""
+        verificarBico(s, r)
+        atualizarValor()
+      }
+    })
+
+    function verificarBico(s, r){
+      if (s == 0){
+        return bico01.unshift(r)
+      } if (s == 1){
+        return bico02.unshift(r)
+      } if (s == 2){
+        return bico03.unshift(r)
+      } if (s == 3){
+        return bico04.unshift(r)
+      }
+    }
+
+    function atualizarValor(){
+      if (bico01[0] > 0){
+        tagP[0].innerHTML = "R$ " + bico01[0].toFixed(2)
+        tagDiv[0].style.backgroundColor = "darkgreen"
+      } if (bico02[0] > 0){
+        tagP[1].innerHTML = "R$ " + bico02[0].toFixed(2)
+        tagDiv[1].style.backgroundColor = "darkgreen"
+      } if (bico03[0] > 0){
+        tagP[2].innerHTML = "R$ " + bico03[0].toFixed(2)
+        tagDiv[2].style.backgroundColor = "darkgreen"
+      } if (bico04[0] > 0){
+        tagP[3].innerHTML = "R$ " + bico04[0].toFixed(2)
+        tagDiv[3].style.backgroundColor = "darkgreen"
+      }
+    }
+
+    function chamarPopup(){
+      if (popup.style.display == "flex"){
+        popup.style.display = "none"
+      } else {
+        popup.style.display = "flex"
+      }
+    }
+
+
+
+
+    function valorBico01(){
+      if (bico01[0] == ""){
+        alert("Não há valores neste bico.")
+      } else {
+      chamarPopup()
+      
+      }
+    }
+    function valorBico02(){
+      if (bico02[0] == null){
+        alert("Não há valores neste bico.")
+      } else {
+      chamarPopup()
+      }
+    }
+    function valorBico03(){
+      if (bico03[0] == null){
+        alert("Não há valores neste bico.")
+      } else {
+      chamarPopup()
+      }
+    }
+    function valorBico04(){
+      if (bico04[0] == null){
+        alert("Não há valores neste bico.")
+      } else {
+      chamarPopup()
+      }
+    }
+  </script>
+</body>
+</html>
