@@ -117,21 +117,26 @@ main .secFinal{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    font-size: 0.9em;
 }
 .secFinal h2{
-    font-size: 2.2rem;
-    height: 20%;
+    font-size: 2rem;
+    height: 25%;
+    width: 80%;
+    margin: auto;
 }
 .secFinal .finalTopo{
     text-align: center;
     width: 100%;
-    height: 60%;
+    height: 75%;
 }
 .finalTopo #valBox{
     background-color: #ffffff35;
     border-radius: 10px;
     width: 100%;
-    height: 85%;
+    max-width: 500px;
+    height: 50%;
+    margin: auto;
 }
 #valBox table{
     width: 100%;
@@ -153,18 +158,18 @@ main .secFinal{
 }
 #valBox #valBotao{
     width: 100%;
-    height: 20%;
+    height: 25%;
     padding: 10px;
     display: flex;
     justify-content: space-around;
 }
 #valBox #valBotao input{
     width: 40%;
-
 }
 
 .secFinal .finalBaixo input{
-    padding: 10px 20px;
+    font-size: 0.8em;
+    padding: 5px 15px;
     color: darkblue;
     border-radius: 10px;
     font-weight: bold;
