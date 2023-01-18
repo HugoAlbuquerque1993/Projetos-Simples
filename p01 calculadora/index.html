@@ -5,27 +5,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
+    <link rel="stylesheet" href="./styles/MainStyle.css">
 </head>
-<body>
+<body onkeypress="botao(event)">
     <header>
         <h1>Calculadora</h1>
     </header>
-    
-    <p>Soma os números das duas caixas abaixo.</p>
-    <input type="number" name="txtn1" id="txtn1"> +
-    <input type="number" name="txtn2" id="txtn2">
-    <input type="button" value="Calcular" onclick="somar()">
-    </br></br>
-    <div id="res">(Resultado)</div>
-
-    <script>
-        function somar(){   
-            var n1 = Number(document.getElementById("txtn1").value)
-            var n2 = Number(document.getElementById("txtn2").value)
-            var res = document.getElementById("res")
-            var s = n1 + n2
-            res.innerHTML = `A soma entre os números é ${s}!`
-        }
-    </script>
+    <main>
+        <section>
+            <div>
+                <h2>HHCODE</h2>
+            </div>
+            <div>
+                <p id="campo">0</p>
+            </div>
+            <div>
+                <input type="button" onclick="corrigir()" value="Corrigir" id="apagar">
+                <input type="button" onclick="zerar()" value="Zerar!" id="apagar">
+            </div>
+            <div>
+                <input type="button" onclick="callNum('7')" value="7">
+                <input type="button" onclick="callNum('8')" value="8">
+                <input type="button" onclick="callNum('9')" value="9">
+                <input type="button" onclick="callNum(`/`)" value="/">
+            </div>
+            <div>
+                <input type="button" onclick="callNum('4')" value="4">
+                <input type="button" onclick="callNum('5')" value="5">
+                <input type="button" onclick="callNum('6')" value="6">
+                <input type="button" onclick="callNum('*')" value="*">
+            </div>
+            <div>
+                <input type="button" onclick="callNum('1')" value="1">
+                <input type="button" onclick="callNum('2')" value="2">
+                <input type="button" onclick="callNum('3')" value="3">
+                <input type="button" onclick="callNum('-')" value="-">
+            </div>
+            <div>
+                <input type="button" onclick="callNum('0')" value="0">
+                <input type="button" onclick="callNum('.')" value=".">
+                <input type="button" onclick="igual()" value="=">
+                <input type="button" onclick="callNum('+')" value="+">
+            </div>
+            <div>
+                <input type="button" onclick="restaurar()" name="restaurar" id="restaurar" value="Extra: Restaurar!">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Previsão de novas funcionalidades até: 28/02/2023</p>
+        <p>Calculadora programada por: <a href="https://github.com/HugoAlbuquerque1993/Projetos-Simples" target="_blank">&ltHugo Henrique/&gt</a> </p>
+    </footer>
+    <script src="./scripts/MainScript.js"></script>
 </body>
 </html>
