@@ -1,6 +1,6 @@
 const campo = document.getElementById("campo")
 const validade = [
-    "0","1","2","3","4","5","6","7","8","9","/","*","-","+",",",".","Enter"
+    "0","1","2","3","4","5","6","7","8","9","/","*","-","+",",",".","Enter","=","Backspace"
 ]
 var restVal = ""
 
@@ -18,7 +18,7 @@ function zerar(){
     return restVal = campo.innerHTML, campo.innerHTML = "0"
 }
 
-function restaurar(){
+function restaurar(){    
     if(restVal != "0"){
         return campo.innerHTML = restVal, restVal = "0"
     } else {
@@ -27,11 +27,11 @@ function restaurar(){
 }
 
 function corrigir(){
-    if (campo.innerHTML == "0"){
-        campo.innerHTML = "0"
-    } else {
     var valor = campo.innerHTML
-    return campo.innerHTML = valor.substring(0, valor.length - 1)
+    if (valor != "0"){
+        return campo.innerHTML = valor.substring(0, valor.length - 1)
+    } else {
+        return campo.innerHTML = "0"
     }
 }
 
@@ -55,10 +55,11 @@ function botao(x){
 }
 
 function acionar(x){
-    if (campo.innerHTML.length > 17){
+    if (campo.innerHTML.length > 17 && x.key != "Backspace"){
         alert("Máximo de valores permitidos atingido")
         return
     }
+    if (campo.innerHTML == "0" && x.key != "Backspace"){campo.innerHTML = ""}
     if (x.key == "0"){campo.innerHTML += "0"}
     if (x.key == "1"){campo.innerHTML += "1"}
     if (x.key == "2"){campo.innerHTML += "2"}
@@ -71,7 +72,10 @@ function acionar(x){
     if (x.key == "9"){campo.innerHTML += "9"}
     if (x.key == "."){campo.innerHTML += "."}
     if (x.key == ","){campo.innerHTML += "."}
+    if (x.key == "="){igual()}
+    if (x.key == "Enter"){igual()}
     
+    if (x.key == "Backspace"){corrigir()}
     if (x.key == "/"){campo.innerHTML += "/"}
     if (x.key == "-"){campo.innerHTML += "-"}
     if (x.key == "*"){campo.innerHTML += "*"}

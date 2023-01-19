@@ -6,50 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
     <link rel="stylesheet" href="./styles/MainStyle.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
 </head>
-<body onkeypress="botao(event)">
+<body onkeydown="botao(event)">
     <header>
         <h1>Calculadora</h1>
     </header>
     <main>
         <section>
-            <div>
-                <h2>HHCODE</h2>
-            </div>
-            <div>
-                <p id="campo">0</p>
-            </div>
-            <div>
-                <input type="button" onclick="corrigir()" value="Corrigir" id="apagar">
-                <input type="button" onclick="zerar()" value="Zerar!" id="apagar">
-            </div>
-            <div>
-                <input type="button" onclick="callNum('7')" value="7">
-                <input type="button" onclick="callNum('8')" value="8">
-                <input type="button" onclick="callNum('9')" value="9">
-                <input type="button" onclick="callNum(`/`)" value="/">
-            </div>
-            <div>
-                <input type="button" onclick="callNum('4')" value="4">
-                <input type="button" onclick="callNum('5')" value="5">
-                <input type="button" onclick="callNum('6')" value="6">
-                <input type="button" onclick="callNum('*')" value="*">
-            </div>
-            <div>
-                <input type="button" onclick="callNum('1')" value="1">
-                <input type="button" onclick="callNum('2')" value="2">
-                <input type="button" onclick="callNum('3')" value="3">
-                <input type="button" onclick="callNum('-')" value="-">
-            </div>
-            <div>
-                <input type="button" onclick="callNum('0')" value="0">
-                <input type="button" onclick="callNum('.')" value=".">
-                <input type="button" onclick="igual()" value="=">
-                <input type="button" onclick="callNum('+')" value="+">
-            </div>
-            <div>
-                <input type="button" onclick="restaurar()" name="restaurar" id="restaurar" value="Extra: Restaurar!">
-            </div>
+            <table>
+                <legend>HHCODE</legend>
+                <tr>
+                    <td colspan="4"><p id="campo">0</p></td>
+                </tr>
+                <tr>                    
+                    <td><input type="button" onclick="zerar()" value="CE" id="apagar"></td>
+                    <td><button type="button" onclick="corrigir()" id="corrigir" class="material-symbols-outlined">arrow_back</button></td>
+                    <td><input type="button" onclick="callNum(`/`)" value="/"></td>
+                    <td><input type="button" onclick="callNum('*')" value="*"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" onclick="callNum('7')" value="7"></td>
+                    <td><input type="button" onclick="callNum('8')" value="8"></td>
+                    <td><input type="button" onclick="callNum('9')" value="9"></td>
+                    <td><input type="button" onclick="callNum('-')" value="-"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" onclick="callNum('4')" value="4"></td>
+                    <td><input type="button" onclick="callNum('5')" value="5"></td>
+                    <td><input type="button" onclick="callNum('6')" value="6"></td>
+                    <td rowspan="2"><input type="button" onclick="callNum('+')" value="+" id="mais"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" onclick="callNum('1')" value="1"></td>
+                    <td><input type="button" onclick="callNum('2')" value="2"></td>
+                    <td><input type="button" onclick="callNum('3')" value="3"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" onclick="callNum('0')" value="0"></td>
+                    <td><input type="button" onclick="callNum('.')" value="."></td>
+                    <td colspan="2"><input type="button" onclick="igual()" value="=" id="igual"></td>
+                </tr>
+                <tr>
+                    <td colspan="4"><input type="button" onclick="restaurar()" name="restaurar" id="restaurar" value="Extra: Restaurar!"></td>
+                </tr>
+            </table>            
         </section>
     </main>
     <footer>
