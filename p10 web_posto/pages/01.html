@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title="Template">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    html, body {
+        //width: 100dvw;
+        //height: 100dvh;
+        background-color: #222;
+        //display: flex;
+        //flex-direction: column;
+    }
+    .div_top {
+        color: #fff;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100dvw;
+        height: 10dvh;
+    }
+    .div_top #i_menu {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 5%;
+        font-size: 40px;
+    }
+    
+    .div_bot {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 2% 4%;
+        flex-wrap: wrap;
+        width: 100dvw;
+        height: 90dvh;
+        border-radius: 40px 40px 0 0;
+        padding: 5%;
+        background-color: #fff;
+    }
+    .div_bot .abastecimento {
+        min-width: 43vw;
+        height: 28vh;
+        margin: 0;
+        border-radius: 5%;
+        border: 10px inset #0050f0;
+        background-color: #0000ff;
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 5px 5px 5px #00000070;
+    }
+    .div_bot .abastecimento:nth-child(2) {
+        background-color: #00ff00;
+        border: 10px inset #00f000;
+    }
+    .div_bot .abastecimento:nth-child(3) {
+        background-color: #ff0000;
+        border: 10px inset #f00000;
+    }
+    .div_bot .abastecimento #gasolina {
+        color:#fff;
+        position: relative;
+        left: 7%;
+        font-size: 140px;
+    }
+    .div_bot .footer {
+        position: absolute;
+        bottom: 0;
+        left: 3%;
+        width: 100%;
+        height: 8%;
+    }
+  </style>
+</head>
+<body>
+  <div class="div_top">
+    <i class="material-symbols-outlined" id="i_menu"> 
+      menu 
+    </i>
+    <h2> WebPostoPay </h2>
+  </div>
+  <div class="div_bot">
+    <div class="abastecimento">
+      <i class="material-symbols-outlined" id="gasolina">
+        local_gas_station
+      </i>
+      <p> Abastecimento </p>
+    </div>
+    <div class="abastecimento">
+    </div>
+    <div class="abastecimento">
+    </div>
+    <!-- <div class="abastecimento">
+    </div>
+    <div class="abastecimento">
+    </div> -->
+    <div class="footer">
+      <p> Versão: 23.1.7 </p>
+      <p> "NOME DO USUÁRIO" </p>
+      <p> 004 - PDV CIELO LIO (4AC931D52) </p>
+    </div>
+  </div>
+  <script>
+    
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+

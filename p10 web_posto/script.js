@@ -6,19 +6,31 @@ entrar.addEventListener("click", verificar)
 const add_novo = document.querySelector("#add_novo")
 add_novo.addEventListener("click", campo_cadastro)
 
-const senha_gerente = "010203"
-const arr_login = [
+const senha_gerente = "333"
+
+// function acessar_dados() {
+// 	arr_login = JSON.parse(localStorage.arr)
+// 	console.log(arr_login)
+// }
+
+// function salvar_dados() {
+// 	localStorage.arr = JSON.stringify(arr_login)
+// 	console.log(localStorage.arr)
+// }
+
+var arr_login = []
+arr_login.push(
 	{
 		id: 10,
-		nome: "Hugo Henrique",
+		nome: "HUGO HENRIQUE",
 		senha: "4563",
 	},
 	{
 		id: 3,
-		nome: "Carlos Elymar",
+		nome: "CARLOS ELYMAR",
 		senha: "321",
-	},
-]
+	}
+)
 
 function verificar() {
 	let uv = usuario.value
@@ -70,59 +82,63 @@ function logar(logado) {
 }
 
 function campo_cadastro() {
-	const div_back = document.createElement("div")
-	div_back.setAttribute("class", "div_back")
-	div_back.innerHTML = '<div class="div_cadastro">' + '<div class="novo_frentista">' + '<label for="novo_ID">Novo ID: </label>' + '<input type="number" id="novo_ID">' + '<label for="novo_nome">Nome: </label>' + '<input type="text" id="novo_nome">' + '<label for="nova_senha">Senha: </label>' + '<input type="number" id="nova_senha">' + "</div>" + '<div class="div_concluir">' + '<label for="gerente">Senha do Gerente: </label>' + '<input type="password" id="gerente">' + '<input type="button" value="Salvar" id="salvar">' + '<input type="button" value="Cancelar" id="cancelar">' + "</div>" + "</div>"
+	const back_div = document.createElement("div")
+	back_div.setAttribute("class", "back_div")
+	back_div.innerHTML = '<div class="div_cadastro">' + '<div class="novo_frentista">' + '<label for="novo_ID"> Novo ID: </label>' + '<input type="number" id="novo_ID">' + '<label for="novo_nome"> Nome: </label>' + '<input type="text" id="novo_nome">' + '<label for="nova_senha"> Senha: </label>' + '<input type="number" id="nova_senha">' + "</div>" + '<div class="div_concluir">' + '<label for="gerente">Senha do Gerente: </label>' + '<input type="password" id="gerente">' + '<input type="button" value="Salvar" id="salvar">' + '<input type="button" value="Cancelar" id="cancelar">' + "</div>" + "</div>"
 
-	setTimeout(() => {
-		const novo_ID = document.querySelector("#novo_ID")
-		const novo_nome = document.querySelector("#novo_nome")
-		const nova_senha = document.querySelector("#nova_senha")
-		const gerente = document.querySelector("#gerente")
+	document.body.appendChild(back_div)
 
-		const cancelar = document.querySelector("#cancelar")
-		cancelar.addEventListener("click", remover_cadastro)
+	const novo_ID = document.querySelector("#novo_ID")
+	const novo_nome = document.querySelector("#novo_nome")
+	const nova_senha = document.querySelector("#nova_senha")
+	const gerente = document.querySelector("#gerente")
 
-		function remover_cadastro() {
-			document.body.removeChild(div_back)
+	const cancelar = document.querySelector("#cancelar")
+	cancelar.addEventListener("click", remover_cadastro)
+
+	function remover_cadastro() {
+		let res = true
+		if (novo_ID.value != "" || novo_nome.value != "" || nova_senha.value != "") {
+			res = confirm("Tem certeza que deseja cancelar? Todos os valores atuais serão perdidos.")
 		}
+		if (res == true) {
+			document.body.removeChild(back_div)
+		}
+	}
 
-		const salvar = document.querySelector("#salvar")
-		salvar.addEventListener("click", () => {
-			if (novo_ID.value == "" || novo_nome.value == "" || nova_senha.value == "" || gerente.value == "") {
-				return alert("Preencha todos os campos")
+	const salvar = document.querySelector("#salvar")
+	salvar.addEventListener("click", () => {
+		if (novo_ID.value == "" || novo_nome.value == "" || nova_senha.value == "" || gerente.value == "") {
+			return alert("Preencha todos os campos")
+		}
+		if (novo_ID.value.length > 2) {
+			return alert("ID deve conter até 2 números.")
+		}
+		if (nova_senha.value.length > 4) {
+			alert("Senha deve conter até 4 números.")
+		}
+		if (novo_nome.value.length < 3) {
+			return alert("Nome deve conter o mínimo de 3 caracteres.")
+		}
+		let ID_igual = arr_login.filter((el) => {
+			if (el.id == novo_ID.value) {
+				return el
 			}
-			if (novo_ID.value.length > 2) {
-				return alert("ID deve conter até 2 números.")
-			}
-			if (nova_senha.value.length > 4) {
-				alert("Senha deve conter até 4 números.")
-			}
-			if (novo_nome.value.length < 3) {
-				return alert("Nome deve conter o mínimo de 3 caracteres.")
-			}
-			let ID_igual = arr_login.filter((el) => {
-				if (el.id == novo_ID.value) {
-					return el
-				}
-			})
-			if (ID_igual.length == 1) {
-				return alert("ID já existe, escolha outro.")
-			}
-			if (gerente.value != senha_gerente) {
-				return alert("Senha do gerente inválida!")
-			}
-			arr_login.push({
-				id: novo_ID.value,
-				nome: novo_nome.value,
-				senha: nova_senha.value,
-			})
-			remover_cadastro()
-			setTimeout(() => {
-				alert("Cadastro realizado com sucesso.")
-			}, 500)
 		})
-	}, 10)
-
-	document.body.appendChild(div_back)
+		if (ID_igual.length == 1) {
+			return alert("ID já existe, escolha outro.")
+		}
+		if (gerente.value != senha_gerente) {
+			return alert("Senha do gerente inválida!")
+		}
+		arr_login.push({
+			id: novo_ID.value,
+			nome: novo_nome.value.toUpperCase(),
+			senha: nova_senha.value,
+		})
+		document.body.removeChild(back_div)
+		setTimeout(() => {
+			alert("Cadastro realizado com sucesso.")
+		}, 100)
+	})
 }

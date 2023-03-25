@@ -1,11 +1,11 @@
 * {
 	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
 }
 html,
 body {
 	background-color: #fff;
-	position: relative;
 }
 .top_div {
 	height: 40vh;
@@ -34,6 +34,7 @@ img {
 	flex-direction: column;
 	align-items: center;
 	top: 39vh;
+	border: 1px solid #00000020;
 	border-radius: 25px 25px 0 0;
 	height: 61vh;
 	width: 100%;
@@ -41,7 +42,7 @@ img {
 }
 .bot_div > div {
 	width: 88%;
-	margin: 6%;
+	margin: 6vh;
 	margin-bottom: 0;
 	position: relative;
 }
@@ -60,10 +61,24 @@ img {
 }
 .bot_div label {
 	position: absolute;
-	background-color: #fff;
-	padding: 0 10px;
+	background-color: transparent;
 	color: #00000070;
-	top: -10%;
+	letter-spacing: 3px;
+	text-indent: 3px;
+	top: 30%;
+	left: 5%;
+	font-size: 1.5rem;
+	transition: 0.5s;
+}
+.bot_div input:focus ~ label,
+.bot_div input:valid ~ label {
+	position: absolute;
+	background-color: #222;
+	border-radius: 10px;
+	color: #fff;
+	padding: 5px;
+	font-size: 1rem;
+	top: -18%;
 	left: 10%;
 }
 .bot_div span {
@@ -74,18 +89,29 @@ img {
 	text-align: right;
 	text-decoration: underline;
 }
-.bot_div input[type="button"] {
-	background-color: #ff000090;
+.bot_div button {
+	background-color: #f00000e0;
+	width: 100%;
+	color: #fff;
+	height: 70px;
+	border-radius: 20px;
+	font-size: 1.5rem;
+	text-indent: 20px;
+	border: 5px inset #ff0000;
+}
+.bot_div button:hover {
+	background-color: #0000f0e0;
+	border: 5px inset #0000ff;
 }
 
-.div_back {
+.back_div {
 	position: absolute;
 	background-attachment: fixed;
 	top: 0;
 	right: 0;
 	width: 100vw;
 	height: 100vh;
-	background-color: #00000080;
+	background-color: #000000d0;
 	z-index: 1;
 }
 .div_cadastro {
@@ -93,16 +119,26 @@ img {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 50%;
 	border: 2px solid white;
 	border-radius: 30px;
 	box-shadow: 5px 5px 10px #00000080, inset -5px -5px 5px #00000080, inset 5px 5px 5px #00ffff90;
 	padding: 30px;
-	background-color: lightblue;
+	background-color: #92a8d199;
 	text-align: center;
-	line-height: 25px;
 	transition: 1s;
+}
+.div_cadastro div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.div_cadastro div > * {
+	margin: 2px;
+	max-width: 300px;
 }
 .div_cadastro .div_concluir {
 	margin-top: 50px;
+}
+.div_cadastro div button {
+	width: 80px;
 }
