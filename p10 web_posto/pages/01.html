@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title="Template">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
   <style>
     * {
         margin: 0;
@@ -12,11 +12,7 @@
         box-sizing: border-box;
     }
     html, body {
-        //width: 100dvw;
-        //height: 100dvh;
         background-color: #222;
-        //display: flex;
-        //flex-direction: column;
     }
     .div_top {
         color: #fff;
@@ -27,7 +23,7 @@
         width: 100dvw;
         height: 10dvh;
     }
-    .div_top #i_menu {
+    .div_top #icon_menu {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -65,17 +61,18 @@
         box-shadow: 5px 5px 5px #00000070;
     }
     .div_bot .abastecimento:nth-child(2) {
-        background-color: #00ff00;
-        border: 10px inset #00f000;
+        background-color: #00af00;
+        border: 10px inset #00a000;
     }
     .div_bot .abastecimento:nth-child(3) {
-        background-color: #ff0000;
-        border: 10px inset #f00000;
+        background-color: #00df00;
+        border: 10px inset #00d000;
     }
     .div_bot .abastecimento #gasolina {
-        color:#fff;
         position: relative;
         left: 7%;
+    }
+    .div_bot i {
         font-size: 140px;
     }
     .div_bot .footer {
@@ -85,14 +82,115 @@
         width: 100%;
         height: 8%;
     }
+    
+    nav {
+        position: absolute;
+        left: -100%;
+        top: 0;
+        z-index: 2;
+        width: 85%;
+        height: 100dvh;
+        transition: .5s;
+        text-align: center;
+        background-color: #ffffff;
+    }
+    nav div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        text-indent: 5%;
+        width: 101%;
+        height: 10%;
+        color: #ddd;
+        background-color: #222;
+        padding: 40px 30px;
+        border-radius: 0px 4px 25px 25px;
+        margin-bottom: 10%;
+        box-shadow: 2px 2px 10px #000000;
+    }
+    nav li {
+        display: flex;
+        align-items: center;
+        width: 90%;
+        margin: 5%;
+        padding: 10px 10px 25px 30px;
+        list-style: none;
+        color: #000;
+        border-bottom: 1px solid #ff9000;
+    }
+    nav a {
+        text-decoration: none;
+        font-size: 1.2rem;
+        color: #000;
+        
+    }
+    nav p {
+        display: flex;
+        align-items: center;
+    }
+    #main_menu i {
+        
+        font-size: 2rem;
+    }
+    #main_menu li i {
+        color: #ff9000;
+        margin-right: 10px;
+        
+    }
+    
+    #back_shadow {
+        position: absolute;
+        display: none;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100dvh;
+        background-color: #00000070;
+        transition: .5s;
+        z-index: 1;
+    }
+    
   </style>
 </head>
 <body>
   <div class="div_top">
-    <i class="material-symbols-outlined" id="i_menu"> 
-      menu 
+    <i class="material-symbols-outlined" id="icon_menu"> 
+      menu
     </i>
     <h2> WebPostoPay </h2>
+    
+    <nav id="main_menu">
+      <div>
+        <h2> Quality </h2>
+        <p> 
+          <i class="material-symbols-outlined">
+            mail
+          </i>
+          hugo349966@hotmail.com
+        </p>
+      </div>
+      <ul>
+        <li>
+          <i class="material-symbols-outlined">
+        shopping_cart
+          </i>
+          <a href="#"> Histórico de Vendas </a>
+        </li>
+        <li>
+          <i class="material-symbols-outlined">
+        support_agent
+          </i>
+          <a href="#"> Fale Conosco </a>
+        </li>
+        <li>
+          <i class="material-symbols-outlined">
+        error
+          </i>
+          <a href="#"> Informações da Sessão </a>
+        </li>
+      </ul>
+    </nav>
   </div>
   <div class="div_bot">
     <div class="abastecimento">
@@ -101,22 +199,47 @@
       </i>
       <p> Abastecimento </p>
     </div>
+    
     <div class="abastecimento">
+      <i class="material-symbols-outlined">
+        settings
+      </i>
+      <p> Operações </p>
     </div>
+    
     <div class="abastecimento">
+      <i class="material-symbols-outlined">
+        shopping_cart
+      </i>
+      <p> Produtos </p>
     </div>
-    <!-- <div class="abastecimento">
-    </div>
-    <div class="abastecimento">
-    </div> -->
+    
     <div class="footer">
       <p> Versão: 23.1.7 </p>
       <p> "NOME DO USUÁRIO" </p>
       <p> 004 - PDV CIELO LIO (4AC931D52) </p>
     </div>
   </div>
+  <div id="back_shadow">
+  </div>
   <script>
+    const main_menu = document.querySelector("#main_menu")
     
+    const back_shadow = document.querySelector("#back_shadow")
+    back_shadow.addEventListener("click", closeMenu)
+    
+    function closeMenu () {
+        main_menu.style.left= "-100%"
+        back_shadow.style.display= "none"
+    }
+  
+    const icon_menu = document.querySelector("#icon_menu")
+    icon_menu.addEventListener("click", showMenu)
+    
+    function showMenu () {
+        main_menu.style.left= "0%"
+        back_shadow.style.display= "flex"
+    }
   </script>
 </body>
 </html>
