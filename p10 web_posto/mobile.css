@@ -6,7 +6,6 @@
 html,
 body {
 	background-color: #fff;
-	height: 100vh;
 }
 .top_div {
 	height: 32vh;
@@ -39,13 +38,13 @@ img {
 	top: -2vh;
 	border: 1px solid #00000020;
 	border-radius: 25px 25px 0 0;
-	height: 70vh;
+	height: 67vh;
 	width: 100%;
 	background-color: #fff;
 }
 .bot_div > div {
 	width: 88%;
-	margin: 4vh;
+	margin: 3vh;
 	margin-bottom: 0;
 	position: relative;
 }
@@ -92,7 +91,7 @@ img {
 	text-align: right;
 	text-decoration: underline;
 }
-.bot_div button {
+.bot_div #entrar {
 	background-color: #f00000e0;
 	width: 100%;
 	color: #fff;
@@ -102,14 +101,14 @@ img {
 	text-indent: 20px;
 	border: 5px inset #ff0000;
 }
-.bot_div button:hover {
+.bot_div #entrar:hover {
 	background-color: #0000f0e0;
 	border: 5px inset #0000ff;
 }
 .bot_div .footer {
 	position: absolute;
-	bottom: 0;
-	left: 3%;
+	bottom: 1vh;
+	left: 2%;
 	width: 100%;
 	height: 8%;
 }
@@ -149,6 +148,6 @@ img {
 .div_cadastro .div_concluir {
 	margin-top: 50px;
 }
-.div_cadastro div button {
+.div_cadastro div #entrar {
 	width: 80px;
 }

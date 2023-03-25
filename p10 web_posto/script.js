@@ -56,29 +56,36 @@ function validarLogin(uv, sv) {
 	})
 	if (!res) {
 		alert("Usuário não registrado.")
+		limparCampos()
 	}
 }
 
 function validarSenha(el, sv) {
 	if (el.senha == sv) {
-		alert("Usuário " + el.nome + " foi conectado.")
 		logar(el)
 	} else {
 		alert("Senha inválida")
+		senha.value = ""
 	}
 }
 
 function logar(logado) {
-	nome_frentista.innerHTML = logado.nome.toUpperCase() + " "
+	window.location.href = "./pages/01.html"
+	localStorage.logado = JSON.stringify(logado)
+	// nome_frentista.innerHTML = logado.nome.toUpperCase() + " "
 
-	let but = document.createElement("button")
-	but.innerHTML = "Desconectar"
-	but.addEventListener("click", () => {
-		nome_frentista.innerHTML = '"NINGUÉM CONECTADO"'
-		usuario.value = ""
-		senha.value = ""
-	})
-	nome_frentista.appendChild(but)
+	// let but = document.createElement("button")
+	// but.innerHTML = "Desconectar"
+	// but.addEventListener("click", () => {
+	// 	nome_frentista.innerHTML = '"NINGUÉM CONECTADO"'
+	// 	limparCampos()
+	// })
+	// nome_frentista.appendChild(but)
+}
+
+function limparCampos() {
+	usuario.value = ""
+	senha.value = ""
 }
 
 function campo_cadastro() {

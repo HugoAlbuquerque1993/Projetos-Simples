@@ -20,8 +20,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 100dvw;
-        height: 10dvh;
+        width: 100vw;
+        height: 10vh;
     }
     .div_top #icon_menu {
         position: absolute;
@@ -37,8 +37,8 @@
         flex-direction: column;
         gap: 2% 4%;
         flex-wrap: wrap;
-        width: 100dvw;
-        height: 90dvh;
+        width: 100vw;
+        height: 90vh;
         border-radius: 40px 40px 0 0;
         padding: 5%;
         background-color: #fff;
@@ -77,8 +77,8 @@
     }
     .div_bot .footer {
         position: absolute;
-        bottom: 0;
-        left: 3%;
+        bottom: 2vh;
+        left: 5%;
         width: 100%;
         height: 8%;
     }
@@ -89,7 +89,7 @@
         top: 0;
         z-index: 2;
         width: 85%;
-        height: 100dvh;
+        height: 100vh;
         transition: .5s;
         text-align: center;
         background-color: #ffffff;
@@ -145,7 +145,7 @@
         top: 0;
         left: 0;
         width: 100vw;
-        height: 100dvh;
+        height: 100vh;
         background-color: #00000070;
         transition: .5s;
         z-index: 1;
@@ -216,7 +216,7 @@
     
     <div class="footer">
       <p> Versão: 23.1.7 </p>
-      <p> "NOME DO USUÁRIO" </p>
+      <p id="txt_logado"> "NOME DO USUÁRIO" </p>
       <p> 004 - PDV CIELO LIO (4AC931D52) </p>
     </div>
   </div>
@@ -224,6 +224,9 @@
   </div>
   <script>
     const main_menu = document.querySelector("#main_menu")
+    const txt_logado = document.querySelector("#txt_logado")
+    var logado = JSON.parse(localStorage.logado)
+    txt_logado.innerHTML = logado.nome
     
     const back_shadow = document.querySelector("#back_shadow")
     back_shadow.addEventListener("click", closeMenu)
@@ -240,6 +243,7 @@
         main_menu.style.left= "0%"
         back_shadow.style.display= "flex"
     }
+
   </script>
 </body>
 </html>
