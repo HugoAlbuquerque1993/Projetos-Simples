@@ -6,7 +6,7 @@
 html,
 body {
 	background-color: #fff;
-	height: 100vh;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .top_div {
 	height: 32vh;
