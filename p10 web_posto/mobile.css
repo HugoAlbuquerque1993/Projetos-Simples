@@ -6,6 +6,7 @@
 html,
 body {
 	background-color: #fff;
+	height: 100vh;
 }
 .top_div {
 	height: 32vh;
@@ -37,8 +38,9 @@ img {
 	justify-content: flex-start;
 	top: -2vh;
 	border: 1px solid #00000050;
+	border-bottom: none;
 	border-radius: 25px 25px 0 0;
-	height: 67vh;
+	height: 69vh;
 	width: 100%;
 	background-color: #fff;
 }
@@ -107,7 +109,7 @@ img {
 }
 .bot_div .footer {
 	position: absolute;
-	bottom: 2vh;
+	bottom: 4vh;
 	left: 2%;
 	width: 100%;
 	height: 8%;
