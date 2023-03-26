@@ -12,8 +12,16 @@
       box-sizing: border-box;
     }
     html, body {
-      background-color: #222;
+      background-color: #fff;
       font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .background_top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #222;
+      width: 100vw;
+      height: 20vh;
     }
     .div_top {
       color: #fff;
@@ -167,6 +175,7 @@
   </style>
 </head>
 <body>
+  <div class="background_top"></div>
   <div class="div_top">
     <i class="material-symbols-outlined" id="icon_menu"> 
       menu
