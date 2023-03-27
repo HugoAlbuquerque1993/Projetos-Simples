@@ -109,6 +109,10 @@ img {
 	background-color: #0000f0e0;
 	border: 5px inset #0000ff;
 }
+.bot_div #entrar:disabled {
+	background-color: gray;
+	border: none;
+}
 .footer div {
 	display: flex;
 	justify-content: space-between;
@@ -149,6 +153,6 @@ img {
 .div_cadastro .div_concluir {
 	margin-top: 50px;
 }
-.div_cadastro div #entrar {
+.div_cadastro #entrar {
 	width: 80px;
 }

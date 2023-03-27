@@ -2,16 +2,21 @@ const usuario = document.querySelector("#usuario")
 const senha = document.querySelector("#senha")
 const entrar = document.querySelector("#entrar")
 const nome_frentista = document.querySelector("#nome_frentista")
-entrar.addEventListener("click", verificar)
+entrar.addEventListener("click", verify)
 const add_novo = document.querySelector("#add_novo")
 add_novo.addEventListener("click", campo_cadastro)
 
-import timer from "./timer.js"
-setInterval(() => {
-	timer(document.querySelector("#txt_timer"))
-}, 1000);
+import { clock , today } from "./time.js"
+function clockOn() {
+	clock(document.querySelector("#txt_clock"))
+	today(document.querySelector("#txt_today"))
+}
+clockOn()
+setInterval(clockOn, 1000);
 
-const senha_gerente = "333"
+const pass_manager = "333"
+
+localStorage.logado = false
 
 // function acessar_dados() {
 // 	arr_login = JSON.parse(localStorage.arr)
@@ -37,7 +42,21 @@ arr_login.push(
 	}
 )
 
-function verificar() {
+usuario.addEventListener("input", enable_btn)
+senha.addEventListener("input", enable_btn)
+function enable_btn() {
+	if (usuario.value.length > 0) {
+		if (senha.value.length > 0) {
+			entrar.removeAttribute("disabled", "disabled")
+		} else {
+			entrar.setAttribute("disabled", "disabled")
+		}
+	} else {
+		entrar.setAttribute("disabled", "disabled")
+	}
+}
+
+function verify() {
 	let uv = usuario.value
 	let sv = senha.value
 
@@ -140,7 +159,7 @@ function campo_cadastro() {
 		if (ID_igual.length == 1) {
 			return alert("ID já existe, escolha outro.")
 		}
-		if (gerente.value != senha_gerente) {
+		if (gerente.value != pass_manager) {
 			return alert("Senha do gerente inválida!")
 		}
 		arr_login.push({
@@ -154,3 +173,9 @@ function campo_cadastro() {
 		}, 100)
 	})
 }
+
+document.querySelector("#span_IDs").addEventListener("click", () => {
+	const back_div = document.createElement("div")
+	back_div.setAttribute("class", "back_div")
+	document.body.appendChild(back_div)
+})
