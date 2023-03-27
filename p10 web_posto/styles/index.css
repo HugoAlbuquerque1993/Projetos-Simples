@@ -10,7 +10,7 @@ body {
 }
 .top_div {
 	height: 32vh;
-	background-image: url("./img/background.jpeg");
+	background-image: url("../img/background.jpeg");
 	background-position: center bottom;
 	display: flex;
 	position: relative;

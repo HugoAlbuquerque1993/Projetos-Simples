@@ -1,6 +1,6 @@
 export default function timer(x) {
 	let time = new Date()
-	let hour = time.getDate().toString()
+	let hour = time.getHours().toString()
 	let min = time.getMinutes().toString()
 	let sec = time.getSeconds().toString()
 
