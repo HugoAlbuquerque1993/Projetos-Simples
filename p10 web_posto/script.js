@@ -5,10 +5,10 @@ const nome_frentista = document.querySelector("#nome_frentista")
 entrar.addEventListener("click", verificar)
 const add_novo = document.querySelector("#add_novo")
 add_novo.addEventListener("click", campo_cadastro)
-import timmer from "./timmer.js"
 
+import timer from "./timer.js"
 setInterval(() => {
-	timmer(document.querySelector("#txt_timmer"))
+	timer(document.querySelector("#txt_timer"))
 }, 1000);
 
 const senha_gerente = "333"
