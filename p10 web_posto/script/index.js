@@ -1,6 +1,7 @@
 const usuario = document.querySelector("#usuario")
 const senha = document.querySelector("#senha")
 const entrar = document.querySelector("#entrar")
+const visibility_icon = document.querySelector("#visibility_icon")
 const nome_frentista = document.querySelector("#nome_frentista")
 entrar.addEventListener("click", verify)
 const add_novo = document.querySelector("#add_novo")
@@ -90,6 +91,18 @@ function validarSenha(el, sv) {
 	} else {
 		alert("Senha inválida")
 		senha.value = ""
+	}
+}
+
+visibility_icon.addEventListener("click", passwordMasked)
+function passwordMasked() {
+	let x = visibility_icon
+	if (x.innerHTML != "visibility") {
+		x.innerHTML = "visibility"
+		senha.style = "-webkit-text-security: none;"
+	} else {
+		x.innerHTML = "visibility_off"
+		senha.style = "-webkit-text-security: disc;"
 	}
 }
 

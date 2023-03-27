@@ -59,6 +59,12 @@ img {
 	font-size: 1.5rem;
 	text-indent: 20px;
 }
+.bot_div #senha {
+    -webkit-text-security: disc;
+}
+.bot_div input::-webkit-inner-spin-button {
+	display: none;
+}
 .bot_div div:nth-child(4) input {
 	font-size: 1.3rem;
 	letter-spacing: 3px;
@@ -75,6 +81,13 @@ img {
 	left: 5%;
 	font-size: 1.5rem;
 	transition: 0.5s;
+}
+.bot_div #visibility_icon {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 5%;
+	font-size: 36px;
 }
 .bot_div input:focus ~ label,
 .bot_div input:valid ~ label {
