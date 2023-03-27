@@ -139,7 +139,6 @@ img {
 	padding: 30px;
 	background-color: #92a8d199;
 	text-align: center;
-	transition: 1s;
 }
 .div_cadastro div {
 	display: flex;
@@ -148,11 +147,14 @@ img {
 }
 .div_cadastro div > * {
 	margin: 2px;
-	max-width: 300px;
+	max-width: 150px;
 }
 .div_cadastro .div_concluir {
 	margin-top: 50px;
 }
-.div_cadastro #entrar {
+.div_cadastro input {
+	text-align: center;
+}
+.div_cadastro input[type="button"] {
 	width: 80px;
 }

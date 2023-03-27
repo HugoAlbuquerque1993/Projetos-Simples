@@ -115,7 +115,7 @@ function limparCampos() {
 function campo_cadastro() {
 	const back_div = document.createElement("div")
 	back_div.setAttribute("class", "back_div")
-	back_div.innerHTML = '<div class="div_cadastro">' + '<div class="novo_frentista">' + '<label for="novo_ID"> Novo ID: </label>' + '<input type="number" id="novo_ID">' + '<label for="novo_nome"> Nome: </label>' + '<input type="text" id="novo_nome">' + '<label for="nova_senha"> Senha: </label>' + '<input type="number" id="nova_senha">' + "</div>" + '<div class="div_concluir">' + '<label for="gerente">Senha do Gerente: </label>' + '<input type="password" id="gerente">' + '<input type="button" value="Salvar" id="salvar">' + '<input type="button" value="Cancelar" id="cancelar">' + "</div>" + "</div>"
+	back_div.innerHTML = '<div class="div_cadastro">' + '<div class="novo_frentista">' + '<label for="novo_ID"> Novo ID: </label>' + '<input type="number" id="novo_ID">' + '<label for="novo_nome"> Nome: </label>' + '<input type="text" id="novo_nome">' + '<label for="nova_senha"> Senha: </label>' + '<input type="number" id="nova_senha">' + "</div>" + '<div class="div_concluir">' + '<label for="gerente">Senha do Gerente: </label>' + '<input type="password" id="gerente">' + '<input type="button" value="Salvar" id="salvar">' + '<input type="button" value="Sair" id="sair">' + "</div>" + "</div>"
 
 	document.body.appendChild(back_div)
 
@@ -124,13 +124,13 @@ function campo_cadastro() {
 	const nova_senha = document.querySelector("#nova_senha")
 	const gerente = document.querySelector("#gerente")
 
-	const cancelar = document.querySelector("#cancelar")
-	cancelar.addEventListener("click", remover_cadastro)
+	const sair = document.querySelector("#sair")
+	sair.addEventListener("click", remover_cadastro)
 
 	function remover_cadastro() {
 		let res = true
 		if (novo_ID.value != "" || novo_nome.value != "" || nova_senha.value != "") {
-			res = confirm("Tem certeza que deseja cancelar? Todos os valores atuais serão perdidos.")
+			res = confirm("Todos os valores atuais serão perdidos. Tem certeza que deseja sair?")
 		}
 		if (res == true) {
 			document.body.removeChild(back_div)
