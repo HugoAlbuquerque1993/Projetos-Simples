@@ -1,53 +1,43 @@
-const usuario = document.querySelector("#usuario")
-const senha = document.querySelector("#senha")
+import { add_user, log_into, check_login } from "./database.js"
+import { clock, today } from "./time.js"
+
+const user = document.querySelector("#user")
+const password = document.querySelector("#password")
 const entrar = document.querySelector("#entrar")
 const visibility_icon = document.querySelector("#visibility_icon")
 const nome_frentista = document.querySelector("#nome_frentista")
-entrar.addEventListener("click", verify)
 const add_novo = document.querySelector("#add_novo")
 add_novo.addEventListener("click", campo_cadastro)
+entrar.addEventListener("click", check_values)
 
-import { clock , today } from "./time.js"
 function clockOn() {
 	clock(document.querySelector("#txt_clock"))
 	today(document.querySelector("#txt_today"))
 }
 clockOn()
-setInterval(clockOn, 1000);
+setInterval(clockOn, 1000)
 
-const pass_manager = "333"
+const password_manager = "333"
 
 localStorage.logado = false
+if (!localStorage.data) {
+	var arr_login = [
+		{
+			id: "10",
+			name: "HUGO HENRIQUE",
+			password: "4563",
+		}
+	]
+	localStorage.data = JSON.stringify(arr_login)
+} else {
+	var arr_login = JSON.parse(localStorage.data)
+}
 
-// function acessar_dados() {
-// 	arr_login = JSON.parse(localStorage.arr)
-// 	console.log(arr_login)
-// }
-
-// function salvar_dados() {
-// 	localStorage.arr = JSON.stringify(arr_login)
-// 	console.log(localStorage.arr)
-// }
-
-var arr_login = []
-arr_login.push(
-	{
-		id: 10,
-		nome: "HUGO HENRIQUE",
-		senha: "4563",
-	},
-	{
-		id: 3,
-		nome: "CARLOS ELYMAR",
-		senha: "321",
-	}
-)
-
-usuario.addEventListener("input", enable_btn)
-senha.addEventListener("input", enable_btn)
+user.addEventListener("input", enable_btn)
+password.addEventListener("input", enable_btn)
 function enable_btn() {
-	if (usuario.value.length > 0) {
-		if (senha.value.length > 0) {
+	if (user.value.length > 0) {
+		if (password.value.length > 0) {
 			entrar.removeAttribute("disabled", "disabled")
 		} else {
 			entrar.setAttribute("disabled", "disabled")
@@ -57,78 +47,44 @@ function enable_btn() {
 	}
 }
 
-function verify() {
-	let uv = usuario.value
-	let sv = senha.value
+function check_values() {
+	let uv = user.value
+	let pv = password.value
 
-	if (uv == "" || sv == "") {
+	if (uv == "" || pv == "") {
 		alert("Preencha todos os campos.")
 	} else if (uv.length > 2) {
 		alert("Usuário só pode ter até 2 números.")
-	} else if (sv.length > 4) {
+	} else if (pv.length > 4) {
 		alert("Senha só pode conter até 4 dígitos.")
 	} else {
-		validarLogin(uv, sv)
+		check_login(uv, pv)
 	}
 }
 
-function validarLogin(uv, sv) {
-	let res = arr_login.some((el, i) => {
-		if (el.id == uv) {
-			validarSenha(el, sv)
-			return el
-		}
-	})
-	if (!res) {
-		alert("Usuário não registrado.")
-		limparCampos()
-	}
-}
-
-function validarSenha(el, sv) {
-	if (el.senha == sv) {
-		logar(el)
-	} else {
-		alert("Senha inválida")
-		senha.value = ""
-	}
-}
-
-visibility_icon.addEventListener("click", passwordMasked)
-function passwordMasked() {
+visibility_icon.addEventListener("click", password_masked)
+function password_masked() {
 	let x = visibility_icon
 	if (x.innerHTML != "visibility") {
 		x.innerHTML = "visibility"
-		senha.style = "-webkit-text-security: none;"
+		password.style = "-webkit-text-security: none;"
 	} else {
 		x.innerHTML = "visibility_off"
-		senha.style = "-webkit-text-security: disc;"
+		password.style = "-webkit-text-security: disc;"
 	}
 }
 
-function logar(logado) {
-	window.location.href = "./pages/01.html"
-	localStorage.logado = JSON.stringify(logado)
-	// nome_frentista.innerHTML = logado.nome.toUpperCase() + " "
-
-	// let but = document.createElement("button")
-	// but.innerHTML = "Desconectar"
-	// but.addEventListener("click", () => {
-	// 	nome_frentista.innerHTML = '"NINGUÉM CONECTADO"'
-	// 	limparCampos()
-	// })
-	// nome_frentista.appendChild(but)
-}
+function logar(logado) {}
 
 function limparCampos() {
-	usuario.value = ""
-	senha.value = ""
+	user.value = ""
+	password.value = ""
 }
 
 function campo_cadastro() {
 	const back_div = document.createElement("div")
 	back_div.setAttribute("class", "back_div")
-	back_div.innerHTML = '<div class="div_cadastro">' + '<div class="novo_frentista">' + '<label for="novo_ID"> Novo ID: </label>' + '<input type="number" id="novo_ID">' + '<label for="novo_nome"> Nome: </label>' + '<input type="text" id="novo_nome">' + '<label for="nova_senha"> Senha: </label>' + '<input type="number" id="nova_senha">' + "</div>" + '<div class="div_concluir">' + '<label for="gerente">Senha do Gerente: </label>' + '<input type="password" id="gerente">' + '<input type="button" value="Salvar" id="salvar">' + '<input type="button" value="Sair" id="sair">' + "</div>" + "</div>"
+	back_div.innerHTML = '<div class="div_cadastro">' + '<div class="novo_frentista">' + '<label for="novo_ID"> Novo ID: </label>' + '<input type="number" id="novo_ID">' + '<label for="novo_nome"> Nome: </label>' + '<input type="text" id="novo_nome">' + '<label for="nova_senha"> Senha: </label>' + '<input type="number" id="nova_senha">' + "</div>" + '<div class="div_concluir">' + '<label for="gerente">Senha do Gerente: </label>' + '<input type="password" id="gerente">' + '<input type="button" value="Salvar" id="save">' + '<input type="button" value="Sair" id="sair">' + "</div>" + "</div>"
 
 	document.body.appendChild(back_div)
 
@@ -150,8 +106,8 @@ function campo_cadastro() {
 		}
 	}
 
-	const salvar = document.querySelector("#salvar")
-	salvar.addEventListener("click", () => {
+	const save = document.querySelector("#save")
+	save.addEventListener("click", () => {
 		if (novo_ID.value == "" || novo_nome.value == "" || nova_senha.value == "" || gerente.value == "") {
 			return alert("Preencha todos os campos")
 		}
@@ -159,10 +115,13 @@ function campo_cadastro() {
 			return alert("ID deve conter até 2 números.")
 		}
 		if (nova_senha.value.length > 4) {
-			alert("Senha deve conter até 4 números.")
+			return alert("Senha deve conter até 4 números.")
 		}
 		if (novo_nome.value.length < 3) {
 			return alert("Nome deve conter o mínimo de 3 caracteres.")
+		}
+		if (novo_nome.value.length > 15) {
+			return alert("Nome deve conter o máximo de 15 caracteres.")
 		}
 		let ID_igual = arr_login.filter((el) => {
 			if (el.id == novo_ID.value) {
@@ -172,14 +131,11 @@ function campo_cadastro() {
 		if (ID_igual.length == 1) {
 			return alert("ID já existe, escolha outro.")
 		}
-		if (gerente.value != pass_manager) {
+		if (gerente.value != password_manager) {
 			return alert("Senha do gerente inválida!")
 		}
-		arr_login.push({
-			id: novo_ID.value,
-			nome: novo_nome.value.toUpperCase(),
-			senha: nova_senha.value,
-		})
+		add_user(novo_ID.value, novo_nome.value, nova_senha.value)
+
 		document.body.removeChild(back_div)
 		setTimeout(() => {
 			alert("Cadastro realizado com sucesso.")

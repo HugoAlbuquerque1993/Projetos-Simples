@@ -33,7 +33,7 @@ body {
 	font-size: 40px;
 	cursor: pointer;
 }
-.div_top #back {
+.div_top #icon_back {
 	position: absolute;
 	right: 5%;
 	font-size: 40px;
@@ -90,6 +90,7 @@ body {
 .div_bot i {
 	font-size: 130px;
 }
+
 .footer {
 	position: relative;
 	background-color: #fff;

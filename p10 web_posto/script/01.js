@@ -1,22 +1,27 @@
-const main_menu = document.querySelector("#main_menu")
-const txt_logado = document.querySelector("#txt_logado")
-var logado = JSON.parse(localStorage.logado)
-txt_logado.innerHTML = logado.nome
+import { is_logged } from "./database.js"
 
-if (logado == false) {
+const main_menu = document.querySelector("#main_menu")
+
+is_logged(document.querySelector("#txt_logged"),document.querySelector("#not_logged_in"))
+if (localStorage.logged == "undefined") {
 	document.querySelector("#not_logged_in").style.display = "flex"
 }
+if (localStorage.logged != "undefined") {
+	console.log(localStorage.logged)
+	let logged = JSON.parse(localStorage.logged)
+	txt_logged.innerHTML = logged.name
+}
 
-import { clock , today } from "./time.js"
+import { clock, today } from "./time.js"
 function clockOn() {
 	clock(document.querySelector("#txt_clock"))
 	today(document.querySelector("#txt_today"))
 }
 clockOn()
-setInterval(clockOn, 1000);
+setInterval(clockOn, 1000)
 
-const gasolina = document.querySelector("#gasolina")
-gasolina.addEventListener("click", abastecimentos)
+const enter_bomb = document.querySelector("#enter_bomb")
+enter_bomb.addEventListener("click", abastecimentos)
 
 function abastecimentos() {
 	window.location.href = "./02.html"
@@ -36,4 +41,10 @@ icon_menu.addEventListener("click", showMenu)
 function showMenu() {
 	main_menu.style.left = "0%"
 	back_shadow.style.display = "flex"
+}
+
+document.querySelector("#icon_back").addEventListener("click", logOff)
+function logOff() {
+	localStorage.logged = undefined
+	window.location.href = "../index.html"
 }

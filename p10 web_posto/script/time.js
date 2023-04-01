@@ -15,7 +15,8 @@ export function clock(x) {
 export function today(x) {
 	let time = new Date()
 	let day = time.getDate().toString()
-	let mon = time.getMonth().toString()
+	let mon = time.getMonth() + 1
+	mon = mon.toString()
 	let year = time.getFullYear().toString()
 
 	day < 10 ? (day = "0" + day) : day

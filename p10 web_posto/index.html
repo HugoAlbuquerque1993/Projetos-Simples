@@ -8,23 +8,27 @@
   <link rel="stylesheet" href="./styles/index.css">
 </head>
 <body>
+
   <div class="top_div">
     <div class="img_div"> 
       <img src="./img/logo.png" alt="Web Posto Pay">
     </div>
   </div>
+
   <div class="bot_div">
     <div>
-      <input id="usuario" type="number" required>
-      <label for="usuario"> USUÁRIO </label>
+      <input id="user" type="number" required>
+      <label for="user"> USUÁRIO </label>
     </div>
+
     <div>
-      <input id="senha" type="number" required>
-      <label for="senha"> SENHA </label>
+      <input id="password" type="number" required>
+      <label for="password"> SENHA </label>
       <i class="material-symbols-outlined" id="visibility_icon">
         visibility_off
       </i>
     </div>
+
     <div>
       <p>
         <span id="span_IDs"> IDs Cadastrados </span> 
@@ -33,21 +37,24 @@
         <span id="add_novo"> Cadastrar Novo Usuário </span>
       </p>
     </div>
+    
     <div>
       <button id="entrar" disabled> Entrar </button>
     </div>
-    <div class="footer">
-      <div>
-        <p> Versão: 23.1.7 </p>
-        <p id="txt_clock"> 00:00:00 </p>
-      </div>
-      <div>
-        <p id="nome_frentista"> REALIZE O LOGIN </p>
-        <p id="txt_today"> 00/00/0000 </p>
-      </div>
-      <p> 004 - PDV CIELO LIO (4AC931D52) </p>
-    </div>
   </div>
+
+  <div class="footer">
+    <div>
+      <p> Versão: 23.1.7 </p>
+      <p id="txt_clock"> 00:00:00 </p>
+    </div>
+    <div>
+      <p id="nome_frentista"> REALIZE O LOGIN </p>
+      <p id="txt_today"> 00/00/0000 </p>
+    </div>
+    <p> 004 - PDV CIELO LIO (4AC931D52) </p>
+  </div>
+
   <script src="./script/index.js" type="module"></script>
 </body>
 </html>
