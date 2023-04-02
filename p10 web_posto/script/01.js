@@ -1,18 +1,6 @@
 import { is_logged } from "./database.js"
-
-const main_menu = document.querySelector("#main_menu")
-
-is_logged(document.querySelector("#txt_logged"),document.querySelector("#not_logged_in"))
-if (localStorage.logged == "undefined") {
-	document.querySelector("#not_logged_in").style.display = "flex"
-}
-if (localStorage.logged != "undefined") {
-	console.log(localStorage.logged)
-	let logged = JSON.parse(localStorage.logged)
-	txt_logged.innerHTML = logged.name
-}
-
 import { clock, today } from "./time.js"
+
 function clockOn() {
 	clock(document.querySelector("#txt_clock"))
 	today(document.querySelector("#txt_today"))
@@ -20,6 +8,9 @@ function clockOn() {
 clockOn()
 setInterval(clockOn, 1000)
 
+is_logged(document.querySelector("#txt_logged"),document.querySelector("#not_logged_in"))
+
+const main_menu = document.querySelector("#main_menu")
 const enter_bomb = document.querySelector("#enter_bomb")
 enter_bomb.addEventListener("click", abastecimentos)
 

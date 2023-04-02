@@ -15,7 +15,7 @@ body {
 	display: flex;
 	position: relative;
 }
-.img_div {
+.top_div .img_div {
 	position: absolute;
 	padding: 20px 10px;
 	border-radius: 20px;
@@ -26,8 +26,25 @@ body {
 	transform: translate(-50%, -60%);
 	box-shadow: 0 0 10px #00000070;
 }
-img {
+.top_div img {
 	width: 180px;
+}
+.top_div #reload {
+	position: absolute;
+	display: none;
+	top: 1vh;
+	left: 2vw;
+	padding: 5px;
+	font-size: 2rem;
+	background-color: #fff;
+	border-radius: 50%;
+	opacity: 0.4;
+	transition: .2s;
+}
+.top_div #reload:hover {
+	opacity: 1;
+	box-shadow: -2px -2px 5px #00000090;
+	font-weight: bold;
 }
 
 .bot_div {
@@ -40,9 +57,9 @@ img {
 	border: 1px solid #00000050;
 	border-bottom: none;
 	border-radius: 25px 25px 0 0;
-	height: 56vh;
 	width: 100%;
 	background-color: #fff;
+	margin-bottom: 2vh;
 }
 .bot_div > div {
 	width: 88%;

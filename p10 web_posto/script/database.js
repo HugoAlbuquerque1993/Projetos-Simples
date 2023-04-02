@@ -31,15 +31,16 @@ export function check_login(uv, pv) {
     }
 }
 
-export function is_logged() {
-
+export function is_logged(txt, div) {
+    if (localStorage.logged == "undefined") {
+        div.style.display = "flex"
+    } else {
+        let logged = JSON.parse(localStorage.logged)
+        txt.innerHTML = logged.name
+    }
 }
 
 export function log_into(logged) {
     window.location.href = "./pages/01.html"
 	localStorage.logged = JSON.stringify(logged)
-}
-
-export function check_database() {
-    
 }

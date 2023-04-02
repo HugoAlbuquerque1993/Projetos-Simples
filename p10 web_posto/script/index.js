@@ -19,7 +19,7 @@ setInterval(clockOn, 1000)
 
 const password_manager = "333"
 
-localStorage.logado = false
+localStorage.logged = undefined
 if (!localStorage.data) {
 	var arr_login = [
 		{
@@ -73,8 +73,6 @@ function password_masked() {
 		password.style = "-webkit-text-security: disc;"
 	}
 }
-
-function logar(logado) {}
 
 function limparCampos() {
 	user.value = ""
@@ -139,6 +137,7 @@ function campo_cadastro() {
 		document.body.removeChild(back_div)
 		setTimeout(() => {
 			alert("Cadastro realizado com sucesso.")
+			location.reload()
 		}, 100)
 	})
 }
@@ -148,3 +147,21 @@ document.querySelector("#span_IDs").addEventListener("click", () => {
 	back_div.setAttribute("class", "back_div")
 	document.body.appendChild(back_div)
 })
+
+window.onload = () => {
+	let reload = document.querySelector("#reload")
+	if (arr_login.length != 1 || arr_login[0].sales) {
+		reload.style.display = "flex"
+	} else {
+		reload.style.display = "none"
+	}
+	reload.addEventListener("click", () => {
+		let res = confirm("Resetar todos os valores do banco de dados?")
+		if (!res) {
+			return
+		} else {
+			localStorage.clear()
+			location.reload()
+		}
+	})
+}
