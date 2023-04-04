@@ -13,4 +13,3 @@ is_logged(document.querySelector("#txt_logged"), document.querySelector("#not_lo
 
 const add_circle = document.querySelector("#add_circle")
 add_circle.addEventListener("click", random_sales)
-

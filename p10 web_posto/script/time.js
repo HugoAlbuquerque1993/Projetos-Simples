@@ -9,6 +9,9 @@ export function clock(x) {
 	sec < 10 ? (sec = "0" + sec) : sec
 
 	let timeString = `${hour}:${min}:${sec}`
+	if (x == "clock") {
+		return x = timeString
+	}
 	return (x.innerHTML = timeString)
 }
 
@@ -23,5 +26,8 @@ export function today(x) {
 	mon < 10 ? (mon = "0" + mon) : mon
 
 	let todayString = `${day}/${mon}/${year}`
+	if (x == "today") {
+		return x = todayString
+	}
 	return x.innerHTML = todayString
 }

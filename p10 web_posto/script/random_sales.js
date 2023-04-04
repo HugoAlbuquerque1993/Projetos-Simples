@@ -1,3 +1,5 @@
+import { clock , today } from "./time.js"
+
 export default function random_sales() {
 	let logged = JSON.parse(localStorage.logged)
 	let data = JSON.parse(localStorage.data)
@@ -12,7 +14,7 @@ export default function random_sales() {
 	})
 
 	localStorage.data = JSON.stringify(data)
-	console.log(localStorage.data)
+	console.log(data)
 }
 
 export function add_hose_value() {
@@ -29,7 +31,9 @@ export function add_hose_value() {
 
 	let abbr = hose_identify(hose)[0]
 	let name = hose_identify(hose)[1]
-	return { hose, value, abbr, name }
+	let clock_time = clock("clock")
+	let today_time = today("today")
+	return { hose, value, abbr, name, clock_time, today_time }
 }
 
 export function hose_identify(x) {
