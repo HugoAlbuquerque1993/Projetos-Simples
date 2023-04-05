@@ -55,9 +55,8 @@ body {
 	overflow-y: auto;
 	overflow-x: hidden;
 }
-.div_bot .bicos {
+.div_bot .hose {
 	position: relative;
-	/* min-width: 150px; */
 	width: 45%;
 	background-color: #fff;
 	padding: 10px;
@@ -68,10 +67,10 @@ body {
 	cursor: pointer;
 	transition: 0.2s;
 }
-.div_bot .bicos:hover {
+.div_bot .hose:hover {
 	transform: scale(1.1);
 }
-.div_bot .bicos .top {
+.div_bot .hose .top {
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
@@ -79,14 +78,14 @@ body {
 	padding: 10px;
 	font-size: 1.4rem;
 }
-.div_bot .bicos .top i {
+.div_bot .hose .top i {
 	color: #0a0;
 	font-size: 60px;
 	position: absolute;
 	left: 10px;
 	top: 8%;
 }
-.div_bot .bicos .bot {
+.div_bot .hose .bot {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -95,7 +94,7 @@ body {
 	font-size: 1rem;
 	font-weight: bold;
 }
-.div_bot .bicos .bot h2 {
+.div_bot .hose .bot h2 {
 	padding: 4px 4px;
 	border-radius: 50%;
 	color: #fff;
