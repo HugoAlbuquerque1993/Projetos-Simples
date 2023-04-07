@@ -3,21 +3,23 @@ import { clock, today } from "./time.js"
 export function random_sales(append_div, logged) {
 	let data = JSON.parse(localStorage.data)
 
-	data.map((el, i) => {
+	data.map((el) => {
 		if (el.id == logged.id) {
 			if (!el.sales) {
 				el.sales = []
 			}
-			el.sales.push(add_hose_value())
+			let res = add_hose_value(el)
+			console.log(res)
+			el.sales.push(res)
 		}
 	})
 
 	localStorage.data = JSON.stringify(data)
-	render_hoses(append_div, logged)
-	console.log(data)
+	// render_hoses(append_div, logged)
+	// console.log(data[0].sales)
 }
 
-export function add_hose_value() {
+export function add_hose_value(el) {
 	let hose = Math.floor(Math.random() * 16 + 1).toString()
 	hose < 10 ? hose = "0" + hose : hose
 
@@ -34,6 +36,7 @@ export function add_hose_value() {
 	let name = hose_identify(hose)[1]
 	let clock_time = clock("clock")
 	let today_time = today("today")
+	
 	return { hose, value, abbr, name, clock_time, today_time }
 }
 

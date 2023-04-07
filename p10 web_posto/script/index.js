@@ -1,5 +1,5 @@
-import { add_user, log_into, check_login } from "./database.js"
-import { clock, today } from "./time.js"
+import { add_user , check_login } from "./database.js"
+import { clock , today } from "./time.js"
 
 const user = document.querySelector("#user")
 const password = document.querySelector("#password")
@@ -20,17 +20,12 @@ setInterval(clockOn, 1000)
 const password_manager = "333"
 
 localStorage.logged = undefined
-if (!localStorage.data) {
-	var arr_login = [
-		{
-			id: "10",
-			name: "HUGO HENRIQUE",
-			password: "4563",
-		}
-	]
-	localStorage.data = JSON.stringify(arr_login)
+if (!localStorage.users) {
+	var users = []
+	add_user("10","HUGO HENRIQUE","4563", users)
+	localStorage.users = JSON.stringify(users)
 } else {
-	var arr_login = JSON.parse(localStorage.data)
+	var users = JSON.parse(localStorage.users)
 }
 
 user.addEventListener("input", enable_btn)
@@ -48,7 +43,7 @@ function enable_btn() {
 }
 
 function check_values() {
-	let uv = user.value
+	let uv = Number(user.value)
 	let pv = password.value
 
 	if (uv == "" || pv == "") {
@@ -82,7 +77,7 @@ function limparCampos() {
 function campo_cadastro() {
 	const back_div = document.createElement("div")
 	back_div.setAttribute("class", "back_div")
-	back_div.innerHTML = '<div class="div_cadastro">' + '<div class="novo_frentista">' + '<label for="novo_ID"> Novo ID: </label>' + '<input type="number" id="novo_ID">' + '<label for="novo_nome"> Nome: </label>' + '<input type="text" id="novo_nome">' + '<label for="nova_senha"> Senha: </label>' + '<input type="number" id="nova_senha">' + "</div>" + '<div class="div_concluir">' + '<label for="gerente">Senha do Gerente: </label>' + '<input type="password" id="gerente">' + '<input type="button" value="Salvar" id="save">' + '<input type="button" value="Sair" id="sair">' + "</div>" + "</div>"
+	back_div.innerHTML = '<div class="div_cadastro"> <div class="novo_frentista"> <label for="novo_ID"> Novo ID: </label> <input type="number" id="novo_ID"> <label for="novo_nome"> Nome: </label> <input type="text" id="novo_nome"> <label for="nova_senha"> Senha: </label><input type="number" id="nova_senha"> </div><div class="div_concluir"> <label for="gerente"> Senha do Gerente: </label> <input type="password" id="gerente"> <input type="button" value="Salvar" id="save"> <input type="button" value="Sair" id="sair"> </div> </div>'
 
 	document.body.appendChild(back_div)
 
@@ -121,12 +116,13 @@ function campo_cadastro() {
 		if (novo_nome.value.length > 15) {
 			return alert("Nome deve conter o máximo de 15 caracteres.")
 		}
-		let ID_igual = arr_login.filter((el) => {
+		let ID_igual = users.filter((el) => {
 			if (el.id == novo_ID.value) {
 				return el
 			}
 		})
 		if (ID_igual.length == 1) {
+			novo_ID.value = ""
 			return alert("ID já existe, escolha outro.")
 		}
 		if (gerente.value != password_manager) {
@@ -150,7 +146,7 @@ document.querySelector("#span_IDs").addEventListener("click", () => {
 
 window.onload = () => {
 	let reload = document.querySelector("#reload")
-	if (arr_login.length != 1 || arr_login[0].sales) {
+	if (users.length != 1 || users[0].sales) {
 		reload.style.display = "flex"
 	} else {
 		reload.style.display = "none"
@@ -165,3 +161,5 @@ window.onload = () => {
 		}
 	})
 }
+
+// localStorage.clear()

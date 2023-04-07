@@ -4,10 +4,10 @@ import { random_sales } from "./random_sales.js"
 
 is_logged(document.querySelector("#txt_logged"), document.querySelector("#not_logged_in"))
 
-var data = JSON.parse(localStorage.data)
+var users = JSON.parse(localStorage.users)
 var logged = JSON.parse(localStorage.logged)
 
-data.map((el) => {
+users.map((el) => {
 	if (el.id == logged.id) {
 		if (el.sales) {
 			return // FUNCAO

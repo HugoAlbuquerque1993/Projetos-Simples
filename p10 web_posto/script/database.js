@@ -1,21 +1,28 @@
-export function add_user(id, name, password) {
-    var arr_login = JSON.parse(localStorage.data)
+export function add_user(id, name, password, users) {
 
-    arr_login.push(
-        {
-            id: id,
-		    name: name.toUpperCase(),
-		    password: password
+    var amount_hoses = 16
+
+    class user {
+        constructor(id, name, password, amount_hoses){
+            this.id = id
+            this.name = name
+            this.password = password
+            this.sales = new Array
+            for (let i = 1; i <= amount_hoses; i++){
+                this.sales.push({hose: i, data: []})
+            }
         }
-    )
+    }
 
-    arr_login.sort((a, b) => {return a.id - b.id})
-    localStorage.data = JSON.stringify(arr_login)
+    users.push(new user(id, name, password, amount_hoses))
+    users.sort((a, b) => {return a.id - b.id})
+
+    localStorage.users = JSON.stringify(users)
 }
 
 export function check_login(uv, pv) {
-    var arr_login = JSON.parse(localStorage.data)
-    let res = arr_login.filter((el, i) => {
+    var users = JSON.parse(localStorage.users)
+    let res = users.filter((el, i) => {
         if (el.id == uv) {
             return el
         }
