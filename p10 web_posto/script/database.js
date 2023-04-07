@@ -5,12 +5,13 @@ export function add_user(id, name, password, users) {
     class user {
         constructor(id, name, password, amount_hoses){
             this.id = id
-            this.name = name
+            this.name = name.toUpperCase()
             this.password = password
             this.sales = new Array
             for (let i = 1; i <= amount_hoses; i++){
                 this.sales.push({hose: i, data: []})
             }
+            this.somesale = false
         }
     }
 

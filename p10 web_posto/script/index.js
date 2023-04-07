@@ -128,7 +128,7 @@ function campo_cadastro() {
 		if (gerente.value != password_manager) {
 			return alert("Senha do gerente inválida!")
 		}
-		add_user(novo_ID.value, novo_nome.value, nova_senha.value)
+		add_user(novo_ID.value, novo_nome.value, nova_senha.value, users)
 
 		document.body.removeChild(back_div)
 		setTimeout(() => {
@@ -146,7 +146,13 @@ document.querySelector("#span_IDs").addEventListener("click", () => {
 
 window.onload = () => {
 	let reload = document.querySelector("#reload")
-	if (users.length != 1 || users[0].sales) {
+	let somesale = false
+	users.some((el) => {
+		if (el.somesale == true) {
+			somesale = true
+		}
+	})
+	if (users.length > 1 || somesale) {
 		reload.style.display = "flex"
 	} else {
 		reload.style.display = "none"
@@ -161,5 +167,3 @@ window.onload = () => {
 		}
 	})
 }
-
-// localStorage.clear()

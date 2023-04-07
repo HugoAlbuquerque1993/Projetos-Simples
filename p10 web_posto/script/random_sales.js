@@ -1,22 +1,25 @@
 import { clock, today } from "./time.js"
 
 export function random_sales(append_div, logged) {
-	let data = JSON.parse(localStorage.data)
+	let users = JSON.parse(localStorage.users)
 
-	data.map((el) => {
+	users.map((el) => {
 		if (el.id == logged.id) {
-			if (!el.sales) {
-				el.sales = []
+			if (!el.somesale) { 
+				el.somesale = true
 			}
 			let res = add_hose_value(el)
-			console.log(res)
-			el.sales.push(res)
+			el.sales.map((sale) => {
+				if (sale.hose == res.hose) {
+					sale.data.push(res)
+					localStorage.logged = JSON.stringify(el)
+				}
+			})
 		}
 	})
 
-	localStorage.data = JSON.stringify(data)
-	// render_hoses(append_div, logged)
-	// console.log(data[0].sales)
+	localStorage.users = JSON.stringify(users)
+	calculate_hoses(append_div, logged)
 }
 
 export function add_hose_value(el) {
@@ -54,43 +57,48 @@ export function hose_identify(hose) {
 	}
 }
 
-export function render_hoses(append_div, logged) {
-	let data = JSON.parse(localStorage.data)
-	let user = data.filter((el) => {
+export function calculate_hoses(append_div, logged) {
+	append_div.innerHTML = ""
+	let users = JSON.parse(localStorage.users)
+	let user = users.filter((el) => {
 		if (el.id == logged.id) {
 			return el.sales
 		}
 	})
 
-	const amout_sales_hose = (hose) => {
-		let num = 0
-		user[0].sales.map((el) => {
-			if (el.hose == hose) {
-				return num += 1
+	let i = 0
+	let us = user[0].sales
+	for (i in us) {
+		let usd = us[i].data
+
+		let amount = usd.length
+		amount < 10 ? amount = "0" + amount : amount
+
+		amount.toString()
+		usd.filter((sale, ind) => {
+			if (ind == usd.length - 1) {
+				render_div(append_div, sale, amount)
 			}
 		})
-
-		num.toString()
-		num < 10 ? num = "0" + num : num = num
-		return num
 	}
-	
-	let last_sale = user[0].sales[user[0].sales.length - 1]
+}
+
+export function render_div(append_div, sale, amount) {
 	let new_hose = document.createElement("div")
 	new_hose.className = "hose"
 	new_hose.innerHTML = `<div class="top">
-        <i class="material-symbols-outlined">
-          local_gas_station
-        </i>
-        <div>
-          B:${last_sale.hose} <br> ${last_sale.abbr}
-        </div>
-      </div>
-      <div class="bot">
-        <h2> ?? </h2>
-        <div>
-          Último: <br> R$ ${last_sale.value}
-        </div>
-      </div>`
+		<i class="material-symbols-outlined">
+		  local_gas_station
+		</i>
+		<div>
+		  B:${sale.hose} <br> ${sale.abbr}
+		</div>
+	  </div>
+	  <div class="bot">
+		<h2> ${amount} </h2>
+		<div>
+		  Último: <br> R$ ${sale.value}
+		</div>
+	  </div>`
 	append_div.appendChild(new_hose)
 }
