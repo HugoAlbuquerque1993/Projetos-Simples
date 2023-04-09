@@ -27,7 +27,7 @@ export function add_hose_value(el) {
 	hose < 10 ? hose = "0" + hose : hose
 
 	let value = null
-	if (hose > 8 && hose < 16) {
+	if (hose > 8 && hose < 15) {
 		let res = Math.random() * 70 + 5
 		value = res.toFixed(2)
 	} else {
