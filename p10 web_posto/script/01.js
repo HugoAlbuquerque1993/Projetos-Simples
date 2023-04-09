@@ -1,14 +1,15 @@
 import { is_logged } from "./database.js"
-import { clock, today } from "./time.js"
+is_logged(document.querySelector("#not_logged_in"))
 
+import { footer_div } from "./add_content.js"
+import { clock, today } from "./time.js"
+footer_div(document.querySelector(".footer"))
 function clockOn() {
 	clock(document.querySelector("#txt_clock"))
 	today(document.querySelector("#txt_today"))
 }
 clockOn()
 setInterval(clockOn, 1000)
-
-is_logged(document.querySelector("#txt_logged"),document.querySelector("#not_logged_in"))
 
 const main_menu = document.querySelector("#main_menu")
 const enter_bomb = document.querySelector("#enter_bomb")
@@ -20,7 +21,6 @@ function abastecimentos() {
 
 const back_shadow = document.querySelector("#back_shadow")
 back_shadow.addEventListener("click", closeMenu)
-
 function closeMenu() {
 	main_menu.style.left = "-100%"
 	back_shadow.style.display = "none"
@@ -28,7 +28,6 @@ function closeMenu() {
 
 const icon_menu = document.querySelector("#icon_menu")
 icon_menu.addEventListener("click", showMenu)
-
 function showMenu() {
 	main_menu.style.left = "0%"
 	back_shadow.style.display = "flex"

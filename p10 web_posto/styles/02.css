@@ -101,7 +101,7 @@ body {
 	background-color: #f00;
 }
 
-#add_circle {
+#add_value {
 	position: absolute;
 	bottom: 16vh;
 	right: 2vw;
@@ -112,7 +112,7 @@ body {
 	transition: 1s;
 	z-index: 1;
 }
-#add_circle:hover {
+#add_value:hover {
 	animation: none;
 	scale: 1.2;
 }

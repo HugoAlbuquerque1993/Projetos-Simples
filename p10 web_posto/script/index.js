@@ -1,6 +1,3 @@
-import { add_user , check_login } from "./database.js"
-import { clock , today } from "./time.js"
-
 const user = document.querySelector("#user")
 const password = document.querySelector("#password")
 const entrar = document.querySelector("#entrar")
@@ -10,19 +7,13 @@ const add_novo = document.querySelector("#add_novo")
 add_novo.addEventListener("click", campo_cadastro)
 entrar.addEventListener("click", check_values)
 
-function clockOn() {
-	clock(document.querySelector("#txt_clock"))
-	today(document.querySelector("#txt_today"))
-}
-clockOn()
-setInterval(clockOn, 1000)
-
 const password_manager = "333"
 
+import { add_user, check_login } from "./database.js"
 localStorage.logged = undefined
 if (!localStorage.users) {
 	var users = []
-	add_user("10","HUGO HENRIQUE","4563", users)
+	add_user("10", "HUGO HENRIQUE", "4563", users)
 	localStorage.users = JSON.stringify(users)
 } else {
 	var users = JSON.parse(localStorage.users)
@@ -67,11 +58,6 @@ function password_masked() {
 		x.innerHTML = "visibility_off"
 		password.style = "-webkit-text-security: disc;"
 	}
-}
-
-function limparCampos() {
-	user.value = ""
-	password.value = ""
 }
 
 function campo_cadastro() {
@@ -138,12 +124,6 @@ function campo_cadastro() {
 	})
 }
 
-document.querySelector("#span_IDs").addEventListener("click", () => {
-	const back_div = document.createElement("div")
-	back_div.setAttribute("class", "back_div")
-	document.body.appendChild(back_div)
-})
-
 window.onload = () => {
 	let reload = document.querySelector("#reload")
 	let somesale = false
@@ -167,3 +147,14 @@ window.onload = () => {
 		}
 	})
 }
+
+import { footer_div } from "./add_content.js"
+import { clock, today } from "./time.js"
+footer_div(document.querySelector(".footer"))
+function clockOn() {
+	clock(document.querySelector("#txt_clock"))
+	today(document.querySelector("#txt_today"))
+}
+clockOn()
+setInterval(clockOn, 1000)
+document.querySelector(".footer").style.boxShadow = ""

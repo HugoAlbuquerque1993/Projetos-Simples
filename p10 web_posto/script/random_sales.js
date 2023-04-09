@@ -23,24 +23,21 @@ export function random_sales(append_div, logged) {
 }
 
 export function add_hose_value(el) {
-	let hose = Math.floor(Math.random() * 16 + 1).toString()
-	hose < 10 ? hose = "0" + hose : hose
-
-	let value = null
-	if (hose > 8 && hose < 15) {
-		let res = Math.random() * 70 + 5
-		value = res.toFixed(2)
-	} else {
-		let res = Math.random() * 200 + 10
-		value = res.toFixed(2)
-	}
-
+	let hose = random_hoses()
 	let abbr = hose_identify(hose)[0]
 	let name = hose_identify(hose)[1]
+	let liter = liter_value(abbr)
+	let value = multiply_value(liter, abbr)
 	let clock_time = clock("clock")
 	let today_time = today("today")
 	
-	return { hose, value, abbr, name, clock_time, today_time }
+	return { hose, abbr, name, liter, value, clock_time, today_time }
+}
+
+export function random_hoses() {
+	let hose = Math.floor(Math.random() * 16 + 1).toString()
+	hose < 10 ? hose = "0" + hose : hose
+	return hose
 }
 
 export function hose_identify(hose) {
@@ -57,6 +54,34 @@ export function hose_identify(hose) {
 	}
 }
 
+export function liter_value(abbr) {
+	if (abbr == "GAS") {
+		return 5.48
+	} else if (abbr == "ETA") {
+		return 4.08
+	} else if (abbr == "DIS") {
+		return 5.49
+	} else if (abbr == "ADT") {
+		return 5.78
+	} else {
+		return 3.89
+	}
+}
+
+export function multiply_value(liter, abbr) {
+	if (abbr == "GNV") {
+		let amount = Math.random() * 21 + 1
+		let res = amount * liter
+		console.log(res)
+		return Number(res.toFixed(2))
+	} else {
+		let amount = Math.random() * 43 + 2
+		let res = amount * liter
+		console.log(res)
+		return Number(res.toFixed(2))
+	}
+}
+
 export function calculate_hoses(append_div, logged) {
 	append_div.innerHTML = ""
 	let users = JSON.parse(localStorage.users)
@@ -66,9 +91,8 @@ export function calculate_hoses(append_div, logged) {
 		}
 	})
 
-	let i = 0
 	let us = user[0].sales
-	for (i in us) {
+	for (let i = 0 ; i < us.length ; i++) {
 		let usd = us[i].data
 
 		let amount = usd.length

@@ -173,17 +173,21 @@ nav p {
 #not_logged_in {
 	position: absolute;
 	display: none;
+	justify-content: center;
 	align-items: center;
 	text-align: center;
 	width: 100vw;
 	height: 100vh;
 	padding: 20px;
-	background-color: #0000ff;
+	background: #0000ff  no-repeat center center;
 	top: 0;
 	left: 0;
 	color: #fff;
 	z-index: 1000;
 }
-#not_logged_in a {
-	color: #00ff00;
+#not_logged_in h2 {
+	padding: 20px;
+	border-radius: 20px;
+	background-color: #00000090;
 }
+

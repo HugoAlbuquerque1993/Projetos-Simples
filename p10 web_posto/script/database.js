@@ -39,12 +39,9 @@ export function check_login(uv, pv) {
     }
 }
 
-export function is_logged(txt, div) {
+export function is_logged(div) {
     if (localStorage.logged == "undefined") {
         div.style.display = "flex"
-    } else {
-        let logged = JSON.parse(localStorage.logged)
-        txt.innerHTML = logged.name
     }
 }
 

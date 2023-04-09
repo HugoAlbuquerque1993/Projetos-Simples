@@ -1,24 +1,9 @@
 import { is_logged } from "./database.js"
-import { clock, today } from "./time.js"
-import { random_sales , calculate_hoses } from "./random_sales.js"
-
 is_logged(document.querySelector("#txt_logged"), document.querySelector("#not_logged_in"))
 
-const append_div = document.querySelector(".div_bot")
-var users = JSON.parse(localStorage.users)
-var logged = JSON.parse(localStorage.logged)
-if (logged.somesale) {
-	calculate_hoses(append_div, logged)
-}
-
-users.map((el) => {
-	if (el.id == logged.id) {
-		if (el.sales) {
-			return // FUNCAO
-		}
-	}
-})
-
+import { footer_div } from "./add_content.js"
+import { clock, today } from "./time.js"
+footer_div(document.querySelector(".footer"))
 function clockOn() {
 	clock(document.querySelector("#txt_clock"))
 	today(document.querySelector("#txt_today"))
@@ -26,8 +11,18 @@ function clockOn() {
 clockOn()
 setInterval(clockOn, 1000)
 
+document.querySelector("#icon_back").addEventListener("click",() => {
+	window.location.href = "01.html"
+})
 
-const add_circle = document.querySelector("#add_circle")
+import { random_sales , calculate_hoses } from "./random_sales.js"
+const append_div = document.querySelector(".div_bot")
+var users = JSON.parse(localStorage.users)
+var logged = JSON.parse(localStorage.logged)
+if (logged.somesale) {
+	calculate_hoses(append_div, logged)
+}
+const add_circle = document.querySelector("#add_value")
 add_circle.addEventListener("click", () => {
 	random_sales(append_div, logged)
 })
