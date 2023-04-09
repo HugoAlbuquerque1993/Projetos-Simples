@@ -7,7 +7,7 @@
 html,
 body {
 	background-color: #fff;
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 .top_div {
 	height: 32vh;
@@ -40,7 +40,7 @@ body {
 	background-color: #fff;
 	border-radius: 50%;
 	opacity: 0.4;
-	transition: .2s;
+	transition: 0.2s;
 }
 .top_div #reload:hover {
 	opacity: 1;
@@ -79,7 +79,7 @@ body {
 	text-indent: 20px;
 }
 .bot_div #password {
-    -webkit-text-security: disc;
+	-webkit-text-security: disc;
 }
 .bot_div input::-webkit-inner-spin-button {
 	display: none;

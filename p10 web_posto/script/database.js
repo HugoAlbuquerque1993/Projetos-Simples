@@ -39,12 +39,6 @@ export function check_login(uv, pv) {
     }
 }
 
-export function is_logged(div) {
-    if (localStorage.logged == "undefined") {
-        div.style.display = "flex"
-    }
-}
-
 export function log_into(logged) {
     window.location.href = "./pages/01.html"
 	localStorage.logged = JSON.stringify(logged)

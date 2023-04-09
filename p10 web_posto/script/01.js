@@ -1,5 +1,7 @@
-import { is_logged } from "./database.js"
-is_logged(document.querySelector("#not_logged_in"))
+import { GoTo_logginDiv } from "./add_content.js"
+if (localStorage.logged == "undefined") {
+	GoTo_logginDiv(document.body)
+}
 
 import { footer_div } from "./add_content.js"
 import { clock, today } from "./time.js"

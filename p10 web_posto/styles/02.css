@@ -38,6 +38,7 @@ body {
 }
 .div_top i {
 	font-size: 30px;
+	cursor: pointer;
 }
 
 .div_bot {
@@ -131,19 +132,6 @@ body {
 	}
 }
 
-.footer {
-	position: relative;
-	background-color: #fff;
-	padding: 2px 20px;
-	width: 100%;
-	height: 10%;
-	box-shadow: 0px -5px 5px #00000090;
-}
-.footer div {
-	display: flex;
-	justify-content: space-between;
-}
-
 #back_shadow {
 	position: absolute;
 	display: none;
@@ -154,22 +142,4 @@ body {
 	background-color: #00000070;
 	transition: 0.5s;
 	z-index: 1;
-}
-
-#not_logged_in {
-	position: absolute;
-	display: none;
-	align-items: center;
-	text-align: center;
-	width: 100vw;
-	height: 100vh;
-	padding: 20px;
-	background-color: #0000ff;
-	top: 0;
-	left: 0;
-	color: #fff;
-	z-index: 1000;
-}
-#not_logged_in a {
-	color: #00ff00;
 }
