@@ -69,7 +69,7 @@ body {
 	transition: 0.2s;
 }
 .div_bot .hose:hover {
-	transform: scale(1.1);
+	transform: scale(1.05);
 }
 .div_bot .hose .top {
 	display: flex;
@@ -92,7 +92,7 @@ body {
 	justify-content: space-between;
 	text-align: end;
 	padding: 5px;
-	font-size: 1rem;
+	font-size: .9rem;
 	font-weight: bold;
 }
 .div_bot .hose .bot h2 {
@@ -132,14 +132,3 @@ body {
 	}
 }
 
-#back_shadow {
-	position: absolute;
-	display: none;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	background-color: #00000070;
-	transition: 0.5s;
-	z-index: 1;
-}

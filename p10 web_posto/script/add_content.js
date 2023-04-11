@@ -40,7 +40,7 @@ export function GoTo_logginDiv(body) {
   let div = document.createElement("div")
   div.setAttribute("id", "not_logged_in")
   div.innerHTML = `
-    <h2> Não foi possível identificar o usuário. <a href="../index.html" style="color: #00ff00;"> Clique aqui </a> para retornar à area de login. </h2>
+    <h2> Não foi possível identificar o usuário. <a href="../index.html" style="color: #00ff00;">Clique aqui</a> para retornar à area de login. </h2>
   `
   body.appendChild(div)
 

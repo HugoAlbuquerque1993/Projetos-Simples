@@ -5,7 +5,7 @@ export function random_sales(append_div, logged) {
 
 	users.map((el) => {
 		if (el.id == logged.id) {
-			if (!el.somesale) { 
+			if (!el.somesale) {
 				el.somesale = true
 			}
 			let res = add_hose_value(el)
@@ -26,17 +26,18 @@ export function add_hose_value(el) {
 	let hose = random_hoses()
 	let abbr = hose_identify(hose)[0]
 	let name = hose_identify(hose)[1]
-	let liter = liter_value(abbr)
-	let value = multiply_value(liter, abbr)
+	let liter_value = liter_value_indentify(abbr).toString()
+	let amount_liters = random_liters(abbr)
+	let value = multiply_value(liter_value, amount_liters)
 	let clock_time = clock("clock")
 	let today_time = today("today")
-	
-	return { hose, abbr, name, liter, value, clock_time, today_time }
+
+	return { hose, abbr, name, liter_value, value, amount_liters, clock_time, today_time }
 }
 
 export function random_hoses() {
 	let hose = Math.floor(Math.random() * 16 + 1).toString()
-	hose < 10 ? hose = "0" + hose : hose
+	hose < 10 ? (hose = "0" + hose) : hose
 	return hose
 }
 
@@ -54,7 +55,7 @@ export function hose_identify(hose) {
 	}
 }
 
-export function liter_value(abbr) {
+export function liter_value_indentify(abbr) {
 	if (abbr == "GAS") {
 		return 5.48
 	} else if (abbr == "ETA") {
@@ -68,18 +69,19 @@ export function liter_value(abbr) {
 	}
 }
 
-export function multiply_value(liter, abbr) {
+export function random_liters(abbr) {
+	let res
 	if (abbr == "GNV") {
-		let amount = Math.random() * 21 + 1
-		let res = amount * liter
-		console.log(res)
-		return Number(res.toFixed(2))
+		res = Math.random() * 21 + 1
 	} else {
-		let amount = Math.random() * 43 + 2
-		let res = amount * liter
-		console.log(res)
-		return Number(res.toFixed(2))
+		res = Math.random() * 43 + 2
 	}
+	return res.toFixed(3)
+}
+
+export function multiply_value(liter, amout) {
+	let res = liter * amout
+	return res.toFixed(2)
 }
 
 export function calculate_hoses(append_div, logged) {
@@ -92,22 +94,22 @@ export function calculate_hoses(append_div, logged) {
 	})
 
 	let us = user[0].sales
-	for (let i = 0 ; i < us.length ; i++) {
+	for (let i = 0; i < us.length; i++) {
 		let usd = us[i].data
 
 		let amount = usd.length
-		amount < 10 ? amount = "0" + amount : amount
+		amount < 10 ? (amount = "0" + amount) : amount
 
 		amount.toString()
 		usd.filter((sale, ind) => {
 			if (ind == usd.length - 1) {
-				render_div(append_div, sale, amount)
+				render_div(append_div, sale, amount, usd)
 			}
 		})
 	}
 }
 
-export function render_div(append_div, sale, amount) {
+export function render_div(append_div, sale, amount, usd) {
 	let new_hose = document.createElement("div")
 	new_hose.className = "hose"
 	new_hose.innerHTML = `<div class="top">
@@ -124,5 +126,9 @@ export function render_div(append_div, sale, amount) {
 		  Último: <br> R$ ${sale.value}
 		</div>
 	  </div>`
+	new_hose.addEventListener("click", () => {
+		document.location.href = "./03.html"
+		// usd
+	})
 	append_div.appendChild(new_hose)
 }
