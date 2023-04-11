@@ -89,7 +89,7 @@ export function render_hose(append_div, sale, amount, usd) {
 	  </div>`
 
 	new_hose.addEventListener("click", () => {
-		localStorage.hose_selected = JSON.stringify(usd)
+		localStorage.selected_hose = JSON.stringify(usd)
 		document.location.href = "./03.html"
 	})
 	append_div.appendChild(new_hose)
@@ -97,7 +97,7 @@ export function render_hose(append_div, sale, amount, usd) {
 
 export function render_value(div_bot, page_hose) {
   let logged = JSON.parse(localStorage.logged)
-  let values = JSON.parse(localStorage.hose_selected)
+  let values = JSON.parse(localStorage.selected_hose)
   page_hose.innerHTML = values[0].hose
   
   values.map((sale) => {
@@ -135,6 +135,9 @@ export function render_value(div_bot, page_hose) {
       </div>
     `
     div_bot.append(new_div)
-    new_div.addEventListener("click",() => {console.log("ok")})
+    new_div.addEventListener("click",() => {
+      localStorage.selected_value = JSON.stringify(sale)
+      window.location.href = "04.html"
+    })
   })
 }

@@ -13,7 +13,7 @@ import { add_user, check_login } from "./database.js"
 localStorage.logged = undefined
 if (!localStorage.users) {
 	var users = []
-	add_user("10", "HUGO HENRIQUE NASCIMENTO ALBUQUERQUE", "4563", users)
+	add_user("10", "HUGO HENRIQUE", "4563", users)
 	localStorage.users = JSON.stringify(users)
 } else {
 	var users = JSON.parse(localStorage.users)
@@ -117,8 +117,8 @@ function campo_cadastro() {
 		if (novo_nome.value.length < 3) {
 			return alert("Nome deve conter o mínimo de 3 caracteres.")
 		}
-		if (novo_nome.value.length > 40) {
-			return alert("Nome deve conter o máximo de 40 caracteres.")
+		if (novo_nome.value.length > 35) {
+			return alert("Nome deve conter o máximo de 35 caracteres.")
 		}
 		let ID_igual = users.filter((el) => {
 			if (el.id == novo_ID.value) {
@@ -177,6 +177,9 @@ clockOn()
 setInterval(clockOn, 1000)
 document.querySelector(".footer").style.boxShadow = ""
 
-if (localStorage.hose_selected){
-	localStorage.removeItem("hose_selected")
+if (localStorage.selected_hose){
+	localStorage.removeItem("selected_hose")
+}
+if (localStorage.selected_value) {
+	localStorage.removeItem("selected_value")
 }

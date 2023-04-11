@@ -41,6 +41,9 @@ function logOff() {
 	window.location.href = "../index.html"
 }
 
-if (localStorage.hose_selected){
-	localStorage.removeItem("hose_selected")
+if (localStorage.selected_hose){
+	localStorage.removeItem("selected_hose")
+}
+if (localStorage.selected_value) {
+	localStorage.removeItem("selected_value")
 }

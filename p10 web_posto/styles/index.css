@@ -65,8 +65,6 @@ body {
 }
 .bot_div > div {
 	width: 88%;
-	/* margin: 3vh; */
-	margin-bottom: 0;
 	position: relative;
 	display: flex;
 	flex-direction: column;
