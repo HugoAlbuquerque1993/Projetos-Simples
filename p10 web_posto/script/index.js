@@ -84,7 +84,7 @@ function campo_cadastro() {
 			
 			<div class="div_concluir"> 
 				<label for="gerente"> Senha do Gerente: </label> 
-				<input type="password" id="gerente"> 
+				<input type="password" id="gerente" value="333" disabled> 
 				<input type="button" value="Salvar" id="save"> 
 				<input type="button" value="Sair" id="sair"> 
 			</div> 
@@ -161,6 +161,7 @@ window.onload = () => {
 	if (users.length > 1 || somesale) {
 		reload.style.display = "flex"
 	} else {
+		alert(`Clique em "Cadastrar Novo Usuário" e realize um cadastro.`)
 		reload.style.display = "none"
 	}
 	reload.addEventListener("click", () => {
@@ -185,7 +186,7 @@ clockOn()
 setInterval(clockOn, 1000)
 document.querySelector(".footer").style.boxShadow = ""
 
-if (localStorage.selected_hose){
+if (localStorage.selected_hose) {
 	localStorage.removeItem("selected_hose")
 }
 if (localStorage.selected_value) {

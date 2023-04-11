@@ -44,7 +44,7 @@ body {
 	align-items: center;
 	width: 100vw;
 	height: 71vh;
-	gap: 2%;
+	gap: 1.5vh;
 	background-color: #fef;
 	overflow: hidden;
 }
@@ -52,6 +52,8 @@ body {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
+	min-height: 14vh;
+	height: 30vh;
 	font-size: 1.1rem;
 	padding: 16px;
 	background-color: #fff;
@@ -71,8 +73,6 @@ body {
 	justify-content: start;
 	gap: 20px;
 	padding: 10px 20px;
-	min-height: 11vh;
-	height: 20vh;
 	color: var(--cor1);
 	font-weight: bold;
 	overflow: auto;
@@ -94,8 +94,10 @@ body {
 }
 .div_bot .div_btns {
 	display: flex;
+	min-height: 40vh;
 	flex-direction: column;
-	gap: 20px;
+	justify-content: start;
+	gap: 3vh;
 }
 .div_bot .div_btns input {
 	background-color: var(--cor1);
@@ -104,7 +106,8 @@ body {
 	letter-spacing: 2px;
 	color: #fff;
 	border-radius: 20px;
-	height: 50px;
+	min-height: 50px;
+	height: 60px;
 	box-shadow: 5px 5px 5px #00000090;
 	transition: .2s;
 }
