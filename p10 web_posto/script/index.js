@@ -33,6 +33,14 @@ function enable_btn() {
 	}
 }
 
+password.addEventListener("keypress", enter_on_password)
+function enter_on_password(e) {
+	console.log(e)
+	if (e.key === "Enter") {
+		check_values()
+	}
+}
+
 function check_values() {
 	let uv = Number(user.value)
 	let pv = password.value
