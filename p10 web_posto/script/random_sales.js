@@ -8,10 +8,10 @@ export function random_sales(append_div, logged) {
 			if (!el.somesale) {
 				el.somesale = true
 			}
-			let res = add_hose_value(el)
+			let res = add_hose_value()
 			el.sales.map((sale) => {
 				if (sale.hose == res.hose) {
-					sale.data.push(res)
+					sale.data.unshift(res)
 					localStorage.logged = JSON.stringify(el)
 				}
 			})
@@ -22,7 +22,7 @@ export function random_sales(append_div, logged) {
 	calculate_hoses(append_div, logged)
 }
 
-export function add_hose_value(el) {
+export function add_hose_value() {
 	let hose = random_hoses()
 	let abbr = hose_identify(hose)[0]
 	let name = hose_identify(hose)[1]
@@ -84,6 +84,7 @@ export function multiply_value(liter, amout) {
 	return res.toFixed(2)
 }
 
+import { render_hose } from "./add_content.js"
 export function calculate_hoses(append_div, logged) {
 	append_div.innerHTML = ""
 	let users = JSON.parse(localStorage.users)
@@ -99,36 +100,12 @@ export function calculate_hoses(append_div, logged) {
 
 		let amount = usd.length
 		amount < 10 ? (amount = "0" + amount) : amount
-
 		amount.toString()
+
 		usd.filter((sale, ind) => {
-			if (ind == usd.length - 1) {
-				render_div(append_div, sale, amount, usd)
+			if (ind == 0) {
+				render_hose(append_div, sale, amount, usd)
 			}
 		})
 	}
-}
-
-export function render_div(append_div, sale, amount, usd) {
-	let new_hose = document.createElement("div")
-	new_hose.className = "hose"
-	new_hose.innerHTML = `<div class="top">
-		<i class="material-symbols-outlined">
-		  local_gas_station
-		</i>
-		<div>
-		  B:${sale.hose} <br> ${sale.abbr}
-		</div>
-	  </div>
-	  <div class="bot">
-		<h2> ${amount} </h2>
-		<div>
-		  Último: <br> R$ ${sale.value}
-		</div>
-	  </div>`
-	new_hose.addEventListener("click", () => {
-		document.location.href = "./03.html"
-		// usd
-	})
-	append_div.appendChild(new_hose)
 }

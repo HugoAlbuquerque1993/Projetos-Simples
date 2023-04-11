@@ -40,3 +40,7 @@ function logOff() {
 	localStorage.logged = undefined
 	window.location.href = "../index.html"
 }
+
+if (localStorage.hose_selected){
+	localStorage.removeItem("hose_selected")
+}

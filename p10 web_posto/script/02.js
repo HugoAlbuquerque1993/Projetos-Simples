@@ -28,3 +28,7 @@ const add_circle = document.querySelector("#add_value")
 add_circle.addEventListener("click", () => {
 	random_sales(append_div, logged)
 })
+
+if (localStorage.hose_selected){
+	localStorage.removeItem("hose_selected")
+}

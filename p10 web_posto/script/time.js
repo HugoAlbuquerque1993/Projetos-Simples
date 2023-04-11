@@ -10,7 +10,7 @@ export function clock(x) {
 
 	let timeString = `${hour}:${min}:${sec}`
 	if (x == "clock") {
-		return x = timeString
+		return timeString
 	}
 	return (x.innerHTML = timeString)
 }
@@ -27,7 +27,7 @@ export function today(x) {
 
 	let todayString = `${day}/${mon}/${year}`
 	if (x == "today") {
-		return x = todayString
+		return todayString
 	}
 	return x.innerHTML = todayString
 }

@@ -13,7 +13,7 @@ import { add_user, check_login } from "./database.js"
 localStorage.logged = undefined
 if (!localStorage.users) {
 	var users = []
-	add_user("10", "HUGO HENRIQUE", "4563", users)
+	add_user("10", "HUGO HENRIQUE NASCIMENTO ALBUQUERQUE", "4563", users)
 	localStorage.users = JSON.stringify(users)
 } else {
 	var users = JSON.parse(localStorage.users)
@@ -63,7 +63,25 @@ function password_masked() {
 function campo_cadastro() {
 	const back_div = document.createElement("div")
 	back_div.setAttribute("class", "back_div")
-	back_div.innerHTML = '<div class="div_cadastro"> <div class="novo_frentista"> <label for="novo_ID"> Novo ID: </label> <input type="number" id="novo_ID"> <label for="novo_nome"> Nome: </label> <input type="text" id="novo_nome"> <label for="nova_senha"> Senha: </label><input type="number" id="nova_senha"> </div><div class="div_concluir"> <label for="gerente"> Senha do Gerente: </label> <input type="password" id="gerente"> <input type="button" value="Salvar" id="save"> <input type="button" value="Sair" id="sair"> </div> </div>'
+	back_div.innerHTML = `
+		<div class="div_cadastro"> 
+			<div class="novo_frentista"> 
+				<label for="novo_ID"> Novo ID: </label> 
+				<input type="number" id="novo_ID"> 
+				<label for="novo_nome"> Nome: </label> 
+				<input type="text" id="novo_nome"> 
+				<label for="nova_senha"> Senha: </label> 
+				<input type="number" id="nova_senha">
+			</div>
+			
+			<div class="div_concluir"> 
+				<label for="gerente"> Senha do Gerente: </label> 
+				<input type="password" id="gerente"> 
+				<input type="button" value="Salvar" id="save"> 
+				<input type="button" value="Sair" id="sair"> 
+			</div> 
+		</div>
+	`
 
 	document.body.appendChild(back_div)
 
@@ -99,15 +117,15 @@ function campo_cadastro() {
 		if (novo_nome.value.length < 3) {
 			return alert("Nome deve conter o mínimo de 3 caracteres.")
 		}
-		if (novo_nome.value.length > 15) {
-			return alert("Nome deve conter o máximo de 15 caracteres.")
+		if (novo_nome.value.length > 40) {
+			return alert("Nome deve conter o máximo de 40 caracteres.")
 		}
 		let ID_igual = users.filter((el) => {
 			if (el.id == novo_ID.value) {
 				return el
 			}
 		})
-		if (ID_igual.length == 1) {
+		if (ID_igual.length > 0) {
 			novo_ID.value = ""
 			return alert("ID já existe, escolha outro.")
 		}
@@ -158,3 +176,7 @@ function clockOn() {
 clockOn()
 setInterval(clockOn, 1000)
 document.querySelector(".footer").style.boxShadow = ""
+
+if (localStorage.hose_selected){
+	localStorage.removeItem("hose_selected")
+}

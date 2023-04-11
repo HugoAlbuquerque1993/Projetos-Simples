@@ -11,8 +11,11 @@ function clockOn() {
 	today(document.querySelector("#txt_today"))
 }
 clockOn()
-setInterval(clockOn, 1000)
+let newinter = setInterval(clockOn, 1000)
 
 document.querySelector("#icon_back").addEventListener("click",() => {
 	window.location.href = "02.html"
 })
+
+import { render_value } from "./add_content.js"
+render_value(document.querySelector(".div_bot"), document.querySelector("#page_hose"))
