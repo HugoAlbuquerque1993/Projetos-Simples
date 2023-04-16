@@ -1,12 +1,12 @@
 export function footer_div(div) {
-  let logged
-  if (localStorage.logged != "undefined") {
-    let x = JSON.parse(localStorage.logged)
-    logged = x.name
-  } else {
-    logged = "REALIZE O LOGIN"
-  }
-	div.innerHTML = (`
+	let logged
+	if (localStorage.logged != "undefined") {
+		let x = JSON.parse(localStorage.logged)
+		logged = x.name
+	} else {
+		logged = "REALIZE O LOGIN"
+	}
+	div.innerHTML = `
     <div>
       <p> Versão: 23.1.7 </p>
       <p id="txt_clock"> 00:00:00 </p>
@@ -16,10 +16,11 @@ export function footer_div(div) {
       <p id="txt_today"> 00/00/0000 </p>
     </div>
     <p> 004 - PDV CIELO LIO (4AC931D52) </p>
-  `)
+  `
 
-  document.querySelector(".footer").style = `
-    position: relative;
+	document.querySelector(".footer").style = `
+    position: absolute;
+    top: 84vh;
     background-color: #fff;
     padding: 2px 20px;
     width: 100%;
@@ -27,24 +28,24 @@ export function footer_div(div) {
     box-shadow: 0px -5px 5px #00000030;
   `
 
-  let son = [... document.querySelectorAll(".footer > div")]
-  son.map((el) => {
-    el.style = `
+	let son = [...document.querySelectorAll(".footer > div")]
+	son.map((el) => {
+		el.style = `
       display: flex;
       justify-content: space-between;
     `
-  })
+	})
 }
 
 export function GoTo_logginDiv(body) {
-  let div = document.createElement("div")
-  div.setAttribute("id", "not_logged_in")
-  div.innerHTML = `
+	let div = document.createElement("div")
+	div.setAttribute("id", "not_logged_in")
+	div.innerHTML = `
     <h2> Não foi possível identificar o usuário. <a href="../index.html" style="color: #00ff00;">Clique aqui</a> para retornar à area de login. </h2>
   `
-  body.appendChild(div)
+	body.appendChild(div)
 
-  document.querySelector("#not_logged_in").style = `
+	document.querySelector("#not_logged_in").style = `
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -61,7 +62,7 @@ export function GoTo_logginDiv(body) {
     z-index: 1000;
   `
 
-  document.querySelector("#not_logged_in h2").style = `
+	document.querySelector("#not_logged_in h2").style = `
     position: relative;
     padding: 20px;
     border-radius: 20px;
@@ -96,15 +97,15 @@ export function render_hose(append_div, sale, amount, usd) {
 }
 
 export function render_value(div_bot, page_hose) {
-  let logged = JSON.parse(localStorage.logged)
-  let values = JSON.parse(localStorage.selected_hose)
-  page_hose.innerHTML = values[0].hose
-  
-  values.map((sale) => {
-    let new_div = document.createElement("div")
-    new_div.setAttribute("class", "hose_value")
+	let logged = JSON.parse(localStorage.logged)
+	let values = JSON.parse(localStorage.selected_hose)
+	page_hose.innerHTML = values[0].hose
 
-    new_div.innerHTML = `
+	values.map((sale) => {
+		let new_div = document.createElement("div")
+		new_div.setAttribute("class", "hose_value")
+
+		new_div.innerHTML = `
       <div class="top">
         <div class="top_left">
           R$ ${sale.value}
@@ -134,10 +135,10 @@ export function render_value(div_bot, page_hose) {
         </p>
       </div>
     `
-    div_bot.append(new_div)
-    new_div.addEventListener("click",() => {
-      localStorage.selected_value = JSON.stringify(sale)
-      window.location.href = "04.html"
-    })
-  })
+		div_bot.append(new_div)
+		new_div.addEventListener("click", () => {
+			localStorage.selected_value = JSON.stringify(sale)
+			window.location.href = "04.html"
+		})
+	})
 }

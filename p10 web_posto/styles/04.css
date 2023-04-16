@@ -43,7 +43,6 @@ body {
 	flex-direction: column;
 	align-items: center;
 	width: 100vw;
-	height: 71vh;
 	gap: 1.5vh;
 	background-color: #fef;
 	overflow: hidden;
@@ -57,6 +56,9 @@ body {
 	background-color: #fff;
 	box-shadow: 0px 0px 10px #000000;
 }
+.div_bot .div_value {
+	min-height: 14vh;
+}
 .div_bot .div_value span {
 	font-size: 2rem;
 	color: black;
@@ -69,7 +71,8 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: start;
-	height: 16vh;
+	min-height: 17vh;
+	max-height: 17vh;
 	gap: 20px;
 	padding: 10px 20px;
 	color: var(--cor1);
@@ -79,7 +82,7 @@ body {
 .div_bot .div_payments p {
 	position: fixed;
 	font-size: 1.2rem;
-	transition: .5s;
+	transition: 0.5s;
 }
 .div_bot .div_payments .payment_values {
 	display: flex;
@@ -93,7 +96,7 @@ body {
 }
 .div_bot .div_btns {
 	display: flex;
-	min-height: 30vh;
+	min-height: 40vh;
 	flex-direction: column;
 	justify-content: start;
 	gap: 3vh;
@@ -106,9 +109,9 @@ body {
 	letter-spacing: 2px;
 	color: #fff;
 	border-radius: 20px;
-	min-height: 60px;
+	min-height: 9vh;
 	box-shadow: 5px 5px 5px #00000090;
-	transition: .2s;
+	transition: 0.2s;
 }
 .div_bot .div_btns input:hover {
 	background-color: red;
