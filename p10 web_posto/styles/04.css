@@ -4,8 +4,12 @@
 	box-sizing: border-box;
 	user-select: none;
 }
+*::-webkit-inner-spin-button {
+	display: none;
+}
 :root {
 	--cor1: #222999;
+	--cor2: #222fff;
 }
 html,
 body {
@@ -17,7 +21,7 @@ body {
 }
 
 .div_top {
-	background-color: var(--cor1);
+	background-image: linear-gradient(var(--cor1), var(--cor2));
 	color: #fff;
 	position: relative;
 	display: flex;

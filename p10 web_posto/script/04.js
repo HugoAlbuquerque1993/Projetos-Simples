@@ -21,7 +21,6 @@ let selected_value = JSON.parse(localStorage.selected_value)
 document.getElementById("total").innerHTML = selected_value.value
 document.getElementById("rest").innerHTML = selected_value.value
 
-let txt_pay = document.getElementById("txt_pay")
 let div_payments = document.querySelector(".div_payments")
 div_payments.addEventListener("scroll", () => {
 	if (div_payments.scrollTop > 0) {
@@ -31,9 +30,10 @@ div_payments.addEventListener("scroll", () => {
 	}
 })
 
+import { partial_menu } from "./add_content.js"
 const payment_btns = [... document.querySelectorAll(".div_btns > input")]
 payment_btns.forEach((el)=> {
 	el.addEventListener("click", () => {
-		alert(`Função de pagamento "${el.value}" em desenvolvimento :)`)
+		partial_menu(el.value)
 	})
 })	

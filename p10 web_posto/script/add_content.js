@@ -67,7 +67,7 @@ export function GoTo_logginDiv(body) {
     padding: 20px;
     border-radius: 20px;
     background-color: #00000090;
-    z-index: 2;
+    z-index: 100;
   `
 }
 
@@ -141,4 +141,114 @@ export function render_value(div_bot, page_hose) {
 			window.location.href = "04.html"
 		})
 	})
+}
+
+export function partial_menu(el) {
+  let sale = JSON.parse(localStorage.selected_value)
+  let back = document.createElement("div")
+  back.style = `
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 94vh;
+  `
+
+  let float = document.createElement("div")
+  float.style = `
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 200px;
+    background-color: #ffffff;
+    border-radius: 10px 30px;
+    box-shadow: 5px 5px 10px #000000;
+    overflow: hidden;
+  `
+
+  let top = document.createElement("div")
+  top.innerHTML = `${el}`
+  top.style = `
+    letter-spacing: 2px;
+    background-image: linear-gradient(var(--cor1), var(--cor2));
+    border-radius: 10px 30px 0 0;
+    color: #ffffff;
+    font-weight: bold;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 5px #00000090, inset 2px 2px 5px #ffffff90;
+  `
+  float.appendChild(top)
+
+  let div_value = document.createElement("div")
+  div_value.style = `
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55%;
+  `
+
+  let input = document.createElement("input")
+  input.type = "number"
+  input.id = "value"
+  input.value = `${sale.value}`
+  input.style = `
+    border: 2px solid var(--cor1);
+    background-color: #eeeeee;
+    text-align: center;
+    border-radius: 10px;
+    width: 200px;
+    height: 40px;
+    font-size: 1.2rem;
+    box-shadow: 2px 2px 5px #000;
+  `
+  div_value.appendChild(input)
+  float.appendChild(div_value)
+
+  let btns = document.createElement("div")
+  btns.style = `
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row-reverse;
+  `
+
+  let btn1 = document.createElement("button")
+  btn1.style = `
+    color: #fff;
+    background-color: var(--cor1);
+    padding: 10px 15px;
+    border-radius: 10px;
+    letter-spacing: 2px;
+    box-shadow: 2px 2px 5px #00000090, inset 2px 2px 5px #ffffff90;
+  `
+  btn1.innerHTML = "CONFIRMAR"
+  btn1.addEventListener("click", () => {
+    alert(input.value)
+  })
+
+  let btn2 = document.createElement("button")
+  btn2.style = `
+    color: #fff;
+    background-color: var(--cor1);
+    padding: 10px 15px;
+    border-radius: 10px;
+    letter-spacing: 2px;
+    box-shadow: 2px 2px 5px #00000090, inset 2px 2px 5px #ffffff90;
+  `
+  btn2.innerHTML = "CANCELAR"
+  btn2.addEventListener("click", () => {
+    document.body.removeChild(back)
+  })
+
+  btns.appendChild(btn1)
+  btns.appendChild(btn2)
+  float.appendChild(btns)
+
+  back.appendChild(float)
+  document.body.appendChild(back)
 }

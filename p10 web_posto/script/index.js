@@ -52,7 +52,7 @@ function check_values() {
 	} else if (pv.length > 4) {
 		alert("Senha só pode conter até 4 dígitos.")
 	} else {
-		check_login(uv, pv)
+		check_login(uv, pv, user, password)
 	}
 }
 

@@ -21,7 +21,7 @@ export function add_user(id, name, password, users) {
     localStorage.users = JSON.stringify(users)
 }
 
-export function check_login(uv, pv) {
+export function check_login(uv, pv, user, pass) {
     var users = JSON.parse(localStorage.users)
     let res = users.filter((el, i) => {
         if (el.id == uv) {
@@ -30,9 +30,12 @@ export function check_login(uv, pv) {
     })
     if (!res[0]) {
         alert(`Usuário de número "${uv}" não registrado.`)
+        user.focus()
     } else {
         if (res[0].password != pv) {
-            return alert("Senha inválida.")
+            pass.value = ""
+            alert("Senha inválida.")
+            pass.focus()
         } else {
             log_into(res[0])
         }
