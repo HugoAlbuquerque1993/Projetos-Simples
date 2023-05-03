@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			body {
+				width: 100vw;
+				height: 100vh;
+				background-color: #333;
+				color: white;
+				overflow-x: hidden;
+			}
+			main {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 2px;
+			}
+			input {
+				text-align: center;
+			}
+			ul {
+				display: flex;
+				flex-direction: column;
+			}
+			li {
+				display: flex;
+				align-items: center;
+				margin-bottom: 10px;
+				border: 1px solid black;
+				cursor: pointer;
+			}
+			img {
+				min-width: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<h1>Pokémon</h1>
+			<input type="text" name="Pokemon-Name" id="inpName" placeholder="Quem é este Pokémon?" />
+			<button id="searchBtn">Procurar</button>
+			<div class="resDiv"></div>
+		</main>
+
+		<script type="module">
+			const url = `https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`
+			const inpName = document.querySelector("#inpName")
+			const searchBtn = document.querySelector("#searchBtn")
+			const resDiv = document.querySelector(".resDiv")
+			searchBtn.addEventListener("click", capture)
+
+			function capture() {
+				var search = inpName.value
+				search = search.toLowerCase()
+				fetch(url)
+					.then((el) => {
+						return el.json()
+					})
+					.then((data) => {
+						let res = data.results
+
+						createUl(res, search)
+					})
+					.catch((e) => {
+						console.log(e)
+					})
+			}
+
+			async function createUl(arr, search) {
+				let ul = document.createElement("ul")
+				resDiv.innerHTML = ""
+				
+				for (let i = 0 ; i < arr.length ; i++) {
+					if (arr[i].name.includes(search)) {
+						let gif = await findGif(arr[i].url)
+
+						let li = document.createElement("li")
+						li.innerHTML = `
+							<img src="${gif}" alt="gif-not-found"> <p> ${arr[i].name.toUpperCase()}: ${arr[i].url} </p>
+						`
+
+						li.addEventListener("click", () => {
+							alert(arr[i].name.toUpperCase())
+						})
+						
+						ul.appendChild(li)
+						resDiv.appendChild(ul)
+					}
+				}
+			}
+
+			async function findGif(pokUrl) {
+				let pok = await fetch(pokUrl)
+					.then((el) => {
+						return el.json()
+					})
+					.catch((e) => {
+						return e
+					})
+				let gif
+				if (pok.sprites.versions["generation-v"]["black-white"].animated.front_default) {
+					gif = pok.sprites.versions["generation-v"]["black-white"].animated.front_default
+				} else if (pok.sprites.versions["generation-v"]["black-white"].front_default) {
+					gif = pok.sprites.versions["generation-v"]["black-white"].front_default
+				} else {
+					gif = pok.sprites.versions["generation-viii"].icons.front_default
+				}
+				console.log(pok)
+				return gif
+			}
+			
+		</script>
+	</body>
+</html>
