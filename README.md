@@ -12,4 +12,4 @@ Projetos Simples
 <p><a href="https://hugoalbuquerque1993.github.io/Projetos-Simples/p07 jokencode/index.html"> Projeto 07 - JokenCode</a></p>
 <p><a href="https://hugoalbuquerque1993.github.io/Projetos-Simples/p08 Speaker/index.html"> Projeto 08 - Speaker</a></p>
 <p><a href="https://hugoalbuquerque1993.github.io/Projetos-Simples/p10 web_posto/index.html"> Projeto 10 - WebPosto Pay</a></p>
-<p><a href="https://hugoalbuquerque1993.github.io/Projetos-Simples/p12 destruidor de nave/index.html"> Projeto 12 - Destruidor de Naves</a></p>
+<p><a href="https://hugoalbuquerque1993.github.io/Projetos-Simples/p12 destruidor de naves/index.html"> Projeto 12 - Destruidor de Naves</a></p>
