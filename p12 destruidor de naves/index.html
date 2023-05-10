@@ -85,7 +85,7 @@
 			.scoreboard {
 				position: absolute;
 				display: flex;
-				justify-content: space-around;
+				justify-content: space-between;
 				align-items: center;
 				min-width: 100%;
 				top: 0;
@@ -101,7 +101,10 @@
 			}
 			.scoreboard > p {
 				display: flex;
+				justify-content: center;
 				align-items: center;
+				overflow: hidden;
+				max-width: 200px;
 			}
 			.scoreboard .material-symbols-outlined {
 				color: red;
@@ -111,9 +114,8 @@
 			.scoreboard .lostLife {
 				font-variation-settings: "FILL" 0;
 			}
-			span {
-				color: green;
-				margin: 0 5px;
+			.scoreboard .screenNick {
+				color: yellow;
 			}
 			.content {
 				position: absolute;
@@ -196,12 +198,13 @@
 			}
 			.gameOverDiv .tryAgainBtn {
 				position: absolute;
+				cursor: pointer;
 				padding: 5px 10px;
 				border-radius: 10px;
 				font-size: 2rem;
 				top: 60%;
 				opacity: 0;
-				transition: 0.2s;
+				transition: 0.5s;
 			}
 			.gameOverDiv .tryAgainBtn:hover {
 				background-color: red;
@@ -211,6 +214,9 @@
 	<body>
 		<script>
 			const naveGame = {
+				takeDamage: true,
+				playerLifes: 5,
+
 				config: {
 					audio: {
 						music: true,
@@ -228,14 +234,23 @@
 					},
 				},
 
-				score: 0,
+				playerInteract: false,
 				nick: undefined,
-				playerLifes: 4,
+				score: 0,
+				stageLifes: 0,
 				arrHearts: [],
 
 				soundPack: {
-					musics: [new Audio("./sound/opening.mp3"), new Audio("./sound/stage1.mp3")],
+					musics: [new Audio("./sound/opening.mp3"), new Audio("./sound/stage1.mp3"), new Audio("./sound/gameOver-NoHope.mp3")],
 					effects: [new Audio("./sound/canon.ogg")],
+					soundVolume: function () {
+						naveGame.soundPack.musics.forEach((el) => {
+							el.volume = 0.5
+						})
+						naveGame.soundPack.effects.forEach((el) => {
+							el.volume = 0.5
+						})
+					},
 				},
 
 				scoreView: function (field) {
@@ -250,7 +265,7 @@
 						scoreboard.appendChild(killsPar)
 
 						const lifePar = document.createElement("p")
-						for (let i = 0; i < naveGame.playerLifes; i++) {
+						for (let i = 0; i < naveGame.stageLifes; i++) {
 							const heart = document.createElement("i")
 							heart.classList.add("material-symbols-outlined")
 							heart.classList.add(`life${i}`)
@@ -259,6 +274,11 @@
 							lifePar.appendChild(heart)
 						}
 						scoreboard.appendChild(lifePar)
+
+						const screenNick = document.createElement("div")
+						screenNick.classList.add("screenNick")
+						screenNick.innerHTML = naveGame.nick
+						scoreboard.appendChild(screenNick)
 					}
 					if (!field) {
 						document.querySelector(".killsPar").innerHTML = `Abates: ${naveGame.score}`
@@ -329,12 +349,12 @@
 					}, 500 * naveGame.config.difficult.level.insane)
 
 					let checkElements = setInterval(() => {
-						allNaves.filter((el, i) => {
-							if (el.div.offsetTop < -100) {
+						allNaves.filter((obj, i) => {
+							if (obj.div.offsetTop < -100) {
 								allNaves.splice(i, 1)
-								field.removeChild(el.div)
-								if (el.isAlive == true && naveGame.playerLifes > -1) {
-									naveGame.reduceLife(el)
+								field.removeChild(obj.div)
+								if (obj.isAlive == true && naveGame.stageLifes > -1 && naveGame.takeDamage == true) {
+									naveGame.reduceLife(obj)
 								}
 							}
 						})
@@ -352,12 +372,12 @@
 				},
 
 				reduceLife: function (el) {
-					naveGame.playerLifes -= 1
-					if (naveGame.playerLifes > -1) {
+					naveGame.stageLifes -= 1
+					if (naveGame.stageLifes > -1) {
 						naveGame.arrHearts[naveGame.arrHearts.length - 1].classList.add("lostLife")
 						naveGame.arrHearts.pop()
 					}
-					if (naveGame.playerLifes == -1) {
+					if (naveGame.stageLifes == -1) {
 						naveGame.gameOver()
 					}
 				},
@@ -372,30 +392,36 @@
 					field[0].style.opacity = 0
 					setTimeout(() => {
 						document.body.removeChild(field[0])
+
+						naveGame.soundPack.musics.forEach((el) => {
+							el.pause()
+							el.currentTime = 0
+						})
 					}, 1000)
 				},
 
 				gameOver: function () {
 					naveGame.removeScenery()
-					naveGame.soundPack.musics.forEach((el) => {
-						el.pause()
-						el.currentTime = 0
-					})
 
 					const gameOverDiv = document.createElement("div")
 					gameOverDiv.classList.add("gameOverDiv")
 					gameOverDiv.data = "interactWindow"
 					gameOverDiv.innerHTML = "VOCÊ FOI DESTRUÍDO"
-					setTimeout(() => {
-						gameOverDiv.style.opacity = 1
-					}, 1000)
+					document.body.appendChild(gameOverDiv)
 
 					setTimeout(() => {
+						if (naveGame.config.audio.music == true) {
+							naveGame.soundPack.musics[naveGame.soundPack.musics.length - 1].play()
+						}
+						gameOverDiv.style.opacity = 1
+
 						const tryAgainBtn = document.createElement("button")
 						tryAgainBtn.classList.add("tryAgainBtn")
 						tryAgainBtn.innerHTML = "Tentar de novo?"
+
 						tryAgainBtn.addEventListener("click", () => {
 							naveGame.removeScenery()
+
 							setTimeout(() => {
 								naveGame.homeScreen()
 							}, 1000)
@@ -405,21 +431,21 @@
 							tryAgainBtn.style.opacity = 1
 						}, 500)
 					}, 2000)
-
-					document.body.appendChild(gameOverDiv)
 				},
 
-				gameStart: function () {
+				stage01: function () {
 					const battleField = document.createElement("div")
 					battleField.classList.add("battleField")
 					battleField.id = "stage01"
 					battleField.data = "interactWindow"
+					naveGame.scoreView(battleField)
+					document.body.appendChild(battleField)
 
+					if (naveGame.config.audio.music == true) {
+						naveGame.soundPack.musics[1].play()
+					}
 					battleField.addEventListener("click", shooting)
 					function shooting(e) {
-						if (naveGame.config.audio.music == true) {
-							naveGame.soundPack.musics[1].play()
-						}
 						if (naveGame.config.audio.effect == true) {
 							naveGame.soundPack.effects[0].play()
 						}
@@ -428,10 +454,10 @@
 						battleField.style.opacity = 1
 					}, 100)
 
-					naveGame.scoreView(battleField)
-					document.body.appendChild(battleField)
 					naveGame.startEvents(battleField)
 				},
+
+				sideMenu: function () {},
 
 				homeScreen: function () {
 					const initialWindow = document.createElement("div")
@@ -441,7 +467,14 @@
 					setTimeout(() => {
 						initialWindow.style.opacity = 1
 					}, 100)
+
+					naveGame.soundPack.soundVolume()
+					if (naveGame.playerInteract == true) {
+						naveGame.soundPack.musics[0].play()
+					}
+
 					initialWindow.addEventListener("click", () => {
+						naveGame.playerInteract = true
 						if (naveGame.config.audio.music == true) {
 							naveGame.soundPack.musics[0].play()
 						}
@@ -462,10 +495,11 @@
 					startBtn.innerHTML = "Iniciar!"
 					startBtn.classList.add("startBtn")
 					startBtn.addEventListener("click", startGame)
+
 					function startGame() {
 						naveGame.score = 0
 						naveGame.arrHearts = []
-						naveGame.playerLifes = 4
+						naveGame.stageLifes = naveGame.playerLifes
 
 						let nick = inpName.value
 
@@ -480,7 +514,7 @@
 								naveGame.soundPack.musics[0].pause()
 								naveGame.soundPack.musics[0].currentTime = 0
 								naveGame.nick = nick
-								naveGame.gameStart()
+								naveGame.stage01()
 							}, 1000)
 						}
 					}
@@ -497,7 +531,7 @@
 				},
 			}
 
-			// naveGame.gameStart()
+			// naveGame.stage01()
 			// setTimeout(() => {
 			// 	naveGame.gameOver()
 			// }, 1000)
