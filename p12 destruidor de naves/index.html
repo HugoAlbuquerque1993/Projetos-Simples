@@ -214,15 +214,14 @@
 	<body>
 		<script>
 			const naveGame = {
-				takeDamage: true,
-				playerLifes: 5,
-
 				config: {
+					playerLifes: 5,
+					takeDamage: true,
+
 					audio: {
 						music: true,
-						musVol: 0.5,
 						effect: true,
-						effVol: 0.5,
+						masterVolume: 0.2,
 					},
 					difficult: {
 						level: {
@@ -242,13 +241,19 @@
 
 				soundPack: {
 					musics: [new Audio("./sound/opening.mp3"), new Audio("./sound/stage1.mp3"), new Audio("./sound/gameOver-NoHope.mp3")],
+
 					effects: [new Audio("./sound/canon.ogg")],
+
 					soundVolume: function () {
-						naveGame.soundPack.musics.forEach((el) => {
-							el.volume = 0.5
+						naveGame.soundPack.musics.forEach((el, i, arr) => {
+							el.loop = true
+							if (i == arr.length - 1) {
+								el.loop = false
+							}
+							el.volume = naveGame.config.audio.masterVolume
 						})
 						naveGame.soundPack.effects.forEach((el) => {
-							el.volume = 0.5
+							el.volume = naveGame.config.audio.masterVolume
 						})
 					},
 				},
@@ -353,7 +358,7 @@
 							if (obj.div.offsetTop < -100) {
 								allNaves.splice(i, 1)
 								field.removeChild(obj.div)
-								if (obj.isAlive == true && naveGame.stageLifes > -1 && naveGame.takeDamage == true) {
+								if (obj.isAlive == true && naveGame.stageLifes > -1 && naveGame.config.takeDamage == true) {
 									naveGame.reduceLife(obj)
 								}
 							}
@@ -469,7 +474,7 @@
 					}, 100)
 
 					naveGame.soundPack.soundVolume()
-					if (naveGame.playerInteract == true) {
+					if (naveGame.playerInteract == true && naveGame.config.audio.music == true) {
 						naveGame.soundPack.musics[0].play()
 					}
 
@@ -499,7 +504,7 @@
 					function startGame() {
 						naveGame.score = 0
 						naveGame.arrHearts = []
-						naveGame.stageLifes = naveGame.playerLifes
+						naveGame.stageLifes = naveGame.config.playerLifes
 
 						let nick = inpName.value
 
