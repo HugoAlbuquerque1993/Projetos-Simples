@@ -25,6 +25,8 @@
 				position: relative;
 				width: 100%;
 				height: 100%;
+				display: flex;
+				justify-content: center;
 				font-size: 1em;
 				background-repeat: no-repeat;
 				background-position: left center;
@@ -48,6 +50,7 @@
 			}
 			.inpName {
 				position: absolute;
+				background-color: #ffffff80;
 				top: 50%;
 				left: 50%;
 				transform: translateX(-50%);
@@ -55,18 +58,28 @@
 				font-size: 1.5rem;
 				padding: 5px 10px;
 				border-radius: 10px 30px;
+				transition: 0.2s;
+			}
+			.inpName:focus {
+				border-radius: 40px;
+				border: none;
 			}
 			.startBtn {
 				position: absolute;
 				top: 65%;
-				left: 50%;
-				transform: translateX(-50%);
 				padding: 5px 15px;
 				border-radius: 10px;
 				color: #fff;
 				font-size: 2rem;
 				background-color: #333;
 				cursor: pointer;
+				transition: 1s;
+			}
+			.startBtn:hover {
+				background-color: #555;
+				box-shadow: 0 0 5px 5px #777;
+				transform: scale(1.1);
+				transition: 0.2s;
 			}
 
 			.battleField {
@@ -97,7 +110,7 @@
 				filter: drop-shadow(-2px -2px 10px blue);
 				font-size: 1.5rem;
 				cursor: auto;
-				z-index: 1;
+				z-index: 3;
 			}
 			.scoreboard > p {
 				display: flex;
@@ -215,29 +228,30 @@
 		<script>
 			const naveGame = {
 				config: {
-					playerLifes: 5,
-					takeDamage: true,
+					playerLifes: 3,
+					neverDie: false,
+					playerDamage: 3,
 
 					audio: {
-						music: true,
-						effect: true,
+						music: false,
+						effect: false,
 						masterVolume: 0.2,
 					},
-					difficult: {
-						level: {
-							normal: 3,
-							hard: 2,
-							insane: 1,
-						},
-						playerDamage: [1, 2],
+
+					difficults: {
+						normal: 3,
+						hard: 2,
+						insane: 1,
 					},
 				},
 
-				playerInteract: false,
-				nick: undefined,
-				score: 0,
-				stageLifes: 0,
-				arrHearts: [],
+				states: {
+					playerInteract: false,
+					playerNick: undefined,
+					score: 0,
+					stageLifes: 0,
+					arrHearts: [],
+				},
 
 				soundPack: {
 					musics: [new Audio("./sound/opening.mp3"), new Audio("./sound/stage1.mp3"), new Audio("./sound/gameOver-NoHope.mp3")],
@@ -282,7 +296,7 @@
 
 						const screenNick = document.createElement("div")
 						screenNick.classList.add("screenNick")
-						screenNick.innerHTML = naveGame.nick
+						screenNick.innerHTML = naveGame.states.playerNick
 						scoreboard.appendChild(screenNick)
 					}
 					if (!field) {
@@ -299,7 +313,7 @@
 						content.appendChild(aeronave)
 						aeronave.classList.add("aeronave")
 						aeronave.src = "./img/aeronave.png"
-						aeronave.setAttribute("draggable", "false")
+						aeronave.setAttribute("draggable", false)
 
 						const lifeBar = document.createElement("div")
 						content.appendChild(lifeBar)
@@ -320,11 +334,12 @@
 							content.style.top = "-25%"
 						}, 10)
 
-						this.armor = 2
+						this.armor = 3
 						this.isAlive = true
 						this.div = content
+						this.div.style.zIndex = 2
 						this.div.addEventListener("click", () => {
-							this.armor -= naveGame.config.difficult.playerDamage[0]
+							this.armor -= naveGame.config.playerDamage
 							if (this.armor == 2) {
 								this.div.lastChild.classList.remove("treeLifes")
 								this.div.lastChild.classList.add("twoLifes")
@@ -333,11 +348,12 @@
 								this.div.lastChild.classList.remove("twoLifes")
 								this.div.lastChild.classList.add("oneLifes")
 							}
-							if (this.armor == 0) {
+							if (this.armor <= 0 && this.isAlive == true) {
 								this.div.lastChild.classList.remove("oneLifes")
 								this.div.lastChild.classList.add("zeroLifes")
 								aeronave.src = "https://img1.picmix.com/output/stamp/normal/7/1/8/4/1944817_4359e.gif"
-								this.isAlive = "false"
+								this.isAlive = false
+								this.div.style.zIndex = 0
 								naveGame.score++
 								naveGame.scoreView()
 							}
@@ -351,19 +367,19 @@
 					let naveSpawner = setInterval(() => {
 						allNaves.push(new naveGame.newNave01())
 						field.appendChild(allNaves[allNaves.length - 1].div)
-					}, 500 * naveGame.config.difficult.level.insane)
+					}, 500 * naveGame.config.difficults.insane)
 
 					let checkElements = setInterval(() => {
 						allNaves.filter((obj, i) => {
 							if (obj.div.offsetTop < -100) {
 								allNaves.splice(i, 1)
 								field.removeChild(obj.div)
-								if (obj.isAlive == true && naveGame.stageLifes > -1 && naveGame.config.takeDamage == true) {
+								if (obj.isAlive == true && naveGame.stageLifes > -1 && naveGame.config.neverDie == false) {
 									naveGame.reduceLife(obj)
 								}
 							}
 						})
-					}, 250 * naveGame.config.difficult.level.insane)
+					}, 250 * naveGame.config.difficults.sane)
 
 					document.addEventListener("visibilitychange", seeWindow)
 					function seeWindow(evt) {
@@ -474,12 +490,12 @@
 					}, 100)
 
 					naveGame.soundPack.soundVolume()
-					if (naveGame.playerInteract == true && naveGame.config.audio.music == true) {
+					if (naveGame.states.playerInteract == true && naveGame.config.audio.music == true) {
 						naveGame.soundPack.musics[0].play()
 					}
 
 					initialWindow.addEventListener("click", () => {
-						naveGame.playerInteract = true
+						naveGame.states.playerInteract = true
 						if (naveGame.config.audio.music == true) {
 							naveGame.soundPack.musics[0].play()
 						}
@@ -494,6 +510,7 @@
 					inpName.classList.add("inpName")
 					inpName.type = "text"
 					inpName.placeholder = "Seu apelido aqui"
+					inpName.required = true
 					initialWindow.appendChild(inpName)
 
 					const startBtn = document.createElement("button")
@@ -506,11 +523,11 @@
 						naveGame.arrHearts = []
 						naveGame.stageLifes = naveGame.config.playerLifes
 
-						let nick = inpName.value
+						let inpNick = inpName.value
 
-						if (nick.length < 3) {
+						if (inpNick.length < 3) {
 							alert("Seu apelido deve conter no mínimo 3 caracteres.")
-						} else if (nick.length > 15) {
+						} else if (inpNick.length > 15) {
 							alert("Nome muito extenso...")
 						} else {
 							initialWindow.style.opacity = 0
@@ -518,7 +535,7 @@
 								document.body.removeChild(initialWindow)
 								naveGame.soundPack.musics[0].pause()
 								naveGame.soundPack.musics[0].currentTime = 0
-								naveGame.nick = nick
+								naveGame.states.playerNick = inpNick
 								naveGame.stage01()
 							}, 1000)
 						}
@@ -536,10 +553,6 @@
 				},
 			}
 
-			// naveGame.stage01()
-			// setTimeout(() => {
-			// 	naveGame.gameOver()
-			// }, 1000)
 			naveGame.homeScreen()
 		</script>
 	</body>
