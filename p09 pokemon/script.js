@@ -125,7 +125,7 @@ function fetchPok(pokUrl) {
 			if (el.name.includes("mode") || el.name.includes("build")) {
 				return
 			}
-			console.log(1)
+			console.log(el)
 			createDiv(el)
 		})
 }
@@ -145,9 +145,8 @@ function createDiv(pok) {
         <img src="${imgUrl}" class="card-img-top" alt="..."/>
         <div class="card-body">
             <h5 class="card-title">${pokName}</h5>
-            <p class="card-text">
-                Tipo: ${type}
-            </p>
+			<p class="card-text"> ID: ${pok.id} <br/>
+            Tipo: ${type} </p>
             <button type="button" class="btn btn-outline-success">Detalhes</button>
         </div>
     `
