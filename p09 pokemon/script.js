@@ -7,8 +7,10 @@ window.addEventListener("scroll", () => {
 	}
 })
 
-var from = 4
+var from = 0
 var limit = 1
+var resultCount = 0
+
 function randomHunter() {
 	from = Math.round(Math.random() * 1281)
 }
@@ -22,6 +24,17 @@ textBar.addEventListener("keyup", () => {
 
 const findBtn = document.querySelector("#findBtn")
 findBtn.addEventListener("click", () => {
+	if (textBar.value == "") {
+		let turns = 3
+		for (let i = 0; i < turns; i++) {
+			findNow()
+		}
+	} else {
+		findNow()
+	}
+})
+
+function findNow() {
 	rotineControl()
 	container.innerHTML = ""
 	if (textBar.value == "") {
@@ -31,22 +44,15 @@ findBtn.addEventListener("click", () => {
 	} else {
 		limit = 1281
 		from = 0
-		startSearch(textBar.value)
+		startSearch(textBar.value.toLowerCase())
 	}
 	createLoad()
 	hiddenMenu()
-})
+}
 
 function rotineControl() {
+	resultCount = 0
 	findBtn.setAttribute("disabled", "disabled")
-
-	setTimeout(() => {
-		findBtn.removeAttribute("disabled")
-		if (container.lastChild.id == "load") {
-			removeLoad()
-			noResponse()
-		}
-	}, 3000)
 }
 
 function createLoad() {
@@ -88,10 +94,13 @@ function startSearch(campText) {
 		.then((data) => {
 			getPok(data.results, campText)
 		})
+		.catch((e) => {
+			noResponse("internetError")
+		})
 }
 
 function getPok(poks, campText) {
-	poks.forEach((pok) => {
+	poks.forEach((pok, ind) => {
 		if (campText) {
 			if (pok.name.includes(campText) == true) {
 				fetchPok(pok.url)
@@ -99,24 +108,43 @@ function getPok(poks, campText) {
 		} else {
 			fetchPok(pok.url)
 		}
+
+		if (ind == poks.length - 1) {
+			findBtn.removeAttribute("disabled")
+			if (resultCount < 1) {
+				noResponse("nameError")
+			}
+		}
 	})
 }
 
-function noResponse() {
+function noResponse(res) {
+	removeLoad()
 	const alertWarning = document.createElement("div")
 	alertWarning.className = "alert alert-warning d-flex flex-column align-items-center text-center gap-3"
-	alertWarning.innerHTML = `
-	<span class="material-symbols-outlined warnSpan">
-	warning
-	</span>
-		</svg>
-		Nome não encontrado </br> ou problema de conexão. </br> Tente um novo nome </br> ou verifique a conexão.
-	`
+
+	if (res == "nameError") {
+		alertWarning.innerHTML = `
+			<span class="material-symbols-outlined warnSpan">
+				warning
+			</span>
+			Nome não encontrado. </br> Tente um nome válido </br> e não utilize espaços </br> nem caracteres especiais.
+		`
+	}
+	if (res == "internetError") {
+		alertWarning.innerHTML = `
+			<span class="material-symbols-outlined warnSpan">
+				warning
+			</span>
+			Problema de conexão. </br> Verifique a conexão </br> e tente novamente.
+		`
+	}
 
 	container.appendChild(alertWarning)
 }
 
 function fetchPok(pokUrl) {
+	resultCount == 0 ? resultCount++ : null
 	fetch(pokUrl)
 		.then((dataJson) => {
 			return dataJson.json()
@@ -125,8 +153,10 @@ function fetchPok(pokUrl) {
 			if (el.name.includes("mode") || el.name.includes("build")) {
 				return
 			}
-			console.log(el)
 			createDiv(el)
+		})
+		.catch((e) => {
+			console.log(`Erro: ${e}`)
 		})
 }
 
@@ -142,7 +172,7 @@ function createDiv(pok) {
 	const type = firstUpper(pok.types[0].type.name)
 
 	card.innerHTML = `
-        <img src="${imgUrl}" class="card-img-top" alt="..."/>
+        <img src="${imgUrl}" class="card-img-top" alt="${pok.name}.img"/>
         <div class="card-body">
             <h5 class="card-title">${pokName}</h5>
 			<p class="card-text"> ID: ${pok.id} <br/>
@@ -155,6 +185,7 @@ function createDiv(pok) {
 }
 
 function removeLoad() {
+	findBtn.removeAttribute("disabled")
 	document.querySelector("#load") ? document.querySelector("#load").remove() : null
 }
 
@@ -166,3 +197,10 @@ function firstUpper(word) {
 	const modified = word.charAt(0).toUpperCase() + word.slice(1)
 	return modified
 }
+
+const readMe = document.querySelector("#readMe")
+readMe.addEventListener("click", () => {
+	const myModal = document.querySelector("#myModal")
+	const modal = new bootstrap.Modal(myModal)
+	modal.show()
+})
