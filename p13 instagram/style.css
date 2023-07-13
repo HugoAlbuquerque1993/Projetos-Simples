@@ -138,12 +138,15 @@ main > div:first-child {
 	gap: 20px;
 }
 .container > div:nth-child(3) img {
+	position: relative;
 	height: 40px;
 	transition: 0.5s;
 	cursor: pointer;
+	z-index: 1;
 }
 .container > div:nth-child(3) img:hover {
 	scale: 1.2;
+	z-index: 2;
 }
 .container > div:nth-child(3) > div:hover img:not(:hover) {
 	opacity: 0.3;
