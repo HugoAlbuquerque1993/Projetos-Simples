@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Instagram</title>
+		<link rel="stylesheet" href="style.css" />
+		<link rel="shortcut icon" href="./img/icons8-instagram-94.png" type="image/x-icon" />
+	</head>
+	<body>
+		<main>
+			<div>
+				<img src="img/celular.png" style="width: 450px; height: 630px" />
+				<img src="./img/insta1.png" alt="insta1" id="changeImg" />
+			</div>
+			<div class="container">
+				<div>
+					<form action="" method="get" class="myForm">
+						<img src="img/insta-logo.png" class="insta-logo" />
+						<input placeholder="Telefone, nome de usuário ou email" type="text" />
+						<input placeholder="Senha" type="password" />
+						<button>Entrar</button>
+					</form>
+					<span> ou </span>
+					<p id="login-facebook">
+						<img src="./img/facebook.png" alt="facebook" style="width: 20px; height: 20px; margin-right: 10px" />
+						Entrar com o Facebook
+					</p>
+					<p class="forgot-password">Esqueceu a senha?</p>
+				</div>
+				<div>Não tem uma conta? <a href="#"> Cadastre-se </a></div>
+				<div>
+					<p>Obtenha o aplicativo.</p>
+					<div>
+						<img src="./img/google-play.png" alt="google-play" />
+						<img src="./img/microsoft.png" alt="microsoft" />
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<script>
+			//Define o tempo de transição da animação (Menor tempo recomendado: 3)
+			var aniTime = 4
+
+			const changeImg = document.getElementById("changeImg")
+			changeImg.foto = "foto1"
+			changeImg.style.cssText = `--aniTime: ${aniTime}s;`
+
+			setInterval(() => {
+				if (changeImg.foto == "foto2") {
+					changeImg.foto = "foto1"
+					changeImg.src = "./img/insta1.png"
+				} else {
+					changeImg.foto = "foto2"
+					changeImg.src = "./img/insta2.png"
+				}
+			}, aniTime * 1000)
+
+			const inputs = [...document.querySelector(".myForm").childNodes].filter((el) => {
+				if (el.localName == "input") {
+					el.addEventListener("keyup", enableButton)
+					return el
+				} else if (el.localName == "button") {
+					el.addEventListener("click", toEnter)
+					return el
+				}
+			})
+
+			function enableButton() {
+				inputs[0].value != "" && inputs[1].value != "" ? inputs[2].setAttribute("class", "enabled") : inputs[2].removeAttribute("class")
+			}
+
+			function toEnter(e) {
+				e.preventDefault()
+				if (inputs[2].classList[0] == "enabled") {
+					alert("Logando...")
+					inputs[0].value = ""
+					inputs[1].value = ""
+					enableButton()
+				}
+			}
+		</script>
+	</body>
+</html>
