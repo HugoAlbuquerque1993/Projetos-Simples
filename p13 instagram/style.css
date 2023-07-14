@@ -14,26 +14,14 @@ main {
 main > div:first-child {
 	position: relative;
 }
-#changeImg {
+.changeImg {
 	position: absolute;
 	top: 4%;
 	left: 33%;
-	transition: 0.2s;
-	animation: newImg var(--aniTime) ease infinite;
+	transition: 1s;
 }
-@keyframes newImg {
-	0% {
-		opacity: 0;
-	}
-	50% {
-		opacity: 1;
-	}
-	90% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0.1;
-	}
+#img1 {
+	opacity: 1;
 }
 
 .container {
