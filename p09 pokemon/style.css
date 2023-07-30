@@ -13,12 +13,13 @@ body {
 	align-items: center;
 	gap: 10px;
 	padding: 20px;
+	user-select: none;
 }
 ::-webkit-scrollbar {
 	background-color: #000000;
 	width: 8px;
 	height: 8px;
-	transition: .2s;
+	transition: 0.2s;
 }
 ::-webkit-scrollbar:hover {
 	width: 10px;
@@ -34,12 +35,12 @@ body {
 	top: 7%;
 	color: green;
 	background-color: #000000;
-	opacity: .4;
+	opacity: 0.4;
 	padding: 8px;
 	font-size: 2rem;
 	border-radius: 50%;
 	cursor: pointer;
-	transition: .5s;
+	transition: 0.5s;
 	z-index: 2;
 }
 #readMe:hover {
@@ -99,10 +100,10 @@ nav .myWork {
 	left: 50%;
 	translate: -50% 0;
 }
-nav .myWork img{
+nav .myWork img {
 	cursor: pointer;
 	width: 50px;
-	transition: .2s;
+	transition: 0.2s;
 }
 nav .myWork img:hover {
 	transform: scale(1.1);
@@ -198,6 +199,10 @@ main {
 #svgView {
 	position: absolute;
 	bottom: 15%;
+	user-select: text;
+}
+#svgView > * > *::selection {
+	background-color: yellow;
 }
 .text-copy {
 	fill: none;
@@ -218,6 +223,8 @@ main {
 }
 .text-copy:nth-child(3) {
 	stroke: green;
+	filter: drop-shadow(0 0 0.75rem white);
+
 	animation-delay: -0.8s;
 }
 .text-copy:nth-child(4) {

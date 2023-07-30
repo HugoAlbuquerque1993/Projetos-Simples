@@ -194,7 +194,7 @@ function imgSearch(pok) {
 }
 
 function firstUpper(word) {
-	const modified = word.charAt(0).toUpperCase() + word.slice(1)
+	const modified = word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
 	return modified
 }
 
