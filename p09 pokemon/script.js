@@ -77,10 +77,10 @@ function hiddenMenu() {
 	navbar.classList.toggle("hidden")
 	closeBtn.classList.toggle("hidden")
 
-	if (closeBtn.innerHTML == "Menu") {
-		closeBtn.innerHTML = "Close"
+	if (closeBtn.innerHTML != "X") {
+		closeBtn.innerHTML = "X"
 	} else {
-		closeBtn.innerHTML = "Menu"
+		closeBtn.innerHTML = "&equiv;"
 	}
 }
 
@@ -198,9 +198,35 @@ function firstUpper(word) {
 	return modified
 }
 
-const readMe = document.querySelector("#readMe")
-readMe.addEventListener("click", () => {
+const openModal = document.querySelector("#openModal")
+openModal.addEventListener("click", () => {
 	const myModal = document.querySelector("#myModal")
 	const modal = new bootstrap.Modal(myModal)
 	modal.show()
 })
+
+const lightTheme = ["#87ceeb", "#0000ff"]
+const darkTheme = ["#2c5364", "#0f2027"]
+const mainContainer = document.querySelector(".mainContainer")
+const bgColorChangerInputs = [...document.querySelectorAll(".bgColorChanger input")]
+bgColorChangerInputs[4].addEventListener("click", handleChangeColor)
+let lightAndDark = [bgColorChangerInputs[2], bgColorChangerInputs[3]].forEach(el => {
+	el.addEventListener("click", (e) => {
+		handleChangeColor(e)
+	})
+})
+
+function handleChangeColor(e) {
+	console.log(e.target)
+	let colorTemp = []
+	if(e.target.value == "Aplicar") {
+		colorTemp = [bgColorChangerInputs[0].value, bgColorChangerInputs[1].value]
+	} else if (e.target.value == "Light") {
+		colorTemp = lightTheme
+	} else {
+		colorTemp = darkTheme
+	}
+	let newGradient = `linear-gradient(to right, ${colorTemp[0]}, ${colorTemp[1]})`
+
+	mainContainer.style.backgroundImage = newGradient
+}
