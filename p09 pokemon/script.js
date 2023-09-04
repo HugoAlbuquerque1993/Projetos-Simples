@@ -217,8 +217,8 @@ let lightAndDark = [bgColorChangerInputs[2], bgColorChangerInputs[3]].forEach(el
 })
 
 function handleChangeColor(e) {
-	console.log(e.target)
 	let colorTemp = []
+
 	if(e.target.value == "Aplicar") {
 		colorTemp = [bgColorChangerInputs[0].value, bgColorChangerInputs[1].value]
 	} else if (e.target.value == "Light") {
@@ -226,7 +226,6 @@ function handleChangeColor(e) {
 	} else {
 		colorTemp = darkTheme
 	}
-	let newGradient = `linear-gradient(to right, ${colorTemp[0]}, ${colorTemp[1]})`
-
-	mainContainer.style.backgroundImage = newGradient
+	
+	mainContainer.style.backgroundImage = `linear-gradient(to right, ${colorTemp[0]}, ${colorTemp[1]})`
 }
