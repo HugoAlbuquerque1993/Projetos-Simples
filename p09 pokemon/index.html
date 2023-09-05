@@ -52,35 +52,35 @@
 					<button type="button" class="btn btn-outline-light" id="findBtn">Descubra!</button>
 					<button type="button" class="btn btn-outline-dark" id="resetBtn">Limpar</button>
 
-					<div class="bgColorChanger">
-						<h4>Cor de Fundo</h4>
+					<div class="bgColorChanger hidden">
+						<h4 class="bgTitle">Cor de Fundo <span>&nabla;</span></h4>
+						<input type="range" max="360" value="90">
 						<div>
-							<input type="color" name="colorChanger1" value="#ff0000"/>
+							<input type="color" name="colorChanger1" value="#ff0000" />
 							<input type="color" name="colorChanger2" value="#3cf708" />
 						</div>
 						<div>
-							<input type="button" value="Light" />
-							<input type="button" value="Dark" />
-							<input type="button" value="Aplicar" id="changeColor" />
+							<input type="button" value="Light" class="btn btn-outline-light">
+							<input type="button" value="Dark" class="btn btn-outline-warning">
 						</div>
 					</div>
 				</div>
 
-				<svg viewBox="0 0 1200 600" id="svgView">
-					<symbol id="s-text">
-						<text text-anchor="middle" x="50%" y="40%">Hugo</text>
-						<text text-anchor="middle" x="50%" y="70%">Albuquerque</text>
-					</symbol>
-					<g class="g-ants">
-						<use xlink:href="#s-text" class="text-copy"></use>
-						<use xlink:href="#s-text" class="text-copy"></use>
-						<use xlink:href="#s-text" class="text-copy"></use>
-						<use xlink:href="#s-text" class="text-copy"></use>
-						<use xlink:href="#s-text" class="text-copy"></use>
-					</g>
-				</svg>
-
 				<div class="myWork">
+					<svg viewBox="0 0 1200 600" id="svgView">
+						<symbol id="s-text">
+							<text text-anchor="middle" x="50%" y="40%">Hugo</text>
+							<text text-anchor="middle" x="50%" y="70%">Albuquerque</text>
+						</symbol>
+						<g class="g-ants">
+							<use xlink:href="#s-text" class="text-copy"></use>
+							<use xlink:href="#s-text" class="text-copy"></use>
+							<use xlink:href="#s-text" class="text-copy"></use>
+							<use xlink:href="#s-text" class="text-copy"></use>
+							<use xlink:href="#s-text" class="text-copy"></use>
+						</g>
+					</svg>
+
 					<div class="d-flex gap-3">
 						<a href="https://github.com/HugoAlbuquerque1993/" target="_blank" title="Github">
 							<img src="img/github.png" class="rounded-circle" alt="Github" />

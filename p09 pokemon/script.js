@@ -205,27 +205,56 @@ openModal.addEventListener("click", () => {
 	modal.show()
 })
 
+//Trocar cor de fundo
+let currentTheme = ["#87ceeb", "#0000ff"]
 const lightTheme = ["#87ceeb", "#0000ff"]
 const darkTheme = ["#2c5364", "#0f2027"]
 const mainContainer = document.querySelector(".mainContainer")
 const bgColorChangerInputs = [...document.querySelectorAll(".bgColorChanger input")]
-bgColorChangerInputs[4].addEventListener("click", handleChangeColor)
-let lightAndDark = [bgColorChangerInputs[2], bgColorChangerInputs[3]].forEach(el => {
-	el.addEventListener("click", (e) => {
-		handleChangeColor(e)
-	})
+bgColorChangerInputs.forEach((el, ind) => {
+	if (el.type == "range") {
+		el.addEventListener("input", (e) => {
+			handleChangeColor(e)
+		})
+	} else if (el.type == "color") {
+		el.addEventListener("input", (e) => {
+			handleChangeColor(e)
+		})
+	} else if (el.type == "button") {
+		el.addEventListener("click", (e) => {
+			handleChangeColor(e)
+		})
+	}
 })
 
 function handleChangeColor(e) {
 	let colorTemp = []
+	let deg = 180
+	console.log(e.target.value)
 
-	if(e.target.value == "Aplicar") {
-		colorTemp = [bgColorChangerInputs[0].value, bgColorChangerInputs[1].value]
-	} else if (e.target.value == "Light") {
+	if (e.target.type == "range") {
+		colorTemp = currentTheme
+		deg = e.target.value
+	}
+	if (e.target.type == "color") {
+		colorTemp = [bgColorChangerInputs[1].value, bgColorChangerInputs[2].value]
+	}
+	if (e.target.value == "Light") {
 		colorTemp = lightTheme
-	} else {
+	} 
+	if (e.target.value == "Dark") {
 		colorTemp = darkTheme
 	}
-	
-	mainContainer.style.backgroundImage = `linear-gradient(to right, ${colorTemp[0]}, ${colorTemp[1]})`
+
+	currentTheme = colorTemp
+	mainContainer.style.backgroundImage = `linear-gradient(${deg}deg, ${colorTemp[0]}, ${colorTemp[1]})`
 }
+
+const bgTitle = document.querySelector(".bgTitle")
+bgTitle.addEventListener("click", showMenuBgChanger)
+
+function showMenuBgChanger() {
+	bgTitle.parentElement.classList.toggle("hidden")
+	bgTitle.lastChild.classList.toggle("up")
+}
+//Trocar cor de fundo/
