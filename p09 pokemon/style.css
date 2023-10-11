@@ -63,7 +63,7 @@
 	z-index: 3;
 }
 #navbar.hidden {
-	transform: translateX(-90%);
+	transform: translateX(-92%);
 }
 .inputs {
 	position: relative;
@@ -95,8 +95,8 @@
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-	font-size: .9em;
-	transition: .2s;
+	font-size: 0.9em;
+	transition: 0.2s;
 }
 .bgTitle > span.up {
 	transform: rotateX(180deg);
@@ -110,7 +110,7 @@
 }
 .bgColorChanger > div > * {
 	flex: 1;
-	margin-top: 5px ;
+	margin-top: 5px;
 }
 
 #closeBtn {
@@ -290,4 +290,3 @@ main {
 .btn-outline-success:hover {
 	box-shadow: 2px 2px 5px black;
 }
-
