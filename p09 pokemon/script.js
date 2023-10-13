@@ -256,4 +256,3 @@ function showMenuBgChanger() {
 	bgTitle.parentElement.classList.toggle("hidden")
 	bgTitle.lastChild.classList.toggle("up")
 }
-//Trocar cor de fundo/
