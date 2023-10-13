@@ -210,7 +210,7 @@ let currentTheme = ["#87ceeb", "#0000ff"]
 const lightTheme = ["#87ceeb", "#0000ff"]
 const darkTheme = ["#2c5364", "#0f2027"]
 const mainContainer = document.querySelector(".mainContainer")
-const bgColorChangerInputs = [...document.querySelectorAll(".bgColorChanger input")]
+const bgColorChangerInputs = [...document.querySelectorAll(".customLinearGradient input")]
 bgColorChangerInputs.forEach((el, ind) => {
 	if (el.type == "range") {
 		el.addEventListener("input", (e) => {
@@ -230,7 +230,6 @@ bgColorChangerInputs.forEach((el, ind) => {
 function handleChangeColor(e) {
 	let colorTemp = []
 	let deg = 180
-	console.log(e.target.value)
 
 	if (e.target.type == "range") {
 		colorTemp = currentTheme
