@@ -1,5 +1,7 @@
 # Pokédex
 
+[Live Site](https://hugoalbuquerque1993.github.io/Projetos-Simples/p09%20pokemon/index.html)
+
 ![Design Preview - Pokedéx Project](./img/Captura%20de%20tela%202023-10-11%20153404.jpg)
 
 Bem vindo ao meu projeto pessoal da Pokédex. O site entrega um layout responsivo, validações de campo textual, sistema de feedback de erro ao usuário, entre outras funcionalidades.
