@@ -2,7 +2,7 @@
 
 [Live Site](https://hugoalbuquerque1993.github.io/Projetos-Simples/p09%20pokemon/index.html)
 
-### By Hugo Albuquerque - Web Develeper
+### By Hugo Albuquerque - Web Developer
 
 ![Design Preview - Pokedéx Project](./img/Captura%20de%20tela%202023-10-13%20110657.jpg)
 
