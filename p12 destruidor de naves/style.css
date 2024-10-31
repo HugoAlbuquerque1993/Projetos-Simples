@@ -1,0 +1,214 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	user-select: none;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+	height: 100vh;
+	background-color: #d0d0d0;
+	overflow: hidden;
+    outline: 2px solid black;
+}
+
+.screenPreset {
+	position: relative;
+    width: clamp(400px, 600px, 100vw);
+	height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	opacity: 0;
+}
+.initialWindow {
+	position: relative;
+    width: clamp(400px, 600px, 100vw);
+	font-size: 1em;
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-size: cover;
+	background-image: url("./img/menuBackground.jpg");
+	transition: 1s ease-in-out;
+}
+.gameTitle {
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	transform: translateX(-50%);
+	text-align: center;
+	min-width: 300px;
+	padding: 5px 10px;
+	border-radius: 20px;
+	background-color: #00000080;
+	color: #fff;
+	font-size: 2.5rem;
+}
+.inpName {
+	position: absolute;
+	background-color: #ffffff80;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%);
+	text-align: center;
+	font-size: 1.5rem;
+	padding: 5px 10px;
+	border-radius: 10px 30px;
+	transition: 0.2s;
+}
+.inpName:focus {
+	border-radius: 40px;
+	border: none;
+}
+.startBtn {
+	position: absolute;
+	top: 65%;
+	padding: 5px 15px;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 2rem;
+	background-color: #333;
+	cursor: pointer;
+	transition: 1s;
+}
+.startBtn:hover {
+	background-color: #555;
+	box-shadow: 0 0 5px 5px #777;
+	transform: scale(1.1);
+	transition: 0.2s;
+}
+
+.battleField {
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	background-image: url("./img/spaceBattleGif.gif");
+	transition: 1s ease-in-out;
+	cursor: url(img/aimFireP.png), auto;
+	overflow: hidden;
+}
+.scoreboard {
+	position: absolute;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	min-width: 100%;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	color: #fff;
+	background-color: #345678;
+	padding: 5px 10px;
+	filter: drop-shadow(-2px -2px 10px blue);
+	font-size: 1.5rem;
+	cursor: auto;
+	z-index: 3;
+}
+.scoreboard > p {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	max-width: 200px;
+}
+.scoreboard .material-symbols-outlined {
+	color: red;
+	font-size: 2rem;
+	font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+.scoreboard .lostLife {
+	font-variation-settings: "FILL" 0;
+}
+.scoreboard .screenNick {
+	color: yellow;
+}
+.content {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	width: 60px;
+	top: 100%;
+}
+.aeronave {
+	position: absolute;
+	border-radius: 50%;
+	filter: drop-shadow();
+}
+
+.lifeBar {
+	position: absolute;
+	width: 100%;
+	max-width: 100px;
+	height: 10px;
+	top: 100%;
+	border: 1px solid black;
+	border-radius: 5px 20px;
+}
+@media (width > 600px) {
+	.lifeBar {
+		max-width: 60px;
+	}
+}
+.lifeBar.treeLifes {
+	background-image: linear-gradient(90deg, yellow 100%, black 0%);
+}
+.lifeBar.twoLifes {
+	background-image: linear-gradient(90deg, yellow 70%, black 30%);
+}
+.lifeBar.oneLifes {
+	background-image: linear-gradient(270deg, black 70%, yellow 30%);
+}
+.lifeBar.zeroLifes {
+	background-image: none;
+	border: none;
+}
+@keyframes aeroMove {
+	0% {
+		top: 100%;
+	}
+	100% {
+		top: -25%;
+	}
+}
+
+.configMenu > .material-symbols-outlined {
+	position: absolute;
+	right: 5%;
+	top: 3%;
+	font-size: 2rem;
+	padding: 10px;
+	border-radius: 20px;
+	background-color: #00000080;
+	color: #fff;
+	cursor: pointer;
+	transition: 0.2s;
+	font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+.configMenu > .material-symbols-outlined:hover {
+	transform: scale(1.1);
+	background-color: #000000d0;
+}
+
+.gameOverDiv {
+	background-color: #000000;
+	color: #ffffff;
+	font-size: 2rem;
+	transition: opacity 1s ease-in-out;
+}
+.gameOverDiv .tryAgainBtn {
+	position: absolute;
+	cursor: pointer;
+	padding: 5px 10px;
+	border-radius: 10px;
+	font-size: 2rem;
+	top: 60%;
+	opacity: 0;
+	transition: 0.5s;
+}
+.gameOverDiv .tryAgainBtn:hover {
+	background-color: red;
+}
